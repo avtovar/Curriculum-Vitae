@@ -1,148 +1,285 @@
-/* Fuente base y colores */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+/* ===================== RESET BÁSICO ===================== */
+body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+/* ===================== ESTILO GENERAL ===================== */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f7f7; /* Fondo claro predeterminado */
+  color: #222;          /* Color de texto principal */
+  line-height: 1.6;
+}
 
-/* Contenedor general con max-width para responsive */
+/* ===================== CONTENEDOR PRINCIPAL ===================== */
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 40px auto 0 auto; /* Centrado horizontal con margen arriba */
   background: #fff;
-  padding: 30px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08); /* Sombra sutil */
 }
 
-/* Encabezado centrado */
+/* ===================== ENCABEZADO ===================== */
 header {
   text-align: center;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
-
-.title {
-  color: #666;
+header h1 {
+  font-size: 2.2em;
+  color: #1a237e; /* Azul oscuro */
+}
+header .title {
   font-size: 1.2em;
+  color: #3949ab; /* Azul intermedio */
+  margin-bottom: 6px;
 }
 
+/* ===================== SECCIONES GENERALES ===================== */
 section {
-  margin-bottom: 30px;
+  margin-bottom: 28px;
+}
+section h2 {
+  color: #3949ab;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 4px;
 }
 
-/* Títulos de secciones */
-h2 {
-  border-left: 5px solid #0077b6;
-  padding-left: 10px;
-  color: #0077b6;
-  font-size: 1.5em;
-  margin-bottom: 15px;
-}
-
-h3 {
-  margin-top: 20px;
-  color: #333;
-}
-
-/* Listas limpias */
+/* ===================== LISTAS ===================== */
 ul {
-  padding-left: 20px;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
-
-ul li {
+li {
   margin-bottom: 8px;
 }
 
-/* Enlaces */
-a {
-  color: #0077b6;
-  text-decoration: none;
+/* ===================== CURSOS (no usados, por si se agregan) ===================== */
+.cursos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.curso-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
 }
 
-a:hover {
+/* ===================== LOGOTIPOS DE EMPRESAS ===================== */
+.company-logo {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+.company-logo-large {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+
+/* ===================== IMÁGENES DE TÍTULOS UNIVERSITARIOS ===================== */
+.degree-img-container {
+  margin-top: 16px;
+  text-align: center;
+}
+.degree-img {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.degree-img + p {
+  font-size: 0.95em;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* ===================== ENLACE A CERTIFICACIONES ===================== */
+.cert-link {
+  font-size: 0.95em;
+  margin-top: 8px;
+  display: inline-block;
+  color: #3949ab;
   text-decoration: underline;
 }
 
+/* ===================== FOOTER ===================== */
 .footer {
-  background-color: #0077b6;
+  background: #1a237e;
   color: #fff;
-  padding: 40px 20px 20px;
+  padding: 32px 0 12px 0;
   margin-top: 40px;
 }
-
 .footer-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 32px;
 }
-
 .footer-form,
 .footer-social {
-  flex: 1 1 300px;
+  flex: 1 1 260px;
 }
-
 .footer-form h2,
 .footer-social h2 {
-  margin-bottom: 15px;
-}
-
-.footer-form form input,
-.footer-form form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-.footer-form form button {
-  background-color: #023e8a;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.footer-form form button:hover {
-  background-color: #03045e;
-}
-
-.footer-social ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-social ul li {
+  font-size: 1.1em;
   margin-bottom: 10px;
 }
-
-.footer-social ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-social ul li a:hover {
-  text-decoration: underline;
-}
-
 .footer-note {
   text-align: center;
-  margin-top: 30px;
-  font-size: 0.9em;
-  color: #d0eaff;
+  margin-top: 24px;
+  font-size: 0.95em;
+  color: #c5cae9;
 }
 
-/* Responsive en móvil */
-@media screen and (max-width: 600px) {
+/* ===================== FORMULARIO DE CONTACTO ===================== */
+.footer-form form {
+  background: #f5f5f5;
+  padding: 18px 14px;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(60,60,60,0.06);
+}
+.form-group {
+  margin-bottom: 12px;
+}
+.footer-form label {
+  display: block;
+  font-size: 1em;
+  margin-bottom: 4px;
+  color: #3949ab;
+}
+.footer-form input,
+.footer-form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #c5cae9;
+  font-size: 1em;
+  margin-bottom: 2px;
+  background: #fff;
+  color: #222;
+  transition: border 0.2s;
+}
+.footer-form input:focus,
+.footer-form textarea:focus {
+  border: 1.5px solid #3949ab;
+  outline: none;
+}
+.footer-form button {
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+.footer-form button:hover {
+  background: #283593;
+}
+
+/* ===================== REDES SOCIALES ===================== */
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+.social-icons a img {
+  width: 36px;
+  height: 36px;
+  filter: grayscale(0.3);
+  transition: filter 0.2s, transform 0.2s;
+}
+.social-icons a:hover img {
+  filter: grayscale(0) drop-shadow(0 2px 6px #3949ab44);
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* ===================== BOTÓN FLOTANTE MODO OSCURO ===================== */
+#darkModeToggle {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  font-size: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#darkModeToggle:hover {
+  background: #222;
+  color: #ffd600;
+}
+
+/* ===================== MODO OSCURO ===================== */
+body.dark-mode {
+  background: #181a1b;
+  color: #e0e0e0;
+}
+body.dark-mode .container,
+body.dark-mode section,
+body.dark-mode .footer-form form {
+  background: #23272b;
+  color: #e0e0e0;
+}
+body.dark-mode .footer {
+  background: #181a1b;
+  color: #fff;
+}
+body.dark-mode .footer-form input,
+body.dark-mode .footer-form textarea {
+  background: #23272b;
+  color: #fff;
+  border: 1px solid #3949ab;
+}
+body.dark-mode .footer-form button {
+  background: #ffd600;
+  color: #23272b;
+}
+body.dark-mode .footer-form button:hover {
+  background: #fff176;
+}
+body.dark-mode .footer-note {
+  color: #b0bec5;
+}
+body.dark-mode .social-icons a img {
+  filter: grayscale(0.7) brightness(1.2);
+}
+body.dark-mode .social-icons a:hover img {
+  filter: grayscale(0) drop-shadow(0 2px 6px #ffd60099);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 700px) {
+  .container {
+    padding: 12px 4px;
+  }
   .footer-container {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 }
