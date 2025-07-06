@@ -1,0 +1,4 @@
+<!-- media/facebook.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <path fill="white" d="M224 128a96 96 0 1 0-112 94.5V160h-24v-32h24v-24a32 32 0 0 1 32-32h32v32h-24a8 8 0 0 0-8 8v16h32l-8 32h-24v62.5A96.1 96.1 0 0 0 224 128Z"/>
+</svg>

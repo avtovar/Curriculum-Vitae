@@ -1,0 +1,148 @@
+/* Fuente base y colores */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Contenedor general con max-width para responsive */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Encabezado centrado */
+header {
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.title {
+  color: #666;
+  font-size: 1.2em;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+/* Títulos de secciones */
+h2 {
+  border-left: 5px solid #0077b6;
+  padding-left: 10px;
+  color: #0077b6;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Listas limpias */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+/* Enlaces */
+a {
+  color: #0077b6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 40px 20px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-form,
+.footer-social {
+  flex: 1 1 300px;
+}
+
+.footer-form h2,
+.footer-social h2 {
+  margin-bottom: 15px;
+}
+
+.footer-form form input,
+.footer-form form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-form form button {
+  background-color: #023e8a;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-form form button:hover {
+  background-color: #03045e;
+}
+
+.footer-social ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-social ul li {
+  margin-bottom: 10px;
+}
+
+.footer-social ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-social ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #d0eaff;
+}
+
+/* Responsive en móvil */
+@media screen and (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
