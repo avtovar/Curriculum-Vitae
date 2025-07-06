@@ -10,7 +10,8 @@ Buenos Aires, Argentina
 ## 📫 Contacto
 - 📧 ali.v.tovar@gmail.com  
 - 📱 +54 9 11 3398-7682  
-- 🌐 [LinkedIn](https://www.linkedin.com/in/ali-v-tovar)
+- 🌐 [LinkedIn](https://www.linkedin.com/in/ali-v-tovar)  
+- 💼 [Currículum online](https://avtovar.github.io/Curriculum-Vitae/)
 
 ---
 
