@@ -1,48 +1,16 @@
-// Botón modo oscuro
-const toggleBtn = document.getElementById('darkModeToggle');
-toggleBtn.onclick = function () {
-  document.body.classList.toggle('dark-mode');
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-};
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
 
-// Validación y mensaje de éxito en el formulario
-document.getElementById('contactForm').onsubmit = function (e) {
-  e.preventDefault();
-  // Validación básica
-  const nombre = document.getElementById('nombre');
-  const email = document.getElementById('email');
-  const mensaje = document.getElementById('mensaje');
-  let valid = true;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  // Reset estilos previos
-  [nombre, email, mensaje].forEach(input => input.style.borderColor = '');
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    const mensaje = document.getElementById("mensaje").value;
 
-  // Validar nombre
-  if (nombre.value.trim().length < 2) {
-    nombre.style.borderColor = 'red';
-    valid = false;
-  }
-  // Validar email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value.trim())) {
-    email.style.borderColor = 'red';
-    valid = false;
-  }
-  // Validar mensaje
-  if (mensaje.value.trim().length < 5) {
-    mensaje.style.borderColor = 'red';
-    valid = false;
-  }
+    const subject = `Consulta desde el CV de ${nombre}`;
+    const body = `Nombre: ${nombre}%0ACorreo: ${email}%0AMensaje: ${mensaje}`;
 
-  if (!valid) {
-    return;
-  }
-
-  // Si todo es válido, mostrar mensaje de éxito
-  const msg = document.getElementById('form-success');
-  msg.style.display = 'block';
-  setTimeout(() => {
-    msg.style.display = 'none';
-    this.reset();
-  }, 2000);
-};
+    window.location.href = `mailto:ali.v.tovar@gmail.com?subject=${subject}&body=${body}`;
+  });
+});

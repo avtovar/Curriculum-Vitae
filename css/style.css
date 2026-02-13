@@ -1,5 +1,11 @@
 /* ===================== RESET BÁSICO ===================== */
-body, h1, h2, h3, p, ul, li {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,19 +14,23 @@ body, h1, h2, h3, p, ul, li {
 /* ===================== ESTILO GENERAL ===================== */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f7f7f7; /* Fondo claro predeterminado */
-  color: #222;          /* Color de texto principal */
+  background: #f7f7f7;
+  /* Fondo claro predeterminado */
+  color: #222;
+  /* Color de texto principal */
   line-height: 1.6;
 }
 
 /* ===================== CONTENEDOR PRINCIPAL ===================== */
 .container {
   max-width: 900px;
-  margin: 40px auto 0 auto; /* Centrado horizontal con margen arriba */
+  margin: 40px auto 0 auto;
+  /* Centrado horizontal con margen arriba */
   background: #fff;
   padding: 32px 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08); /* Sombra sutil */
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  /* Sombra sutil */
 }
 
 /* ===================== ENCABEZADO ===================== */
@@ -28,13 +38,17 @@ header {
   text-align: center;
   margin-bottom: 24px;
 }
+
 header h1 {
   font-size: 2.2em;
-  color: #1a237e; /* Azul oscuro */
+  color: #1a237e;
+  /* Azul oscuro */
 }
+
 header .title {
   font-size: 1.2em;
-  color: #3949ab; /* Azul intermedio */
+  color: #3949ab;
+  /* Azul intermedio */
   margin-bottom: 6px;
 }
 
@@ -42,6 +56,7 @@ header .title {
 section {
   margin-bottom: 28px;
 }
+
 section h2 {
   color: #3949ab;
   margin-bottom: 10px;
@@ -56,6 +71,7 @@ ul {
   margin-left: 0;
   padding-left: 0;
 }
+
 li {
   margin-bottom: 8px;
 }
@@ -66,6 +82,7 @@ li {
   flex-direction: column;
   gap: 12px;
 }
+
 .curso-img {
   width: 36px;
   height: 36px;
@@ -77,19 +94,19 @@ li {
 }
 
 /* ===================== LOGOTIPOS DE EMPRESAS ===================== */
-.company-logo {
-  width: 32px;
-  height: 32px;
-  vertical-align: middle;
-  margin-right: 8px;
-  border-radius: 6px;
-}
+.company-logo,
 .company-logo-large {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 12px;
   border-radius: 6px;
+  background-color: #fff;
+  /* Ensure transparent logos look okay */
+  padding: 4px;
+  /* Add some padding */
+  border: 1px solid #f0f0f0;
 }
 
 /* ===================== IMÁGENES DE TÍTULOS UNIVERSITARIOS ===================== */
@@ -97,13 +114,15 @@ li {
   margin-top: 16px;
   text-align: center;
 }
+
 .degree-img {
   max-width: 320px;
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-.degree-img + p {
+
+.degree-img+p {
   font-size: 0.95em;
   color: #555;
   margin-top: 8px;
@@ -125,6 +144,7 @@ li {
   padding: 32px 0 12px 0;
   margin-top: 40px;
 }
+
 .footer-container {
   display: flex;
   flex-wrap: wrap;
@@ -133,15 +153,18 @@ li {
   margin: 0 auto;
   gap: 32px;
 }
+
 .footer-form,
 .footer-social {
   flex: 1 1 260px;
 }
+
 .footer-form h2,
 .footer-social h2 {
   font-size: 1.1em;
   margin-bottom: 10px;
 }
+
 .footer-note {
   text-align: center;
   margin-top: 24px;
@@ -154,17 +177,20 @@ li {
   background: #f5f5f5;
   padding: 18px 14px;
   border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(60,60,60,0.06);
+  box-shadow: 0 1px 6px rgba(60, 60, 60, 0.06);
 }
+
 .form-group {
   margin-bottom: 12px;
 }
+
 .footer-form label {
   display: block;
   font-size: 1em;
   margin-bottom: 4px;
   color: #3949ab;
 }
+
 .footer-form input,
 .footer-form textarea {
   width: 100%;
@@ -177,11 +203,13 @@ li {
   color: #222;
   transition: border 0.2s;
 }
+
 .footer-form input:focus,
 .footer-form textarea:focus {
   border: 1.5px solid #3949ab;
   outline: none;
 }
+
 .footer-form button {
   background: #3949ab;
   color: #fff;
@@ -192,6 +220,7 @@ li {
   font-size: 1em;
   transition: background 0.2s;
 }
+
 .footer-form button:hover {
   background: #283593;
 }
@@ -202,12 +231,14 @@ li {
   gap: 16px;
   margin-top: 10px;
 }
+
 .social-icons a img {
   width: 36px;
   height: 36px;
   filter: grayscale(0.3);
   transition: filter 0.2s, transform 0.2s;
 }
+
 .social-icons a:hover img {
   filter: grayscale(0) drop-shadow(0 2px 6px #3949ab44);
   transform: scale(1.12) rotate(-6deg);
@@ -226,10 +257,11 @@ li {
   width: 54px;
   height: 54px;
   font-size: 2em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
+
 #darkModeToggle:hover {
   background: #222;
   color: #ffd600;
@@ -240,46 +272,108 @@ body.dark-mode {
   background: #181a1b;
   color: #e0e0e0;
 }
+
 body.dark-mode .container,
 body.dark-mode section,
 body.dark-mode .footer-form form {
   background: #23272b;
   color: #e0e0e0;
 }
+
 body.dark-mode .footer {
   background: #181a1b;
   color: #fff;
 }
+
 body.dark-mode .footer-form input,
 body.dark-mode .footer-form textarea {
   background: #23272b;
   color: #fff;
   border: 1px solid #3949ab;
 }
+
 body.dark-mode .footer-form button {
   background: #ffd600;
   color: #23272b;
 }
+
 body.dark-mode .footer-form button:hover {
   background: #fff176;
 }
+
 body.dark-mode .footer-note {
   color: #b0bec5;
 }
+
 body.dark-mode .social-icons a img {
   filter: grayscale(0.7) brightness(1.2);
 }
+
 body.dark-mode .social-icons a:hover img {
   filter: grayscale(0) drop-shadow(0 2px 6px #ffd60099);
 }
+
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 700px) {
   .container {
     padding: 12px 4px;
   }
+
   .footer-container {
     flex-direction: column;
     gap: 16px;
   }
+}
+
+/* ===================== DIPLOMAS ===================== */
+.diplomas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.diploma-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.diploma-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.diploma-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.diploma-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.diploma-title {
+  padding: 10px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #333;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

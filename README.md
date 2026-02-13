@@ -1,19 +1,18 @@
-# Curriculum-Vitae
 
 # 👨‍💻 Ali Valentin Tovar Morales – QA Engineer
-
-¡Hola! Soy un profesional en el área de Informática con sólida experiencia en aseguramiento de la calidad (QA). Especializado en pruebas funcionales para entornos web, móviles y back-end, he trabajado en diferentes industrias aplicando metodologías ágiles como Scrum. Mi enfoque está orientado a garantizar la entrega de productos de alto valor, confiables y alineados con los requerimientos del usuario.
 
 ## 📍 Ubicación
 Buenos Aires, Argentina
 
 ## 📫 Contacto
 - 📧 ali.v.tovar@gmail.com  
-- 📱 +54 9 11 3398-7682  
+- 📱 +54 11 3398-7682  
 - 🌐 [LinkedIn](https://www.linkedin.com/in/ali-v-tovar)  
+- 💻 [GitHub](https://github.com/avtovar)  
 - 💼 [Currículum online](https://avtovar.github.io/Curriculum-Vitae/)
 
 ---
+
 
 ## 🧠 Sobre mí
 
