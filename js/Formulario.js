@@ -4,21 +4,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    const msg = document.getElementById("formMessage");
+    if (!msg) return;
 
     const nombre  = document.getElementById("nombre").value.trim();
     const email   = document.getElementById("email").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
 
+    // Reset mensaje
+    msg.textContent = "";
+    msg.style.color = "#ef4444"; // Rojo por defecto para errores
+
+    // Validación manual
+    if (!nombre || !email || !mensaje) {
+      msg.textContent = "Por favor, completa todos los campos.";
+      return;
+    }
+
+    // Regex para validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      msg.textContent = "Por favor, ingresa un correo electrónico válido.";
+      return;
+    }
+
+    if (mensaje.length < 10) {
+      msg.textContent = "El mensaje debe tener al menos 10 caracteres.";
+      return;
+    }
+
+    // Si todo es válido
     const subject = encodeURIComponent(`Consulta desde el CV de ${nombre}`);
     const body    = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${email}\nMensaje: ${mensaje}`);
 
     window.location.href = `mailto:ali.v.tovar@gmail.com?subject=${subject}&body=${body}`;
 
-    const msg = document.getElementById("formMessage");
-    if (msg) {
-      msg.style.color = "var(--gold)";
-      msg.textContent = "¡Gracias por tu mensaje! Se ha abierto tu correo para el envío.";
-    }
+    msg.style.color = "var(--gold)";
+    msg.textContent = "¡Gracias por tu mensaje! Se ha abierto tu correo para el envío.";
     form.reset();
   });
 

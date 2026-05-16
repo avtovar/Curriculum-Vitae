@@ -817,6 +817,12 @@ body.dark-mode .contact-bar a:hover {
   border-color: var(--gold);
 }
 
+body.dark-mode .footer-form input,
+body.dark-mode .footer-form textarea {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+
 body.dark-mode section h2,
 body.dark-mode .exp-title-block h3,
 body.dark-mode .edu-item strong {
