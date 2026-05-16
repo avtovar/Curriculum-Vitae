@@ -1,16 +1,74 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
+  if (!form) return;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-    const mensaje = document.getElementById("mensaje").value;
+    const nombre  = document.getElementById("nombre").value.trim();
+    const email   = document.getElementById("email").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
 
-    const subject = `Consulta desde el CV de ${nombre}`;
-    const body = `Nombre: ${nombre}%0ACorreo: ${email}%0AMensaje: ${mensaje}`;
+    const subject = encodeURIComponent(`Consulta desde el CV de ${nombre}`);
+    const body    = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${email}\nMensaje: ${mensaje}`);
 
     window.location.href = `mailto:ali.v.tovar@gmail.com?subject=${subject}&body=${body}`;
+
+    const msg = document.getElementById("formMessage");
+    if (msg) msg.textContent = "¡Gracias por tu mensaje!";
+    form.reset();
   });
+
+  // Tabs functionality for diplomas
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  tabButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      const tabName = this.dataset.tab;
+
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+      tabContents.forEach(content => content.classList.remove("active"));
+
+      // Add active class to clicked button and corresponding content
+      this.classList.add("active");
+      const activeContent = document.querySelector(`.tab-content[data-tab="${tabName}"]`);
+      if (activeContent) {
+        activeContent.classList.add("active");
+      }
+    });
+  });
+
+  // Dynamic experience calculation
+  function calculateExperience(startDate) {
+    const start = new Date(startDate);
+    const now = new Date();
+    
+    let years = now.getFullYear() - start.getFullYear();
+    let months = now.getMonth() - start.getMonth();
+    
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    
+    let result = "";
+    if (years > 0) {
+      result += years + (years === 1 ? " año" : " años");
+    }
+    if (months > 0) {
+      if (result !== "") result += " y ";
+      result += months + (months === 1 ? " mes" : " meses");
+    }
+    
+    return result || "0 meses";
+  }
+
+  const expElement = document.getElementById("brubank-experience");
+  if (expElement) {
+    // Fecha de inicio: 1 de abril de 2021
+    expElement.textContent = calculateExperience("2021-04-01");
+  }
 });
+
