@@ -1,74 +1,62 @@
+# 📄 Curriculum Vitae Interactivo - Ali Valentin Tovar Morales
 
-# 👨‍💻 Ali Valentin Tovar Morales – QA Engineer
+Este es el repositorio oficial de mi CV profesional, diseñado para ofrecer una experiencia interactiva, moderna y optimizada tanto para escritorio como para dispositivos móviles.
 
-## 📍 Ubicación
-Buenos Aires, Argentina
-
-## 📫 Contacto
-- 📧 ali.v.tovar@gmail.com  
-- 📱 +54 11 3398-7682  
-- 🌐 [LinkedIn](https://www.linkedin.com/in/ali-v-tovar)  
-- 💻 [GitHub](https://github.com/avtovar)  
-- 💼 [Currículum online](https://avtovar.github.io/Curriculum-Vitae/)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-brightgreen)](https://avtovar.github.io/Curriculum-Vitae/)
 
 ---
 
+## 🌟 Características Destacadas
 
-## 🧠 Sobre mí
+### 🎨 Diseño "Blanco Ostra" (Premium)
+- **Paleta de Colores:** Implementación de un tono **Oyster White** (`#eae7dc`) que reduce la fatiga visual y proporciona un acabado sofisticado y profesional.
+- **Modo Oscuro Integrado:** Optimización total de contrastes para lectura nocturna, incluyendo visibilidad mejorada en formularios y tipografía nítida.
+- **Interfaz Basada en Tarjetas:** Secciones enmarcadas con sombras sutiles e interactividad (hover effects) para una mejor organización de la información.
 
-Actualmente me desempeño como QA Engineer en Brubank, donde participo activamente en la gestión de calidad de sistemas desde su implementación hasta el mantenimiento, colaborando estrechamente con desarrolladores, analistas y usuarios.
-
-Me caracterizo por ser comunicativo, proactivo, adaptable y comprometido con la mejora continua. Poseo habilidades técnicas y humanas que me permiten integrarme eficazmente en equipos multidisciplinarios, facilitando la entrega de software de calidad en entornos exigentes.
-
----
-
-## 🔧 Habilidades clave
-
-- Pruebas Funcionales: Web, Mobile (Android/iOS), Back-end
-- Testing Manual: Regresión, Integración, Exploratorio, Aceptación
-- Diseño y ejecución de casos de prueba
-- Reporte y seguimiento de incidencias
-- Análisis de requerimientos funcionales
-- Metodologías ágiles (Scrum)
-- Coordinación QA/Dev/PM
-- Documentación técnica y análisis de sistemas
+### ⚙️ Funcionalidades Inteligentes
+- **Cálculo de Experiencia Automático:** Script en JavaScript que calcula dinámicamente el tiempo de permanencia en mi rol actual (Brubank) desde Abril 2021, actualizándose mes a mes sin intervención manual.
+- **Portafolio de Diplomas Interactivo:** 
+  - Organización por pestañas (Tabs) para facilitar la navegación entre categorías (QA, Dev, Agile, etc.).
+  - Miniaturas visuales (JPG) vinculadas a los certificados originales (PDF).
+- **Formulario de Contacto Validado:** 
+  - Validación de campos en tiempo real mediante Regex.
+  - Manejo de errores visuales y feedback de éxito.
+  - Envío directo pre-configurado para contacto profesional.
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
+## 🛠️ Tecnologías Utilizadas
 
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=flat&logo=graphql&logoColor=white)
-![Jira](https://img.shields.io/badge/Jira-0052CC?style=flat&logo=jira&logoColor=white)
-![Azure DevOps](https://img.shields.io/badge/Azure_DevOps-0078D7?style=flat&logo=azuredevops&logoColor=white)
-![Bitbucket](https://img.shields.io/badge/Bitbucket-0052CC?style=flat&logo=bitbucket&logoColor=white)
-![Slack](https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white)
-![Confluence](https://img.shields.io/badge/Confluence-172B4D?style=flat&logo=confluence&logoColor=white)
+- **HTML5:** Estructura semántica avanzada.
+- **CSS3:** Variables personalizadas, Flexbox/Grid, Animaciones y Media Queries (Responsive Design).
+- **JavaScript (Vanilla):** Lógica de pestañas, cálculos dinámicos y validaciones de usuario.
+- **Git & GitHub:** Control de versiones y despliegue continuo (CI/CD) mediante GitHub Pages.
 
 ---
 
-## 🧪 Proyectos destacados
+## 📂 Estructura del Proyecto
 
-- **Fail-Over, Promociones V1 y V2, Patear, FCI, Invitaciones, Pyme, QR V1 y V2, Tarjetas de Crédito y Débito**
-  - Pruebas funcionales en Front-End, Back-End y plataformas móviles.
-  - Validación de interoperabilidad en Android e iOS.
-  - Diseño y ejecución de pruebas manuales con documentación detallada.
-
----
-
-## 🎓 Formación
-
-- **Licenciatura en Administración, mención Informática** – Universidad Nacional Experimental Simón Rodríguez  
-- **Técnico Superior Universitario en Informática** – IUTIRLA  
-
-## 📜 Certificaciones
-
-- Análisis y Diseño de Casos de Pruebas – Argentina Programa
-- Git: Desarrollo Colaborativo
-- Python para no programadores
+```text
+Curriculum-Vitae/
+├── index.html        # Página principal
+├── css/
+│   └── style.css     # Estilos y variables de diseño
+├── js/
+│   └── Formulario.js # Lógica interactiva y validaciones
+├── media/            # Imágenes de marca y logotipos
+│   ├── Diplomas/     # Fotos y PDFs de certificaciones
+│   └── Titulo/      # Títulos académicos
+└── .gitignore        # Filtro de archivos temporales y locales
+```
 
 ---
 
-Gracias por visitar mi perfil. ¡Estoy abierto a nuevas oportunidades y colaboraciones en el mundo del aseguramiento de la calidad del software!
+## 🚀 Cómo Ver el Proyecto
+
+Puedes acceder a la versión en vivo directamente aquí:
+👉 **[https://avtovar.github.io/Curriculum-Vitae/](https://avtovar.github.io/Curriculum-Vitae/)**
+
+---
+
+© 2026 Ali Valentin Tovar Morales.  
+*QA Engineer especializado en automatización y procesos ágiles.*
