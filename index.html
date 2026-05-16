@@ -422,10 +422,10 @@
 
       <div class="footer-form" style="max-width: 600px; width: 100%;">
         <h2>Contáctame</h2>
-        <form id="contactForm" action="https://formspree.io/f/xvgzpyzo" method="POST" autocomplete="on">
+        <form id="contactForm" autocomplete="on" novalidate>
           <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="name" placeholder="Tu nombre" required minlength="2">
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required minlength="2">
           </div>
           <div class="form-group">
             <label for="email">Correo electrónico</label>
@@ -433,7 +433,7 @@
           </div>
           <div class="form-group">
             <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="message" rows="4" placeholder="Tu mensaje" required minlength="10"></textarea>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Tu mensaje" required minlength="10"></textarea>
           </div>
           <button type="submit">Enviar mensaje</button>
           <div id="formMessage" aria-live="polite"></div>
