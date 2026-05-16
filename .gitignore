@@ -1,0 +1,24 @@
+# Archivos temporales de desarrollo
+temp_css.txt
+*.tmp
+*.log
+
+# Carpetas de configuración de agentes y herramientas
+.claude/
+.gemini/
+.idea/
+.vscode/
+
+# Archivos comprimidos y backups
+*.zip
+*.rar
+*.7z
+*.bak
+
+# Archivos del sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Carpetas de node (si existieran en el futuro)
+node_modules/
