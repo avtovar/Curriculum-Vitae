@@ -2,21 +2,47 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
-
-    const nombre  = document.getElementById("nombre").value.trim();
-    const email   = document.getElementById("email").value.trim();
-    const mensaje = document.getElementById("mensaje").value.trim();
-
-    const subject = encodeURIComponent(`Consulta desde el CV de ${nombre}`);
-    const body    = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${email}\nMensaje: ${mensaje}`);
-
-    window.location.href = `mailto:ali.v.tovar@gmail.com?subject=${subject}&body=${body}`;
-
     const msg = document.getElementById("formMessage");
-    if (msg) msg.textContent = "¡Gracias por tu mensaje!";
-    form.reset();
+    const btn = form.querySelector('button[type="submit"]');
+
+    // Preparar datos
+    const formData = new FormData(form);
+    
+    // Deshabilitar botón mientras envía
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        msg.style.color = "var(--gold)";
+        msg.textContent = "¡Gracias! Tu mensaje ha sido enviado directamente a Ali.";
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          msg.textContent = data["errors"].map(error => error["message"]).join(", ");
+        } else {
+          msg.textContent = "Ups! Hubo un problema al enviar el formulario.";
+        }
+        msg.style.color = "#ef4444";
+      }
+    } catch (error) {
+      msg.style.color = "#ef4444";
+      msg.textContent = "Hubo un error de conexión. Inténtalo de nuevo.";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enviar mensaje";
+    }
   });
 
   // Tabs functionality for diplomas
