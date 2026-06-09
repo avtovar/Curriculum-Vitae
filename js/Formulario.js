@@ -33,15 +33,30 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Si todo es válido
-    const subject = encodeURIComponent(`Consulta desde el CV de ${nombre}`);
-    const body    = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${email}\nMensaje: ${mensaje}`);
-
-    window.location.href = `mailto:ali.v.tovar@gmail.com?subject=${subject}&body=${body}`;
-
+    // Si todo es válido, enviar con EmailJS
     msg.style.color = "var(--gold)";
-    msg.textContent = "¡Gracias por tu mensaje! Se ha abierto tu correo para el envío.";
-    form.reset();
+    msg.textContent = "Enviando mensaje...";
+    
+    const serviceID = 'service_hd0dofi'; 
+    const templateID = 'template_8lvjn7n'; 
+
+    const templateParams = {
+      name: nombre,
+      from_email: email,
+      message: mensaje,
+      title: `Consulta desde el CV de ${nombre}`
+    };
+
+    emailjs.send(serviceID, templateID, templateParams)
+      .then(() => {
+        msg.style.color = "var(--gold)";
+        msg.textContent = "¡Mensaje enviado con éxito! Me pondré en contacto pronto.";
+        form.reset();
+      }, (err) => {
+        msg.style.color = "#ef4444";
+        msg.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
+        console.error('EmailJS Error:', err);
+      });
   });
 
   // Tabs functionality for diplomas
