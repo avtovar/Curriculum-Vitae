@@ -181,16 +181,19 @@ header .location {
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-main);
+  font-weight: 600;
+  color: white;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 20px;
-  background: var(--white);
-  border: 1px solid var(--border);
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
   white-space: nowrap;
+}
+
+.contact-bar a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .contact-bar a svg {
@@ -200,61 +203,15 @@ header .location {
 }
 
 .contact-bar a:hover {
-  background: var(--navy);
-  color: var(--gold);
-  border-color: var(--navy);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  filter: brightness(1.1);
 }
 
-.contact-phone {
-  background: var(--accent) !important;
-  color: white !important;
-  font-weight: 600;
-  border-color: var(--accent) !important;
-}
-
-.contact-email {
-  background: #ea4335 !important;
-  color: white !important;
-  font-weight: 600;
-  border-color: #ea4335 !important;
-}
-
-.contact-linkedin {
-  background: #0a66c2 !important;
-  color: white !important;
-  font-weight: 600;
-  border-color: #0a66c2 !important;
-}
-
-.contact-github {
-  background: #24292f !important;
-  color: white !important;
-  font-weight: 600;
-  border-color: #24292f !important;
-}
-
-.contact-phone:hover {
-  background: var(--primary) !important;
-  border-color: var(--primary) !important;
-  opacity: 0.9;
-}
-
-.contact-email:hover {
-  background: #c5221f !important;
-  border-color: #c5221f !important;
-}
-
-.contact-linkedin:hover {
-  background: #004182 !important;
-  border-color: #004182 !important;
-}
-
-.contact-github:hover {
-  background: #000000 !important;
-  border-color: #000000 !important;
-}
+.contact-phone    { background-color: #34a853; } /* Verde WhatsApp */
+.contact-email    { background-color: #ea4335; } /* Rojo Gmail */
+.contact-linkedin { background-color: #0077b5; } /* Azul LinkedIn */
+.contact-github   { background-color: #24292f; } /* Negro GitHub */
 
 /* ===================== CUERPO DEL CV ===================== */
 .cv-body {

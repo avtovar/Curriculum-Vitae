@@ -5,10 +5,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="CV de Ali Valentin Tovar Morales, QA Engineer en Buenos Aires, Argentina. Experiencia, certificaciones y contacto." />
-  <title>CV - Ali Valentin Tovar Morales</title>
+    content="CV de Ali Valentin Tovar Morales, QA Engineer en Buenos Aires, Argentina. Experiencia en Manual & Automation Web/Mobile, API Testing e IA aplicada." />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://avtovar.github.io/">
+  <meta property="og:title" content="Ali Valentin Tovar Morales | QA Engineer">
+  <meta property="og:description" content="QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.">
+  <meta property="og:image" content="https://avtovar.github.io/media/PCMiranda_Imagen.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://avtovar.github.io/">
+  <meta property="twitter:title" content="Ali Valentin Tovar Morales | QA Engineer">
+  <meta property="twitter:description" content="QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.">
+  <meta property="twitter:image" content="https://avtovar.github.io/media/PCMiranda_Imagen.jpg">
+
+  <title>CV - Ali Valentin Tovar Morales | QA Engineer</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/Formulario.js" defer></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ali Valentin Tovar Morales",
+    "jobTitle": "QA Engineer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "Argentina"
+    },
+    "url": "https://avtovar.github.io/",
+    "sameAs": [
+      "https://www.linkedin.com/in/ali-v-tovar",
+      "https://github.com/avtovar"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -468,6 +503,10 @@
       <div class="footer-form" style="max-width: 600px; width: 100%;">
         <h2>Contáctame</h2>
         <form id="contactForm" autocomplete="on">
+          <div class="form-group" style="display: none;">
+            <label for="honeypot">No completar este campo</label>
+            <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required minlength="2">
@@ -513,7 +552,7 @@
       localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
     };
   </script>
-  <!-- Trigger Update: 2026-05-16 18:20 -->
+  <!-- Trigger Update: 2026-06-09 18:45 - All Optimizations Applied -->
 </body>
 
 </html>

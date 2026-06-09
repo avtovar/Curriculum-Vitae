@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const nombre  = document.getElementById("nombre").value.trim();
     const email   = document.getElementById("email").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
+    const honeypot = document.getElementById("honeypot").value;
+
+    // Honeypot check
+    if (honeypot) {
+      console.warn("Spam detected");
+      return;
+    }
 
     // Reset mensaje
     msg.textContent = "";
@@ -110,5 +117,35 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fecha de inicio: 1 de abril de 2021
     expElement.textContent = calculateExperience("2021-04-01");
   }
+
+  // Click to copy functionality
+  const copyElements = document.querySelectorAll(".contact-email, .contact-phone");
+  copyElements.forEach(el => {
+    el.addEventListener("click", function(e) {
+      // Solo copiar si es un click normal, no click derecho o con teclas especiales
+      if (e.button !== 0) return;
+      
+      const textToCopy = this.href.replace("mailto:", "").replace("tel:", "");
+      
+      // Intentar copiar al portapapeles
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = this.innerHTML;
+        const successSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        
+        this.innerHTML = successSvg + " Copiado";
+        this.style.filter = "brightness(1.3)";
+        
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.style.filter = "";
+        }, 2000);
+      }).catch(err => {
+        console.error("Error al copiar: ", err);
+      });
+      
+      // Opcional: prevenir el comportamiento por defecto si prefieres que no se abra el mailer/tel
+      // e.preventDefault();
+    });
+  });
 });
 
