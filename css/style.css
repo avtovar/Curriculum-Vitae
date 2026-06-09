@@ -3,26 +3,25 @@
 
 /* ===================== VARIABLES ===================== */
 :root {
-  --primary:        #2d6d4e;
-  --accent:         #348f54;
-  --accent-light:   #5eb377;
-  --accent-lighter: #a8d9b8;
-  --navy:           #1f2937;
-  --navy-mid:       #374151;
-  --navy-card:      #4b5563;
-  --gold:           #348f54;
-  --gold-light:     #5eb377;
-  --cream:          #eae7dc;
-  --cream-dim:      #e0dccb;
-  --text-main:      #1f2937;
-  --text-muted:     #4b5563;
-  --border:         #d1d5db;
-  --white:          #f7f5f0;
-  --shadow-sm:      0 1px 6px rgba(31,41,55,0.05);
-  --shadow-md:      0 4px 16px rgba(31,41,55,0.08);
-  --shadow-lg:      0 12px 32px rgba(31,41,55,0.12);
-  --radius:         10px;
-  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --primary:        #166534; /* Verde más oscuro y profesional */
+  --accent:         #15803d;
+  --accent-light:   #22c55e;
+  --accent-lighter: #bbf7d0;
+  --navy:           #0f172a; /* Azul noche más profundo */
+  --navy-mid:       #1e293b;
+  --navy-card:      #334155;
+  --gold:           #15803d; /* Usamos el verde como color de acento principal */
+  --gold-light:     #22c55e;
+  --body-bg:        #f1f5f9; /* Gris azulado muy claro y limpio */
+  --white:          #ffffff; /* Blanco puro para las tarjetas */
+  --text-main:      #0f172a; /* Texto casi negro para máximo contraste */
+  --text-muted:     #475569; /* Gris oscuro para texto secundario */
+  --border:         #e2e8f0; /* Bordes sutiles pero definidos */
+  --shadow-sm:      0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md:      0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:      0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  --radius:         12px;
+  --transition:     0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===================== RESET ===================== */
@@ -36,9 +35,9 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
+  background: var(--body-bg);
   color: var(--text-main);
-  line-height: 1.65;
+  line-height: 1.6;
   min-height: 100vh;
   position: relative;
 }
@@ -47,9 +46,9 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 15% 20%, rgba(200,168,75,0.06) 0%, transparent 50%),
-    radial-gradient(circle at 85% 80%, rgba(11,17,32,0.04) 0%, transparent 50%);
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(21, 128, 61, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -171,7 +170,7 @@ header .location {
   gap: 8px 16px;
   justify-content: center;
   padding: 18px 24px;
-  background: var(--cream);
+  background: var(--body-bg);
   border-bottom: 1px solid var(--border);
   animation: fadeUp 0.7s 0.35s ease both;
 }
@@ -285,59 +284,62 @@ section h2 {
   display: inline-flex;
   align-items: center;
   padding: 6px 14px;
-  background: var(--cream);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: 20px;
   font-size: 0.81rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-main);
   transition: var(--transition);
   cursor: default;
+  box-shadow: var(--shadow-sm);
 }
 
 .skill-tag:hover {
   background: var(--navy);
-  color: var(--gold);
+  color: var(--white);
   border-color: var(--navy);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .skill-tag.tool {
   background: var(--navy);
-  color: var(--gold-light);
+  color: #fbbf24; /* Un dorado más brillante para herramientas en fondo oscuro */
   border-color: var(--navy-mid);
   font-size: 0.78rem;
 }
 
 .skill-tag.tool:hover {
-  background: var(--gold);
-  color: var(--navy);
+  background: var(--accent);
+  color: var(--white);
 }
 
 /* ===================== EXPERIENCIA ===================== */
 .experience-item {
   position: relative;
-  padding: 20px 22px 20px 26px;
-  background: var(--cream);
+  padding: 24px 26px;
+  background: var(--white);
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .experience-item:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--gold);
-  transform: translateX(4px);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .experience-item::before {
   content: '';
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--gold);
-  border-radius: 3px 0 0 3px;
+  left: -1px; top: 20px; bottom: 20px;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 0 4px 4px 0;
 }
 
 .exp-header {
@@ -529,28 +531,31 @@ section h2 {
 /* ===================== EDUCACIÓN ===================== */
 .edu-item {
   padding: 16px 20px;
-  background: var(--cream);
+  background: var(--white);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   margin-bottom: 14px;
   transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .edu-item:hover {
-  border-color: var(--gold);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .edu-item strong {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--navy);
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .edu-item span {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -750,33 +755,6 @@ section h2 {
   filter: brightness(0);
 }
 
-/* ===================== BOTÓN MODO OSCURO ===================== */
-#darkModeToggle {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 999;
-  background: var(--navy);
-  color: var(--gold);
-  border: 2px solid rgba(200,168,75,0.4);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.3rem;
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#darkModeToggle:hover {
-  background: var(--gold);
-  color: var(--navy);
-  transform: scale(1.1) rotate(15deg);
-}
-
 /* ===================== MODO OSCURO ===================== */
 body.dark-mode {
   --cream:     #141b27;
@@ -899,26 +877,28 @@ body.dark-mode #darkModeToggle:hover {
 
 .tab-button {
   padding: 10px 18px;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  font-size: 0.9rem;
+  background: var(--white);
+  color: var(--text-muted);
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .tab-button:hover {
-  border-color: var(--gold);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: var(--gold);
-  color: var(--bg-primary);
-  border-color: var(--gold);
-  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.25);
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.2);
 }
 
 .tab-content {
