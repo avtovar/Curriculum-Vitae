@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     const msg = document.getElementById("formMessage");
+    const submitBtn = document.getElementById("submitBtn");
     if (!msg) return;
 
     const nombre  = document.getElementById("nombre").value.trim();
@@ -12,23 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensaje = document.getElementById("mensaje").value.trim();
     const honeypot = document.getElementById("honeypot").value;
 
-    // Honeypot check
     if (honeypot) {
       console.warn("Spam detected");
       return;
     }
 
-    // Reset mensaje
     msg.textContent = "";
-    msg.style.color = "#ef4444"; // Rojo por defecto para errores
+    msg.style.color = "#ef4444";
 
-    // Validación manual
     if (!nombre || !email || !mensaje) {
       msg.textContent = "Por favor, completa todos los campos.";
       return;
     }
 
-    // Regex para validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       msg.textContent = "Por favor, ingresa un correo electrónico válido.";
@@ -40,9 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Si todo es válido, enviar con EmailJS
-    msg.style.color = "var(--gold)";
+    msg.style.color = "var(--accent)";
     msg.textContent = "Enviando mensaje...";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+    }
     
     const serviceID = 'service_hd0dofi'; 
     const templateID = 'template_8lvjn7n'; 
@@ -56,13 +56,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     emailjs.send(serviceID, templateID, templateParams)
       .then(() => {
-        msg.style.color = "var(--gold)";
+        msg.style.color = "var(--accent)";
         msg.textContent = "¡Mensaje enviado con éxito! Me pondré en contacto pronto.";
         form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Enviar mensaje";
+        }
       }, (err) => {
         msg.style.color = "#ef4444";
         msg.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
         console.error('EmailJS Error:', err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Enviar mensaje";
+        }
       });
   });
 
@@ -143,9 +151,45 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error al copiar: ", err);
       });
       
-      // Opcional: prevenir el comportamiento por defecto si prefieres que no se abra el mailer/tel
-      // e.preventDefault();
+      e.preventDefault();
     });
+  });
+
+  // Dynamic year in footer
+  const yearSpan = document.getElementById("current-year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Dark mode toggle
+  const toggleBtn = document.getElementById("darkToggle");
+  const html = document.documentElement;
+
+  function setTheme(dark) {
+    document.body.classList.toggle("dark-mode", dark);
+    if (toggleBtn) {
+      toggleBtn.textContent = dark ? "☀️" : "🌙";
+    }
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }
+
+  function getPreferredTheme() {
+    const stored = localStorage.getItem("theme");
+    if (stored) return stored === "dark";
+    return true;
+  }
+
+  if (toggleBtn) {
+    setTheme(getPreferredTheme());
+    toggleBtn.addEventListener("click", function () {
+      setTheme(!document.body.classList.contains("dark-mode"));
+    });
+  }
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+    if (!localStorage.getItem("theme")) {
+      setTheme(e.matches);
+    }
   });
 });
 

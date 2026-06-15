@@ -3,15 +3,12 @@
 
 /* ===================== VARIABLES ===================== */
 :root {
-  --primary:        #166534; /* Verde más oscuro y profesional */
   --accent:         #15803d;
   --accent-light:   #22c55e;
   --accent-lighter: #bbf7d0;
-  --navy:           #0f172a; /* Azul noche más profundo */
+  --navy:           #0f172a; /* Azul noche profundo */
   --navy-mid:       #1e293b;
   --navy-card:      #334155;
-  --gold:           #15803d; /* Usamos el verde como color de acento principal */
-  --gold-light:     #22c55e;
   --body-bg:        #f1f5f9; /* Gris azulado muy claro y limpio */
   --white:          #ffffff; /* Blanco puro para las tarjetas */
   --text-main:      #0f172a; /* Texto casi negro para máximo contraste */
@@ -96,7 +93,7 @@ header::after {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 header h1 {
@@ -114,7 +111,7 @@ header .title {
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
   margin: 10px 0 6px;
   position: relative;
   animation: fadeUp 0.7s 0.2s ease both;
@@ -138,7 +135,7 @@ header .location {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--gold);
+  background: var(--accent);
   color: var(--navy);
   padding: 10px 24px;
   border-radius: 25px;
@@ -160,7 +157,7 @@ header .location {
   color: var(--navy);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(52, 143, 84, 0.4);
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 /* ===================== BARRA DE CONTACTO ===================== */
@@ -191,7 +188,7 @@ header .location {
 }
 
 .contact-bar a:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -204,13 +201,13 @@ header .location {
 .contact-bar a:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  filter: brightness(1.1);
+  filter: brightness(1.15);
 }
 
-.contact-phone    { background-color: #34a853; } /* Verde WhatsApp */
-.contact-email    { background-color: #ea4335; } /* Rojo Gmail */
-.contact-linkedin { background-color: #0077b5; } /* Azul LinkedIn */
-.contact-github   { background-color: #24292f; } /* Negro GitHub */
+.contact-email    { background-color: #b71c1c; }
+.contact-phone    { background-color: #2d6a4f; }
+.contact-linkedin { background-color: #0A66C2; }
+.contact-github   { background-color: #24292f; }
 
 /* ===================== CUERPO DEL CV ===================== */
 .cv-body {
@@ -245,7 +242,7 @@ section:hover {
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
   white-space: nowrap;
 }
 
@@ -268,7 +265,7 @@ section h2 {
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.8;
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--accent);
   padding-left: 18px;
   font-style: italic;
 }
@@ -278,6 +275,10 @@ section h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.skills-grid + .skills-grid {
+  margin-top: 14px;
 }
 
 .skill-tag {
@@ -305,7 +306,7 @@ section h2 {
 
 .skill-tag.tool {
   background: var(--navy);
-  color: #fbbf24; /* Un dorado más brillante para herramientas en fondo oscuro */
+  color: #fbbf24; /* Amarillo para herramientas en fondo oscuro */
   border-color: var(--navy-mid);
   font-size: 0.78rem;
 }
@@ -371,7 +372,7 @@ section h2 {
 
 .exp-title-block .exp-role {
   font-size: 0.78rem;
-  color: var(--gold);
+  color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -392,7 +393,7 @@ section h2 {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -412,7 +413,7 @@ section h2 {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 /* ===================== PROYECTOS ===================== */
@@ -428,7 +429,7 @@ section h2 {
 
 .project-card strong {
   display: block;
-  color: var(--gold);
+  color: var(--accent);
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   margin-bottom: 12px;
@@ -448,7 +449,7 @@ section h2 {
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--gold);
+  color: var(--accent);
   font-size: 0.75rem;
   top: 4px;
 }
@@ -464,7 +465,7 @@ section h2 {
   font-size: 0.73rem;
   padding: 3px 10px;
   background: rgba(200,168,75,0.12);
-  color: var(--gold-light);
+  color: var(--accent-light);
   border-radius: 12px;
   border: 1px solid rgba(200,168,75,0.22);
   font-weight: 500;
@@ -491,7 +492,7 @@ section h2 {
 .diploma-item:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
-  border-color: var(--gold);
+  border-color: var(--accent);
 }
 
 .diploma-link {
@@ -594,7 +595,7 @@ section h2 {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .footer::after {
@@ -627,7 +628,7 @@ section h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 18px;
 }
 
@@ -681,13 +682,13 @@ section h2 {
 
 .footer-form input:focus,
 .footer-form textarea:focus {
-  border-color: var(--gold);
+  border-color: var(--accent);
   outline: none;
   background: rgba(255,255,255,0.09);
 }
 
 .footer-form button {
-  background: var(--gold);
+  background: var(--accent);
   color: var(--navy);
   border: none;
   padding: 11px 24px;
@@ -703,7 +704,7 @@ section h2 {
 }
 
 .footer-form button:hover {
-  background: var(--gold-light);
+  background: var(--accent-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(200,168,75,0.35);
 }
@@ -711,7 +712,7 @@ section h2 {
 #formMessage {
   margin-top: 10px;
   font-size: 0.88rem;
-  color: var(--gold);
+  color: var(--accent);
   text-align: center;
   min-height: 20px;
 }
@@ -737,8 +738,8 @@ section h2 {
 }
 
 .social-icons a:hover {
-  background: var(--gold);
-  border-color: var(--gold);
+  background: var(--accent);
+  border-color: var(--accent);
   transform: translateY(-4px) rotate(-6deg);
   box-shadow: 0 8px 24px rgba(200,168,75,0.3);
 }
@@ -777,21 +778,24 @@ body.dark-mode .contact-bar {
 }
 
 body.dark-mode .contact-bar a {
-  background: #1e2738;
-  color: #c8d4e8;
-  border-color: #2a3550;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .contact-github {
+  background-color: #333;
 }
 
 body.dark-mode .contact-bar a:hover {
-  background: var(--gold);
-  color: var(--navy);
-  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  filter: brightness(1.2);
 }
 
 body.dark-mode .footer-form input,
 body.dark-mode .footer-form textarea {
-  color: #ffffff !important;
-  background: rgba(255,255,255,0.1) !important;
+  color: #ffffff;
+  background: rgba(255,255,255,0.1);
 }
 
 body.dark-mode section h2,
@@ -800,14 +804,40 @@ body.dark-mode .edu-item strong {
   color: #e2e8f0;
 }
 
-body.dark-mode #darkModeToggle {
-  background: var(--gold);
-  color: #0b1120;
-  border-color: var(--gold);
+/* ===================== DARK MODE TOGGLE ===================== */
+.dark-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--white);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
-body.dark-mode #darkModeToggle:hover {
-  background: var(--gold-light);
+.dark-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .dark-toggle {
+  background: var(--accent);
+  color: #0b1120;
+  border-color: var(--accent);
+}
+
+body.dark-mode .dark-toggle:hover {
+  background: var(--accent-light);
 }
 
 /* ===================== DIPLOMA CARD SIN IMAGEN (PDF) ===================== */
@@ -921,6 +951,143 @@ body.dark-mode #darkModeToggle:hover {
   }
 }
 
+/* ===================== HONEYPOT (anti-spam, oculto para humanos) ===================== */
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ===================== PLACEHOLDER LOGO (empresas sin logo) ===================== */
+.company-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: var(--body-bg);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* ===================== FOOTER SOCIAL ===================== */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-social .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: var(--transition);
+}
+
+.footer-social .social-icons a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(21, 128, 61, 0.3);
+}
+
+.footer-social .social-icons a img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(10);
+  transition: var(--transition);
+}
+
+.footer-social .social-icons a:hover img {
+  filter: brightness(0);
+}
+
+/* ===================== PREFIERE MOVIMIENTO REDUCIDO ===================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===================== ESTILOS DE IMPRESIÓN ===================== */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .container {
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
+    animation: none;
+  }
+  section {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  section:hover {
+    box-shadow: none;
+    border-color: #ccc;
+  }
+  .dark-toggle,
+  .contact-bar a,
+  .btn-download,
+  .footer {
+    display: none !important;
+  }
+  .experience-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none;
+  }
+  .experience-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  header {
+    background: #0f172a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  header h1 { color: white; }
+  header .title { color: #15803d; }
+  .diplomas-tabs-nav { display: none; }
+  .tab-content { display: block !important; }
+  .diplomas-grid { grid-template-columns: repeat(4, 1fr); }
+  .degree-img { max-width: 200px; }
+  a { text-decoration: none; color: black; }
+  .contact-bar { display: flex !important; border-bottom: 1px solid #ccc; background: #f5f5f5; }
+  .contact-bar a {
+    display: inline-flex !important;
+    color: #333 !important;
+    background: transparent !important;
+    box-shadow: none;
+    padding: 4px 12px;
+  }
+}
+
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 680px) {
   .container { margin: 0; border-radius: 0; }
@@ -930,4 +1097,6 @@ body.dark-mode #darkModeToggle:hover {
   .footer-container { padding: 0 20px; flex-direction: column; gap: 28px; }
   .diplomas-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .skills-grid .skill-tag { font-size: 0.75rem; }
+  .dark-toggle { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 1.1rem; }
+  .footer-social .social-icons { justify-content: center; }
 }

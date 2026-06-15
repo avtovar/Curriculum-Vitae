@@ -21,6 +21,7 @@
   <meta property="twitter:description" content="QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.">
   <meta property="twitter:image" content="https://avtovar.github.io/media/PCMiranda_Imagen.jpg">
 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
   <title>CV - Ali Valentin Tovar Morales | QA Engineer</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/Formulario.js" defer></script>
@@ -106,7 +107,7 @@
           <div class="section-line"></div>
         </div>
         <h2>Habilidades</h2>
-        <div class="skills-grid" style="margin-bottom: 14px;">
+        <div class="skills-grid">
           <span class="skill-tag">Manual & Automation Testing</span>
           <span class="skill-tag">Web & Mobile Testing</span>
           <span class="skill-tag">API Testing (REST/GraphQL)</span>
@@ -185,7 +186,7 @@
 
         <div class="experience-item">
           <div class="exp-header">
-            <div class="company-logo" style="display: flex; align-items: center; justify-content: center; font-weight: bold; background: #eee; color: #333;">QA</div>
+            <div class="company-logo company-logo-placeholder">QA</div>
             <div class="exp-title-block">
               <h3>QA Funcional</h3>
               <span class="exp-role">QA Tester</span>
@@ -200,7 +201,7 @@
 
         <div class="experience-item">
           <div class="exp-header">
-            <div class="company-logo" style="display: flex; align-items: center; justify-content: center; font-weight: bold; background: #eee; color: #333;">DT</div>
+            <div class="company-logo company-logo-placeholder">DT</div>
             <div class="exp-title-block">
               <h3>Data system Tovar</h3>
               <span class="exp-role">Analista Tester QA</span>
@@ -498,12 +499,12 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <div class="footer-container" style="justify-content: center;">
+    <div class="footer-container">
 
-      <div class="footer-form" style="max-width: 600px; width: 100%;">
+      <div class="footer-form">
         <h2>Contáctame</h2>
         <form id="contactForm" autocomplete="on">
-          <div class="form-group" style="display: none;">
+          <div class="form-group honeypot-field" aria-hidden="true">
             <label for="honeypot">No completar este campo</label>
             <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
           </div>
@@ -519,24 +520,29 @@
             <label for="mensaje">Mensaje</label>
             <textarea id="mensaje" name="mensaje" rows="4" placeholder="Tu mensaje" required minlength="10"></textarea>
           </div>
-          <button type="submit">Enviar mensaje</button>
+          <button type="submit" id="submitBtn">Enviar mensaje</button>
           <div id="formMessage" aria-live="polite"></div>
         </form>
       </div>
 
     </div>
-    <p class="footer-note">© 2025 Ali Valentin Tovar Morales. Todos los derechos reservados.</p>
+    <p class="footer-note">© <span id="current-year"></span> Ali Valentin Tovar Morales. Todos los derechos reservados.</p>
   </footer>
 
   <!-- ===================== SCRIPTS ===================== -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function() {
-      // Reemplaza con tu Public Key de EmailJS
-      emailjs.init("wuhRhBSZJ74xllUbg");
+      try {
+        emailjs.init("wuhRhBSZJ74xllUbg");
+      } catch (e) {
+        console.warn("EmailJS init failed:", e);
+      }
     })();
   </script>
-  <!-- Trigger Update: 2026-06-09 19:15 - Permanent Dark Mode -->
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-toggle" id="darkToggle" aria-label="Cambiar modo oscuro/claro">🌙</button>
 </body>
 
 </html>
