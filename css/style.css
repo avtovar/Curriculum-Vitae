@@ -804,12 +804,19 @@ body.dark-mode .edu-item strong {
   color: #e2e8f0;
 }
 
-/* ===================== DARK MODE TOGGLE ===================== */
-.dark-toggle {
+/* ===================== FLOATING CONTROLS ===================== */
+.floating-controls {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dark-toggle,
+.lang-toggle {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -825,18 +832,28 @@ body.dark-mode .edu-item strong {
   transition: var(--transition);
 }
 
-.dark-toggle:hover {
+.lang-toggle {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.dark-toggle:hover,
+.lang-toggle:hover {
   transform: scale(1.1);
   box-shadow: var(--shadow-lg);
 }
 
-body.dark-mode .dark-toggle {
+body.dark-mode .dark-toggle,
+body.dark-mode .lang-toggle {
   background: var(--accent);
   color: #0b1120;
   border-color: var(--accent);
 }
 
-body.dark-mode .dark-toggle:hover {
+body.dark-mode .dark-toggle:hover,
+body.dark-mode .lang-toggle:hover {
   background: var(--accent-light);
 }
 
@@ -1051,7 +1068,9 @@ body.dark-mode .dark-toggle:hover {
     box-shadow: none;
     border-color: #ccc;
   }
+  .floating-controls,
   .dark-toggle,
+  .lang-toggle,
   .contact-bar a,
   .btn-download,
   .footer {
@@ -1097,6 +1116,9 @@ body.dark-mode .dark-toggle:hover {
   .footer-container { padding: 0 20px; flex-direction: column; gap: 28px; }
   .diplomas-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .skills-grid .skill-tag { font-size: 0.75rem; }
-  .dark-toggle { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 1.1rem; }
+  .floating-controls { bottom: 16px; right: 16px; gap: 8px; }
+  .dark-toggle,
+  .lang-toggle { width: 40px; height: 40px; font-size: 1.1rem; }
+  .lang-toggle { font-size: 0.75rem; }
   .footer-social .social-icons { justify-content: center; }
 }
