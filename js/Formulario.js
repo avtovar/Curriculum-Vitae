@@ -119,7 +119,26 @@ const translations = {
     "copied": "Copiado",
     "dark.aria": "Cambiar modo oscuro/claro",
     "lang.aria": "Cambiar idioma a inglés",
-    "lang.aria.en": "Cambiar idioma a español"
+    "lang.aria.en": "Cambiar idioma a español",
+    "html.lang": "es",
+    "meta.description": "CV de Ali Valentin Tovar Morales, QA Engineer en Buenos Aires, Argentina. Experiencia en Manual & Automation Web/Mobile, API Testing e IA aplicada.",
+    "meta.og.title": "Ali Valentin Tovar Morales | QA Engineer",
+    "meta.og.description": "QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.",
+    "section.aria.about": "Sobre mí",
+    "section.aria.skills": "Competencias",
+    "section.aria.experience": "Trayectoria",
+    "section.aria.portfolio": "Portfolio",
+    "section.aria.certs": "Certificados",
+    "section.aria.diplomas": "Formación",
+    "section.aria.education": "Académico",
+    "img.alt.brubank": "Logo de Brubank",
+    "img.alt.practia": "Logo de Practia Global",
+    "img.alt.pcivil": "Logo de Protección Civil Miranda",
+    "img.alt.degree1": "Título universitario Simón Rodríguez",
+    "img.alt.degree2": "Título universitario IUTIRLA",
+    "project.tag.funcional": "Funcional",
+    "project.tag.regresion": "Regresión",
+    "honeypot.label": "No completar este campo"
   },
   en: {
     "head.title": "CV - Ali Valentin Tovar Morales | QA Engineer",
@@ -240,7 +259,26 @@ const translations = {
     "copied": "Copied",
     "dark.aria": "Toggle dark/light mode",
     "lang.aria": "Switch language to English",
-    "lang.aria.en": "Switch language to Spanish"
+    "lang.aria.en": "Switch language to Spanish",
+    "html.lang": "en",
+    "meta.description": "CV of Ali Valentin Tovar Morales, QA Engineer in Buenos Aires, Argentina. Experience in Manual & Automation Web/Mobile, API Testing and Applied AI.",
+    "meta.og.title": "Ali Valentin Tovar Morales | QA Engineer",
+    "meta.og.description": "QA Engineer specialized in digital banking and fintech. Expert in automation and functional testing.",
+    "section.aria.about": "About Me",
+    "section.aria.skills": "Skills",
+    "section.aria.experience": "Experience",
+    "section.aria.portfolio": "Portfolio",
+    "section.aria.certs": "Certificates",
+    "section.aria.diplomas": "Education",
+    "section.aria.education": "Academic",
+    "img.alt.brubank": "Brubank Logo",
+    "img.alt.practia": "Practia Global Logo",
+    "img.alt.pcivil": "Protección Civil Miranda Logo",
+    "img.alt.degree1": "University degree Simón Rodríguez",
+    "img.alt.degree2": "University degree IUTIRLA",
+    "project.tag.funcional": "Functional",
+    "project.tag.regresion": "Regression",
+    "honeypot.label": "Do not fill this field"
   }
 };
 
@@ -299,6 +337,38 @@ function setLanguage(lang) {
     darkToggle.setAttribute('aria-label', getTranslation('dark.aria'));
   }
 
+  // Update html lang
+  document.documentElement.lang = getTranslation('html.lang') || (lang === 'es' ? 'es' : 'en');
+
+  // Update meta content
+  document.querySelectorAll('[data-i18n-content]').forEach(el => {
+    el.setAttribute('content', getTranslation(el.dataset.i18nContent) || '');
+  });
+
+  // Update img alt
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const text = getTranslation(el.dataset.i18nAlt);
+    if (text) el.alt = text;
+  });
+
+  // Update aria-label
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const text = getTranslation(el.dataset.i18nAria);
+    if (text) el.setAttribute('aria-label', text);
+  });
+
+  // Update honeypot label
+  const honeypotLabel = document.querySelector('.honeypot-field label');
+  if (honeypotLabel) {
+    honeypotLabel.textContent = getTranslation('honeypot.label');
+  }
+
+  // Update project tags
+  document.querySelectorAll('[data-i18n-tag]').forEach(el => {
+    const text = getTranslation(el.dataset.i18nTag);
+    if (text) el.textContent = text;
+  });
+
   // Update copyright
   updateCopyright();
 }
@@ -310,6 +380,30 @@ function updateCopyright() {
     yearSpan.textContent = new Date().getFullYear();
     copyrightEl.textContent = `Ali Valentin Tovar Morales. ${getTranslation('footer.copyright')}`;
   }
+}
+
+function calculateExperience(startDate) {
+  const start = new Date(startDate);
+  const now = new Date();
+  
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+  
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  
+  let result = "";
+  if (years > 0) {
+    result += years + (years === 1 ? getTranslation('exp.year_singular') : getTranslation('exp.year_plural'));
+  }
+  if (months > 0) {
+    if (result !== "") result += getTranslation('exp.and');
+    result += months + (months === 1 ? getTranslation('exp.month_singular') : getTranslation('exp.month_plural'));
+  }
+  
+  return result || getTranslation('exp.zero_months');
 }
 
 function updateExperienceDisplay() {
@@ -413,36 +507,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  // Dynamic experience calculation
-  function calculateExperience(startDate) {
-    const start = new Date(startDate);
-    const now = new Date();
-    
-    let years = now.getFullYear() - start.getFullYear();
-    let months = now.getMonth() - start.getMonth();
-    
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    
-    let result = "";
-    if (years > 0) {
-      result += years + (years === 1 ? getTranslation('exp.year_singular') : getTranslation('exp.year_plural'));
-    }
-    if (months > 0) {
-      if (result !== "") result += getTranslation('exp.and');
-      result += months + (months === 1 ? getTranslation('exp.month_singular') : getTranslation('exp.month_plural'));
-    }
-    
-    return result || getTranslation('exp.zero_months');
-  }
-
-  const expElement = document.getElementById("brubank-experience");
-  if (expElement) {
-    expElement.textContent = calculateExperience("2021-04-01");
-  }
 
   // Click to copy functionality
   const copyElements = document.querySelectorAll(".contact-email, .contact-phone");
