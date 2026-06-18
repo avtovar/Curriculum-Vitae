@@ -283,23 +283,27 @@ const translations = {
 };
 
 // ===================== I18N HELPERS =====================
-let currentLang = localStorage.getItem('lang') || 'es';
+let currentLang;
+try { currentLang = localStorage.getItem('lang') || 'es'; } catch(e) { currentLang = 'es'; }
 
 function getTranslation(key) {
-  return key.split('.').reduce((o, k) => (o && o[k] !== undefined) ? o[k] : null, translations[currentLang]);
+  try {
+    return translations[currentLang][key] || null;
+  } catch(e) { return null; }
 }
 
 function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('lang', lang);
+  try {
+    currentLang = lang;
+    try { localStorage.setItem('lang', lang); } catch(e) {}
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    const text = getTranslation(key);
-    if (text !== null && text !== undefined) {
-      el.innerHTML = text;
-    }
-  });
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      const text = getTranslation(key);
+      if (text !== null && text !== undefined) {
+        el.innerHTML = text;
+      }
+    });
 
   // Update placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
@@ -371,6 +375,7 @@ function setLanguage(lang) {
 
   // Update copyright
   updateCopyright();
+  } catch(e) { console.error('Lang error:', e); }
 }
 
 function updateCopyright() {
@@ -550,12 +555,14 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleBtn.textContent = dark ? "☀️" : "🌙";
       toggleBtn.setAttribute('aria-label', getTranslation('dark.aria'));
     }
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch(e) {}
   }
 
   function getPreferredTheme() {
-    const stored = localStorage.getItem("theme");
-    if (stored) return stored === "dark";
+    try {
+      const stored = localStorage.getItem("theme");
+      if (stored) return stored === "dark";
+    } catch(e) {}
     return true;
   }
 
