@@ -160,6 +160,34 @@ header .location {
   border-color: var(--accent);
 }
 
+/* ===================== BADGE DESTACADO ===================== */
+.badge-container {
+  margin-top: 16px;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+
+.badge-link {
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.badge-link:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.badge-img {
+  display: block;
+  width: 180px;
+  height: auto;
+  max-width: 100%;
+}
+
 /* ===================== BARRA DE CONTACTO ===================== */
 .contact-bar {
   display: flex;
@@ -792,6 +820,15 @@ body.dark-mode .contact-bar a:hover {
   filter: brightness(1.2);
 }
 
+body.dark-mode .badge-link {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .badge-link:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border-color: var(--accent-light);
+}
+
 body.dark-mode .footer-form input,
 body.dark-mode .footer-form textarea {
   color: #ffffff;
@@ -1073,6 +1110,7 @@ body.dark-mode .lang-toggle:hover {
   .lang-toggle,
   .contact-bar a,
   .btn-download,
+  .badge-container,
   .footer {
     display: none !important;
   }
@@ -1121,4 +1159,5 @@ body.dark-mode .lang-toggle:hover {
   .lang-toggle { width: 40px; height: 40px; font-size: 1.1rem; }
   .lang-toggle { font-size: 0.75rem; }
   .footer-social .social-icons { justify-content: center; }
+  .badge-img { width: 150px; }
 }

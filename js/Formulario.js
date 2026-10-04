@@ -464,8 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.textContent = getTranslation('footer.form.sending');
     }
     
-    const serviceID = 'service_hd0dofi'; 
-    const templateID = 'template_8lvjn7n'; 
+    const serviceID = '__EMAILJS_SERVICE_ID__'; 
+    const templateID = '__EMAILJS_TEMPLATE_ID__'; 
 
     const templateParams = {
       name: nombre,
