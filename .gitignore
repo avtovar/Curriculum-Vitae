@@ -8,6 +8,7 @@ temp_css.txt
 .gemini/
 .idea/
 .vscode/
+.opencode/
 
 # Archivos comprimidos y backups
 *.zip
