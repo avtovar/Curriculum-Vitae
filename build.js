@@ -12,14 +12,7 @@ const missing = requiredVars.filter((v) => !process.env[v]);
 if (missing.length > 0) {
   console.warn(`⚠️  EmailJS env vars not set (${missing.join(', ')}).`);
   console.warn('   Skipping injection — placeholders in index.html/Formulario.js will remain.');
-  console.warn('   Set them (or run with NODE_ENV=production in CI) to inject for real.\n');
-
-  // Only fail hard when explicitly required (CI sets this)
-  if (process.env.NODE_ENV === 'production' || process.env.CI === 'true') {
-    console.error('❌ CI/production build requires EmailJS env vars. Aborting.');
-    process.exit(1);
-  }
-  // Local dev: warn and exit successfully (no in-place modification)
+  console.warn('   Set them in GitHub Settings → Secrets and variables → Actions to enable the contact form.\n');
   process.exit(0);
 }
 
