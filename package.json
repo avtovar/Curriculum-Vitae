@@ -1,0 +1,11 @@
+{
+  "name": "curriculum-vitae",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static personal CV/portfolio deployed to GitHub Pages",
+  "scripts": {
+    "serve": "npx serve .",
+    "build": "node build.js"
+  }
+}

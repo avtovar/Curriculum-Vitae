@@ -32,8 +32,27 @@ jobs:
           EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
           EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          CI: 'true'
         run: node build.js
-      
+
+      - name: Guard - fail if secrets not injected
+        run: |
+          if grep -rE '__EMAILJS_(PUBLIC_KEY|SERVICE_ID|TEMPLATE_ID)__' index.html js/Formulario.js; then
+            echo "::error::EmailJS placeholders still present in build output. Secrets were not injected."
+            exit 1
+          fi
+          echo "✅ All EmailJS placeholders replaced."
+
+      - name: Remove dev-only files before upload
+        run: |
+          rm -rf .git .github .idea .claude node_modules no_subir \
+            AGENTS.md MEMORIA.md .gitignore .DS_Store \
+            run-all.ps1 run-all.bat run.ps1 run.bat \
+            convert-webp.js convert-webp2.js build.js package.json
+          find . -name "*.zip" -delete
+          find . -iname "files(1)*" -exec rm -rf {} +
+          find . -iname "Captura*" -delete
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

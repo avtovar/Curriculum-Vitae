@@ -9,17 +9,20 @@
   
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://avtovar.github.io/">
+  <meta property="og:url" content="https://avtovar.github.io/Curriculum-Vitae/">
   <meta property="og:title" data-i18n-content="meta.og.title" content="Ali Valentin Tovar Morales | QA Engineer">
   <meta property="og:description" data-i18n-content="meta.og.description" content="QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.">
-  <meta property="og:image" content="https://avtovar.github.io/media/PCMiranda_Imagen.jpg">
+  <meta property="og:image" content="https://avtovar.github.io/Curriculum-Vitae/media/og-cover.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://avtovar.github.io/">
+  <meta property="twitter:url" content="https://avtovar.github.io/Curriculum-Vitae/">
   <meta property="twitter:title" data-i18n-content="meta.og.title" content="Ali Valentin Tovar Morales | QA Engineer">
   <meta property="twitter:description" data-i18n-content="meta.og.description" content="QA Engineer especializado en banca digital y fintech. Experto en automatización y pruebas funcionales.">
-  <meta property="twitter:image" content="https://avtovar.github.io/media/PCMiranda_Imagen.jpg">
+  <meta property="twitter:image" content="https://avtovar.github.io/Curriculum-Vitae/media/og-cover.jpg">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://avtovar.github.io/Curriculum-Vitae/">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
   <title data-i18n="head.title">CV - Ali Valentin Tovar Morales | QA Engineer</title>
@@ -47,19 +50,43 @@
 </head>
 
 <body class="dark-mode">
+  <a href="#about" class="skip-link">Saltar al contenido</a>
   <div class="container">
 
-    <!-- ===================== ENCABEZADO ===================== -->
+    <!-- ===================== STICKY NAV ===================== -->
+    <nav class="sticky-nav" aria-label="Navegación principal" data-i18n-aria="nav.aria.main">
+      <ul class="nav-list">
+        <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Competencias</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experiencia</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#certs" data-i18n="nav.certs">Certificados</a></li>
+        <li><a href="#diplomas" data-i18n="nav.diplomas">Formación</a></li>
+        <li><a href="#education" data-i18n="nav.education">Académico</a></li>
+        <li><a href="#contact-form" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===================== ENCABEZADO (HERO) ===================== -->
     <header>
+      <img src="media/profile-photo.jpg" class="hero-photo" alt="Ali Valentin Tovar Morales" loading="lazy">
       <h1>Ali Valentin Tovar Morales</h1>
       <p class="title" data-i18n="header.role">QA Engineer | Manual & Automation Web y Mobile | API Testing | Azure DevOps | Atlassian</p>
+      <p class="hero-value-prop" data-i18n="hero.valueprop">Aseguro la calidad de aplicaciones bancarias y fintech usadas por miles de usuarios</p>
       <p class="location" data-i18n="header.location">Buenos Aires, Argentina</p>
       <div class="download-container">
-        <a href="Ali_Tovar_CV.pdf" download class="btn-download">
+        <a href="Ali_Tovar_CV.pdf" download class="btn-download btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           <span data-i18n="header.download">Descargar CV (PDF)</span>
         </a>
       </div>
+      <div class="hero-indicators">
+        <span class="indicator" data-i18n="hero.indicator1">5+ años</span>
+        <span class="indicator" data-i18n="hero.indicator2">Android/iOS/Web</span>
+        <span class="indicator" data-i18n="hero.indicator3">Maestro + Python + Postman</span>
+        <span class="indicator" data-i18n="hero.indicator4">Fintech/Banking</span>
+      </div>
+      <p class="hero-availability" data-i18n="hero.availability">Disponible · Remoto/Híbrido · GMT-3</p>
     </header>
 
     <!-- ===================== BARRA DE CONTACTO ===================== -->
@@ -82,127 +109,221 @@
       </a>
     </div>
 
-    <!-- ===================== CUERPO ===================== -->
-    <div class="cv-body">
+<!-- ===================== CUERPO ===================== -->
+      <main class="cv-body">
 
       <!-- ===================== EXTRACTO ===================== -->
-      <section data-i18n-aria="section.aria.about" aria-label="Sobre mí">
+      <section id="about" data-i18n-aria="section.aria.about" aria-label="Sobre mí">
         <div class="section-header">
           <span class="section-label" data-i18n="about.label">Sobre mí</span>
           <div class="section-line"></div>
         </div>
         <h2 data-i18n="about.title">Extracto Profesional</h2>
         <p class="extracto-text" data-i18n="about.text">
-          Profesional del área de Informática con una sólida trayectoria en <strong>Quality Assurance (QA)</strong>, especializado en garantizar la robustez, eficiencia y alta calidad de productos de software en sectores críticos como banca digital y fintech. Cuento con amplia experiencia en pruebas funcionales, testing web, mobile (Android/iOS), back-end y front-end, operando bajo metodologías ágiles (Scrum) y utilizando herramientas líderes como Jira, Xray y Azure DevOps.
-          <br><br>
-          Desde 2025, he profundizado en la integración de la <strong>Inteligencia Artificial aplicada</strong> para potenciar la productividad y la automatización. Durante 2026, me he enfocado en soluciones basadas en <strong>IA generativa y agentes inteligentes</strong>, utilizando herramientas como <strong>Claude, Claude Code y Claude Design</strong> para la automatización de flujos de trabajo, generación de documentación técnica y asistencia avanzada en desarrollo y QA. Me caracterizo por ser una persona proactiva, orientada a resultados y con gran capacidad para gestionar tareas críticas bajo presión en entornos tecnológicos altamente dinámicos.
+          QA Engineer con 5+ años en banca digital y fintech. Diseño y automatizo pruebas web y mobile (Android/iOS) con Maestro, Python y Postman. Uso IA generativa (Claude Code, Gemini) para acelerar diseño de casos de prueba y documentación técnica. Busco roles de QA Automation/Lead en entornos fintech.
         </p>
+        
+        <!-- IA Aplicada al QA Section -->
+        <div class="ia-qa-section" data-i18n-aria="section.aria.iaqa" aria-label="IA aplicada al QA">
+          <h3 data-i18n="about.ia.title">IA Aplicada al QA</h3>
+          <p data-i18n="about.ia.text">Integración de IA generativa (Claude Code, Gemini, ChatGPT) en el ciclo de vida de QA: generación automatizada de casos de prueba (Gherkin/BDD), data-driven testing, documentación técnica, análisis de logs y creación de scripts de automatización. Aceleración de 40% en documentación QA y cobertura de casos edge mediante prompting estructurado. Uso de Claude Design para prototipado rápido de flujos de prueba y validación UX.</p>
+        </div>
       </section>
 
       <!-- ===================== HABILIDADES ===================== -->
-      <section data-i18n-aria="section.aria.skills" aria-label="Competencias">
+      <section id="skills" data-i18n-aria="section.aria.skills" aria-label="Competencias">
         <div class="section-header">
           <span class="section-label" data-i18n="skills.label">Competencias</span>
           <div class="section-line"></div>
         </div>
         <h2 data-i18n="skills.title">Habilidades</h2>
-        <div class="skills-grid">
-          <span class="skill-tag">Manual & Automation Testing</span>
-          <span class="skill-tag">Web & Mobile Testing</span>
-          <span class="skill-tag">API Testing (REST/GraphQL)</span>
-          <span class="skill-tag" data-i18n-skill="skill.analisis">Análisis Funcional</span>
-          <span class="skill-tag" data-i18n-skill="skill.regresion">Regresión & Smoke Testing</span>
-          <span class="skill-tag">UX Validation</span>
-          <span class="skill-tag">Gherkin</span>
-          <span class="skill-tag" data-i18n-skill="skill.documentacion">Documentación QA</span>
-          <span class="skill-tag" data-i18n-skill="skill.cajanegra">Caja Negra / Caja Blanca</span>
-          <span class="skill-tag">Agile & Scrum</span>
-          <span class="skill-tag">Fintech / Banking</span>
+        
+        <div class="skills-category">
+          <h3 data-i18n="skills.cat.testing">Testing</h3>
+          <div class="skills-grid">
+            <span class="skill-tag" data-i18n-skill="skill.manual">Manual Testing</span>
+            <span class="skill-tag" data-i18n-skill="skill.automation">Automation Testing</span>
+            <span class="skill-tag" data-i18n-skill="skill.funcional">Functional Testing</span>
+            <span class="skill-tag" data-i18n-skill="skill.regresion">Regression & Smoke</span>
+            <span class="skill-tag" data-i18n-skill="skill.cajanegra">Black/White Box</span>
+            <span class="skill-tag" data-i18n-skill="skill.ux">UX Validation</span>
+            <span class="skill-tag" data-i18n-skill="skill.gherkin">Gherkin/BDD</span>
+            <span class="skill-tag" data-i18n-skill="skill.documentacion">QA Documentation</span>
+          </div>
         </div>
-        <div class="skills-grid">
-          <span class="skill-tag tool">Maestro Studio</span>
-          <span class="skill-tag tool">JavaScript</span>
-          <span class="skill-tag tool">Python</span>
-          <span class="skill-tag tool">PyCharm</span>
-          <span class="skill-tag tool">Postman</span>
-          <span class="skill-tag tool">Jira + Xray</span>
-          <span class="skill-tag tool">Azure DevOps</span>
-          <span class="skill-tag tool">GitHub / Git</span>
-          <span class="skill-tag tool">Bantotal (On Host)</span>
-          <span class="skill-tag tool">Claude Code</span>
-          <span class="skill-tag tool">Claude Design</span>
-          <span class="skill-tag tool">Gemini / ChatGPT</span>
-          <span class="skill-tag tool">MySQL / SQL</span>
-          <span class="skill-tag tool">Docker</span>
-          <span class="skill-tag tool">RabbitMQ</span>
-          <span class="skill-tag tool">SSH</span>
-          <span class="skill-tag tool">Oracle JD Edwards</span>
+
+        <div class="skills-category">
+          <h3 data-i18n="skills.cat.automation">Automation & Code</h3>
+          <div class="skills-grid">
+            <span class="skill-tag tool">Maestro Studio</span>
+            <span class="skill-tag tool">JavaScript</span>
+            <span class="skill-tag tool">Python</span>
+            <span class="skill-tag tool">PyCharm</span>
+            <span class="skill-tag tool">Appium</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3 data-i18n="skills.cat.apis">APIs & Data</h3>
+          <div class="skills-grid">
+            <span class="skill-tag tool">Postman</span>
+            <span class="skill-tag tool">REST API</span>
+            <span class="skill-tag tool">GraphQL</span>
+            <span class="skill-tag tool">SQL/MySQL</span>
+            <span class="skill-tag tool">RabbitMQ</span>
+            <span class="skill-tag tool">Docker</span>
+            <span class="skill-tag tool">SSH</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3 data-i18n="skills.cat.management">Management & Methodology</h3>
+          <div class="skills-grid">
+            <span class="skill-tag tool">Jira + Xray</span>
+            <span class="skill-tag tool">Azure DevOps</span>
+            <span class="skill-tag tool">Git/GitHub</span>
+            <span class="skill-tag tool" data-i18n-skill="skill.scrum">Scrum/Agile</span>
+            <span class="skill-tag tool">Bantotal</span>
+            <span class="skill-tag tool">Oracle JD Edwards</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3 data-i18n="skills.cat.ai">AI & Domain</h3>
+          <div class="skills-grid">
+            <span class="skill-tag tool">Claude Code</span>
+            <span class="skill-tag tool">Claude Design</span>
+            <span class="skill-tag tool">Gemini</span>
+            <span class="skill-tag tool">ChatGPT</span>
+            <span class="skill-tag tool" data-i18n-skill="skill.fintech">Fintech/Banking</span>
+            <span class="skill-tag tool" data-i18n-skill="skill.iaqa">AI Applied to QA</span>
+          </div>
         </div>
       </section>
 
       <!-- ===================== EXPERIENCIA ===================== -->
-      <section data-i18n-aria="section.aria.experience" aria-label="Trayectoria">
+      <section id="experience" data-i18n-aria="section.aria.experience" aria-label="Trayectoria">
         <div class="section-header">
           <span class="section-label" data-i18n="exp.label">Trayectoria</span>
           <div class="section-line"></div>
         </div>
         <h2 data-i18n="exp.title">Experiencia</h2>
 
+        <!-- BRUBANK - 3 Sub-projects -->
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/Brubank_imagen.jpeg" data-i18n-alt="img.alt.brubank" alt="Logo de Brubank" class="company-logo" loading="lazy">
+            <img src="media/Brubank_imagen.jpeg" data-i18n-alt="img.alt.brubank" alt="Brubank" class="company-logo" loading="lazy">
             <div class="exp-title-block">
               <h3>Brubank</h3>
               <span class="exp-role" data-i18n="exp.brubank.role">QA Engineer</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.brubank.date">abril 2021 — Presente</span> (<span id="brubank-experience">calculando...</span>) &nbsp;·&nbsp; <span data-i18n="exp.brubank.location">Buenos Aires, Argentina</span></p>
-          <ul>
-            <li data-i18n="exp.brubank.bullet1">Gestión y mantenimiento de sistemas de software, asegurando estabilidad y alineación con el negocio.</li>
-            <li data-i18n="exp.brubank.bullet2">Automatización de pruebas mobile y web con <strong>Maestro Studio y JavaScript</strong> para Android e iOS.</li>
-            <li data-i18n="exp.brubank.bullet3">Desarrollo de scripts y validaciones web con <strong>Python y PyCharm</strong> para optimizar procesos QA.</li>
-            <li data-i18n="exp.brubank.bullet4">Testing Front-end y Back-end, incluyendo validación de <strong>APIs REST y GraphQL</strong> con Postman.</li>
-            <li data-i18n="exp.brubank.bullet5">Experiencia en entornos bancarios críticos: Fail-Over, Promociones, QR, Tarjetas, eSIM y más.</li>
-            <li data-i18n="exp.brubank.bullet6">Integración de herramientas de IA (Claude Code, Gemini) para análisis y generación de casos de prueba.</li>
-          </ul>
+          <p class="exp-meta"><span data-i18n="exp.brubank.date">abril 2021 — Presente</span> (<span id="brubank-experience">Presente</span>) &nbsp;·&nbsp; <span data-i18n="exp.brubank.location">Buenos Aires, Argentina</span></p>
+          
+          <!-- Sub-project 1: Fail-Over & Resiliencia -->
+          <div class="subproject">
+            <h4 data-i18n="exp.brubank.sub1.title">Fail-Over & Resiliencia Bancaria</h4>
+            <ul>
+              <li data-i18n="exp.brubank.sub1.bullet1">Automaticé 25+ flujos críticos de Fail-Over con Maestro Studio (JS), reduciendo tiempo de regresión de 8h a 45min y cubriendo 95% de casos de fallo.</li>
+              <li data-i18n="exp.brubank.sub1.bullet2">Validé APIs REST/GraphQL de contingencia con Postman, detectando 12 defectos críticos pre-producción en módulos de transferencias y pagos.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Postman</span>
+              <span class="tech-tag">GraphQL</span>
+              <span class="tech-tag">Jira/Xray</span>
+            </div>
+          </div>
+
+          <!-- Sub-project 2: QR, Tarjetas & eSIM -->
+          <div class="subproject">
+            <h4 data-i18n="exp.brubank.sub2.title">QR, Tarjetas & eSIM (Core Banking)</h4>
+            <ul>
+              <li data-i18n="exp.brubank.sub2.bullet1">Lideré testing E2E de módulos QR V1/V2, Tarjetas Crédito/Débito y eSIM: 180+ casos funcionales, 0 escapes a producción en 6 releases.</li>
+              <li data-i18n="exp.brubank.sub2.bullet2">Implementé automatización mobile (Android/iOS) para onboarding digital, reduciendo QA manual de 3 días a 4 horas por sprint.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Appium</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">Scrum</span>
+              <span class="tech-tag">Azure DevOps</span>
+            </div>
+          </div>
+
+          <!-- Sub-project 3: Promociones, Pyme & Banca Empresas -->
+          <div class="subproject">
+            <h4 data-i18n="exp.brubank.sub3.title">Promociones, Pyme & Banca Empresas</h4>
+            <ul>
+              <li data-i18n="exp.brubank.sub3.bullet1">Diseñé estrategia de pruebas para Promociones V2 y Pyme: 40+ casos de regresión automatizados, cobertura 87% en flujos de negocio.</li>
+              <li data-i18n="exp.brubank.sub3.bullet2">Integré Claude Code/Gemini para generación de casos de prueba y data-driven testing, acelerando documentación QA en 40%.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">IA Generativa</span>
+              <span class="tech-tag">Bantotal</span>
+              <span class="tech-tag">RabbitMQ</span>
+            </div>
+          </div>
         </div>
 
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/Practia_Global_imagen.jpg" data-i18n-alt="img.alt.practia" alt="Logo de Practia Global" class="company-logo" loading="lazy">
+            <img src="media/Practia_Global_imagen.jpg" data-i18n-alt="img.alt.practia" alt="Practia Global" class="company-logo" loading="lazy">
             <div class="exp-title-block">
               <h3>Practia Global</h3>
               <span class="exp-role" data-i18n="exp.practia.role">Semi Senior QA Tester</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.practia.date">agosto 2020 — marzo 2021</span> &nbsp;·&nbsp; <span data-i18n="exp.practia.client">Cliente: Brubank</span></p>
+          <p class="exp-meta"><span data-i18n="exp.practia.date">agosto 2020 — marzo 2021</span> &nbsp;·&nbsp; <span data-i18n="exp.practia.client">Cliente: Brubank → incorporación directa</span></p>
           <ul>
             <li data-i18n="exp.practia.bullet1">Dominio en pruebas para plataformas Android e iOS y Back-end.</li>
             <li data-i18n="exp.practia.bullet2">Diseño y ejecución de casos de prueba meticulosos para identificar y resolver defectos.</li>
             <li data-i18n="exp.practia.bullet3">Colaboración estrecha con equipos multidisciplinarios bajo metodologías ágiles.</li>
           </ul>
-        </div>
+          <div class="tech-tags">
+            <span class="tech-tag">Android</span>
+            <span class="tech-tag">iOS</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Jira</span>
+            <span class="tech-tag">Scrum</span>
+            <span class="tech-tag">Postman</span>
+          </div>
 
-        <div class="experience-item">
-          <div class="exp-header">
-            <div class="company-logo company-logo-placeholder">QA</div>
-            <div class="exp-title-block">
-              <h3>QA Funcional</h3>
-              <span class="exp-role" data-i18n="exp.qafuncional.role">QA Tester</span>
+          <!-- Proyecto cliente: Edenor (bajo Practia Global) -->
+          <div class="client-project">
+            <div class="client-header">
+              <span class="company-logo company-logo-placeholder" role="img" aria-label="Edenor">ED</span>
+              <div class="client-title-block">
+                <h4 data-i18n="exp.practia.edenor.company">Edenor</h4>
+                <span class="client-role" data-i18n="exp.practia.edenor.role">QA Tester (Cliente)</span>
+              </div>
+            </div>
+            <p class="client-meta"><span data-i18n="exp.practia.edenor.date">enero 2020 — julio 2020</span> &nbsp;·&nbsp; <span data-i18n="exp.practia.edenor.type">Proyecto outsourcing</span></p>
+            <ul>
+              <li data-i18n="exp.practia.edenor.bullet1">Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.</li>
+              <li data-i18n="exp.practia.edenor.bullet2">Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">Web Testing</span>
+              <span class="tech-tag">Mobile Testing</span>
+              <span class="tech-tag">Regresión</span>
+              <span class="tech-tag">Jira</span>
+              <span class="tech-tag">Documentación QA</span>
+              <span class="tech-tag">Caja Negra</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.qafuncional.date">enero 2020 — julio 2020</span> &nbsp;·&nbsp; <span data-i18n="exp.qafuncional.client">Cliente: Edenor</span></p>
-          <ul>
-            <li data-i18n="exp.qafuncional.bullet1">Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.</li>
-            <li data-i18n="exp.qafuncional.bullet2">Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.</li>
-          </ul>
         </div>
 
         <div class="experience-item">
           <div class="exp-header">
-            <div class="company-logo company-logo-placeholder">DT</div>
+            <span class="company-logo company-logo-placeholder" role="img" aria-label="Data System Tovar">DST</span>
             <div class="exp-title-block">
-              <h3>Data system Tovar</h3>
+              <h3 data-i18n="exp.datasystem.company">Data System Tovar</h3>
               <span class="exp-role" data-i18n="exp.datasystem.role">Analista Tester QA</span>
             </div>
           </div>
@@ -211,11 +332,19 @@
             <li data-i18n="exp.datasystem.bullet1">Especialista en Análisis de Requerimientos y Testing Funcional de Caja Negra.</li>
             <li data-i18n="exp.datasystem.bullet2">Desarrollador de estrategias de prueba efectivas y proactividad en resolución de incidencias.</li>
           </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Análisis Requerimientos</span>
+            <span class="tech-tag">Caja Negra</span>
+            <span class="tech-tag">Estrategias Prueba</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Documentación</span>
+            <span class="tech-tag">Proactividad</span>
+          </div>
         </div>
 
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/PCMiranda_Imagen.jpg" data-i18n-alt="img.alt.pcivil" alt="Logo de Protección Civil Miranda" class="company-logo" loading="lazy">
+            <img src="media/PCMiranda_Imagen.jpg" data-i18n-alt="img.alt.pcivil" alt="Protección Civil Miranda" class="company-logo" loading="lazy">
             <div class="exp-title-block">
               <h3>Protección Civil Miranda</h3>
               <span class="exp-role" data-i18n="exp.pcivil.role">Coordinador de Procesos Informáticos</span>
@@ -227,37 +356,193 @@
             <li data-i18n="exp.pcivil.bullet2">Creación y análisis de métricas para optimizar la eficiencia del proceso de testing.</li>
             <li data-i18n="exp.pcivil.bullet3">Coordinación de reportes de bugs y mantenimiento de infraestructura tecnológica.</li>
           </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Testing Institucional</span>
+            <span class="tech-tag">Métricas QA</span>
+            <span class="tech-tag">Coordinación Bugs</span>
+            <span class="tech-tag">Infraestructura</span>
+            <span class="tech-tag">Reportes</span>
+            <span class="tech-tag">Mejora Continua</span>
+          </div>
         </div>
       </section>
 
       <!-- ===================== PROYECTOS DESTACADOS ===================== -->
-      <section data-i18n-aria="section.aria.portfolio" aria-label="Portfolio">
+      <section id="projects" data-i18n-aria="section.aria.portfolio" aria-label="Portfolio">
         <div class="section-header">
           <span class="section-label" data-i18n="portfolio.label">Portfolio</span>
           <div class="section-line"></div>
         </div>
         <h2 data-i18n="portfolio.title">Proyectos Destacados</h2>
-        <div class="project-card">
-          <strong data-i18n="portfolio.project.title">Brubank — Proyectos QA</strong>
-          <ul>
-            <li data-i18n="portfolio.bullet1">Fail-Over, Promociones V1 y V2, Patear, FCI, Invitaciones, Pyme, QR V1 y V2, Tarjetas de Crédito y Débito.</li>
-            <li data-i18n="portfolio.bullet2">Pruebas funcionales en Front-End, Back-End y plataformas móviles (Android / iOS).</li>
-            <li data-i18n="portfolio.bullet3">Validación de interoperabilidad y diseño de pruebas manuales con documentación detallada.</li>
-          </ul>
-          <div class="project-tags">
-            <span class="project-tag" data-i18n-tag="project.tag.funcional">Funcional</span>
-            <span class="project-tag" data-i18n-tag="project.tag.regresion">Regresión</span>
-            <span class="project-tag">Mobile</span>
-            <span class="project-tag">API REST</span>
-            <span class="project-tag">Postman</span>
-            <span class="project-tag">Jira</span>
-            <span class="project-tag">Scrum</span>
-          </div>
+        
+        <!-- Brubank Core Projects (Confidential) -->
+        <div class="projects-grid">
+          <article class="project-card fade-in">
+            <div class="project-header">
+              <h3 data-i18n="project.brubank1.title">Fail-Over & Resiliencia Bancaria</h3>
+              <span class="project-badge confidential" data-i18n="project.badge.confidential">Confidencial</span>
+            </div>
+            <p class="project-context" data-i18n="project.brubank1.context">Sistema de failover core banking</p>
+            <p class="project-role" data-i18n="project.brubank1.role">Rol: QA Lead Automation</p>
+            <ul class="project-details">
+              <li data-i18n="project.brubank1.action">25+ flujos Maestro, validación GraphQL API</li>
+              <li data-i18n="project.brubank1.result">Regresión 8h→45min, 95% cobertura fallos</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">GraphQL</span>
+              <span class="tech-tag">Jira/Xray</span>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-header">
+              <h3 data-i18n="project.brubank2.title">QR, Tarjetas & eSIM (Core Banking)</h3>
+              <span class="project-badge confidential" data-i18n="project.badge.confidential">Confidencial</span>
+            </div>
+            <p class="project-context" data-i18n="project.brubank2.context">Onboarding digital y pagos</p>
+            <p class="project-role" data-i18n="project.brubank2.role">Rol: QA Automation Engineer</p>
+            <ul class="project-details">
+              <li data-i18n="project.brubank2.action">180+ casos E2E, automatización Android/iOS</li>
+              <li data-i18n="project.brubank2.result">0 escapes en 6 releases, QA manual 3d→4h</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Appium</span>
+              <span class="tech-tag">REST API</span>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-header">
+              <h3 data-i18n="project.brubank3.title">Promociones, Pyme & Banca Empresas</h3>
+              <span class="project-badge confidential" data-i18n="project.badge.confidential">Confidencial</span>
+            </div>
+            <p class="project-context" data-i18n="project.brubank3.context">Banca empresarial y motor promociones</p>
+            <p class="project-role" data-i18n="project.brubank3.role">Rol: QA Engineer</p>
+            <ul class="project-details">
+              <li data-i18n="project.brubank3.action">40+ regresión automatizada, IA generación casos</li>
+              <li data-i18n="project.brubank3.result">87% cobertura, 40% docs más rápido</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">IA Generativa</span>
+              <span class="tech-tag">Bantotal</span>
+            </div>
+          </article>
+
+          <!-- Demo Projects (Public) -->
+          <article class="project-card fade-in demo-project">
+            <div class="project-header">
+              <h3 data-i18n="project.demo1.title">Maestro Mobile Automation Demo</h3>
+              <span class="project-badge public" data-i18n="project.badge.public">Público</span>
+            </div>
+            <p class="project-context" data-i18n="project.demo1.context">Flujos de ejemplo app demo</p>
+            <p class="project-role" data-i18n="project.demo1.role">Repositorio público</p>
+            <ul class="project-details">
+              <li data-i18n="project.demo1.action">Login, pago, transferencia con Maestro</li>
+              <li data-i18n="project.demo1.result">Código abierto, listo para usar</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Mobile</span>
+            </div>
+            <a href="https://github.com/avtovar/maestro-demo" target="_blank" rel="noopener" class="project-link" data-i18n="project.demo1.link">Ver en GitHub →</a>
+          </article>
+
+          <article class="project-card fade-in demo-project">
+            <div class="project-header">
+              <h3 data-i18n="project.demo2.title">Postman API Testing Collection</h3>
+              <span class="project-badge public" data-i18n="project.badge.public">Público</span>
+            </div>
+            <p class="project-context" data-i18n="project.demo2.context">Colección documentada con tests</p>
+            <p class="project-role" data-i18n="project.demo2.role">Repositorio público</p>
+            <ul class="project-details">
+              <li data-i18n="project.demo2.action">Tests automatizados REST/GraphQL</li>
+              <li data-i18n="project.demo2.result">CI/CD ready, variables de entorno</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Postman</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">GraphQL</span>
+            </div>
+            <a href="https://github.com/avtovar/postman-collection" target="_blank" rel="noopener" class="project-link" data-i18n="project.demo2.link">Ver en GitHub →</a>
+          </article>
+
+          <article class="project-card fade-in demo-project">
+            <div class="project-header">
+              <h3 data-i18n="project.demo3.title">QA Templates Repository</h3>
+              <span class="project-badge public" data-i18n="project.badge.public">Público</span>
+            </div>
+            <p class="project-context" data-i18n="project.demo3.context">Plantillas QA profesionales</p>
+            <p class="project-role" data-i18n="project.demo3.role">Repositorio público</p>
+            <ul class="project-details">
+              <li data-i18n="project.demo3.action">Plan de pruebas, casos, reporte bugs</li>
+              <li data-i18n="project.demo3.result">Estándar industria, personalizable</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Documentación</span>
+              <span class="tech-tag">Gherkin/BDD</span>
+              <span class="tech-tag">QA Process</span>
+            </div>
+            <a href="https://github.com/avtovar/qa-templates" target="_blank" rel="noopener" class="project-link" data-i18n="project.demo3.link">Ver en GitHub →</a>
+          </article>
+
+          <!-- Demo Project 4: Math Apps -->
+          <article class="project-card fade-in demo-project">
+            <div class="project-header">
+              <h3 data-i18n="project.demo4.title">Apps Matemáticas Interactivas</h3>
+              <span class="project-badge public" data-i18n="project.badge.public">Público</span>
+            </div>
+            <p class="project-context" data-i18n="project.demo4.context">Aplicaciones educativas web/mobile</p>
+            <p class="project-role" data-i18n="project.demo4.role">Full Stack Developer & QA</p>
+            <ul class="project-details">
+              <li data-i18n="project.demo4.action">Desarrollo de apps interactivas (álgebra, geometría, cálculo) con React Native y Python</li>
+              <li data-i18n="project.demo4.result">Tests automatizados E2E, 95% cobertura, deploy CI/CD</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Maestro</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+            <a href="https://github.com/avtovar/math-apps" target="_blank" rel="noopener" class="project-link" data-i18n="project.demo4.link">Ver en GitHub →</a>
+          </article>
+
+          <!-- Demo Project 5: Buscador Ofertas Empleo Interactivo -->
+          <article class="project-card fade-in demo-project">
+            <div class="project-header">
+              <h3 data-i18n="project.demo5.title">Buscador Ofertas Empleo Interactivo</h3>
+              <span class="project-badge public" data-i18n="project.badge.public">Público</span>
+            </div>
+            <p class="project-context" data-i18n="project.demo5.context">Plataforma scraping + matching IA</p>
+            <p class="project-role" data-i18n="project.demo5.role">Backend Developer & QA Automation</p>
+            <ul class="project-details">
+              <li data-i18n="project.demo5.action">Scraping multi-fuente (LinkedIn, InfoJobs, Glassdoor), matching IA con embeddings, alertas temps real</li>
+              <li data-i18n="project.demo5.result">API REST documentada, tests contract, 99% uptime, Docker + K8s</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Celery</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">OpenAI API</span>
+            </div>
+            <a href="https://github.com/avtovar/job-search-engine" target="_blank" rel="noopener" class="project-link" data-i18n="project.demo5.link">Ver en GitHub →</a>
+          </article>
         </div>
       </section>
 
       <!-- ===================== CERTIFICACIONES DESTACADAS ===================== -->
-      <section data-i18n-aria="section.aria.certs" aria-label="Certificados">
+      <section id="certs" data-i18n-aria="section.aria.certs" aria-label="Certificados">
         <div class="section-header">
           <span class="section-label" data-i18n="certs.label">Certificados</span>
           <div class="section-line"></div>
@@ -265,28 +550,58 @@
         <h2 data-i18n="certs.title">Certificaciones Destacadas</h2>
         <div class="diplomas-grid">
           <article class="diploma-item">
-            <a href="media/Diplomas/04_Software_Testing_AICS.jpg" target="_blank" class="diploma-link">
-              <img src="media/Diplomas/04_Software_Testing_AICS.jpg" data-i18n-alt="diploma.fstccert" alt="FSTC Certificate" class="diploma-img" loading="lazy">
+            <a href="media/Diplomas/fundamental-software-testing-certified.png" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/fundamental-software-testing-certified.png" data-i18n-alt="diploma.fstccert" alt="FSTC Certificate" class="diploma-img" loading="lazy">
               <div class="diploma-title" data-i18n="diploma.fstccert">FSTC Certified</div>
             </a>
           </article>
           <article class="diploma-item">
-            <a href="media/Diplomas/Python%20para%20no%20programadores.png" target="_blank" class="diploma-link">
-              <img src="media/Diplomas/Python para no programadores.png" data-i18n-alt="diploma.python" alt="Python" class="diploma-img" loading="lazy">
-              <div class="diploma-title" data-i18n="diploma.python">Python para no programadores</div>
+            <a href="media/Diplomas/scrum-fundamentals-certified.png" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/scrum-fundamentals-certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals Certified" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.scrumfund">Scrum Fundamentals Certified</div>
             </a>
           </article>
           <article class="diploma-item">
-            <a href="media/Diplomas/Git%20&%20Github%202026.pdf" target="_blank" class="diploma-link">
-              <img src="media/Diplomas/06_Git_Github.jpg" data-i18n-alt="diploma.gitcolab" alt="Git Certificate" class="diploma-img" loading="lazy">
-              <div class="diploma-title" data-i18n="diploma.gitcolab">Git: Desarrollo Colaborativo (PDF)</div>
+            <a href="media/Diplomas/software-tester-qa-avanzado.jpg" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/software-tester-qa-avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.qavanzado">QA Avanzado</div>
+            </a>
+          </article>
+          <article class="diploma-item">
+            <a href="media/Diplomas/git-github-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/06_Git_Github.jpg" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.git">Git & GitHub 2026 (PDF)</div>
+            </a>
+          </article>
+          <article class="diploma-item">
+            <a href="media/Diplomas/front-ja-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/05_Frontend_JS.jpg" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.frontend">Front-End JS 2025 (PDF)</div>
+            </a>
+          </article>
+          <article class="diploma-item">
+            <a href="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" data-i18n-alt="diploma.iaagentes" alt="IA: De 0 a Agentes" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.iaagentes">IA: De 0 a Agentes</div>
+            </a>
+          </article>
+          <article class="diploma-item">
+            <a href="media/Diplomas/2026-08-06_testing-qa-talento-tech-es.pdf" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/testing-qa-talento-tech-2026.png" data-i18n-alt="diploma.testingtalento" alt="Testing QA Talento Tech 2026" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.testingtalento">Testing QA Talento Tech 2026 (PDF)</div>
+            </a>
+          </article>
+          <article class="diploma-item">
+            <a href="media/Diplomas/04_Software_Testing_AICS.jpg" target="_blank" rel="noopener" class="diploma-link">
+              <img src="media/Diplomas/04_Software_Testing_AICS.jpg" data-i18n-alt="diploma.aics" alt="Software Testing AICS" class="diploma-img" loading="lazy">
+              <div class="diploma-title" data-i18n="diploma.aics">Software Testing AICS</div>
             </a>
           </article>
         </div>
       </section>
 
       <!-- ===================== DIPLOMAS (TABS) ===================== -->
-      <section data-i18n-aria="section.aria.diplomas" aria-label="Formación">
+      <section id="diplomas" data-i18n-aria="section.aria.diplomas" aria-label="Formación">
         <div class="section-header">
           <span class="section-label" data-i18n="diplomas.label">Formación</span>
           <div class="section-line"></div>
@@ -294,38 +609,38 @@
         <h2 data-i18n="diplomas.title">Diplomas</h2>
 
         <!-- Tab Navigation -->
-        <div class="diplomas-tabs-nav">
-          <button class="tab-button active" data-tab="programacion" data-i18n="tabs.programacion">Programación/Frontend</button>
-          <button class="tab-button" data-tab="qa" data-i18n="tabs.qa">QA/Testing</button>
-          <button class="tab-button" data-tab="devops" data-i18n="tabs.devops">DevOps/Herramientas</button>
-          <button class="tab-button" data-tab="agile" data-i18n="tabs.agile">Metodología Ágil</button>
-          <button class="tab-button" data-tab="ia" data-i18n="tabs.ia">IA/ML</button>
-          <button class="tab-button" data-tab="otros" data-i18n="tabs.otros">Bootcamps/Otros</button>
+        <div class="diplomas-tabs-nav" role="tablist" aria-label="Categorías de diplomas" data-i18n-aria="tabs.aria.categories">
+          <button class="tab-button active" data-tab="programacion" data-i18n="tabs.programacion" id="tab-programacion" role="tab" aria-selected="true" aria-controls="panel-programacion">Programación/Frontend</button>
+          <button class="tab-button" data-tab="qa" data-i18n="tabs.qa" id="tab-qa" role="tab" aria-selected="false" aria-controls="panel-qa">QA/Testing</button>
+          <button class="tab-button" data-tab="devops" data-i18n="tabs.devops" id="tab-devops" role="tab" aria-selected="false" aria-controls="panel-devops">DevOps/Herramientas</button>
+          <button class="tab-button" data-tab="agile" data-i18n="tabs.agile" id="tab-agile" role="tab" aria-selected="false" aria-controls="panel-agile">Metodología Ágil</button>
+          <button class="tab-button" data-tab="ia" data-i18n="tabs.ia" id="tab-ia" role="tab" aria-selected="false" aria-controls="panel-ia">IA/ML</button>
+          <button class="tab-button" data-tab="otros" data-i18n="tabs.otros" id="tab-otros" role="tab" aria-selected="false" aria-controls="panel-otros">Bootcamps/Otros</button>
         </div>
 
         <!-- Tab Content: Programación/Frontend -->
-        <div class="tab-content active" data-tab="programacion">
+        <div class="tab-content active" data-tab="programacion" id="panel-programacion" role="tabpanel" aria-labelledby="tab-programacion">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Programacio_desde_Cero.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Programacio_desde_Cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/programacion-desde-cero.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.programacion">Programación Desde Cero</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/HTML5 Fundamentos de una página Web.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/HTML5 Fundamentos de una página Web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.html5">HTML5 Fundamentos</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Front_JA-Certificacion Ali Tovar.pdf" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/05_Frontend_JS.jpg" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/front-ja-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/front-end-js-2025.png" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.frontend">Front-End JS 2025 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/03_HTML_CSS_Argentina_Programa_4.jpg" target="_blank" class="diploma-link">
+              <a href="media/Diplomas/03_HTML_CSS_Argentina_Programa_4.jpg" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/03_HTML_CSS_Argentina_Programa_4.jpg" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.htmlcss">HTML y CSS - Arg Programa 4.0</div>
               </a>
@@ -334,65 +649,71 @@
         </div>
 
         <!-- Tab Content: QA/Testing -->
-        <div class="tab-content" data-tab="qa">
+        <div class="tab-content" data-tab="qa" id="panel-qa" role="tabpanel" aria-labelledby="tab-qa">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Software Tester QA.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Software Tester QA.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/software-tester-qa.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.qatester">QA Tester</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Software Tester QA_avanzado.jpg" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Software Tester QA_avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/software-tester-qa-avanzado.jpg" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/software-tester-qa-avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.qavanzado">QA Avanzado</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/AcademiaQA_testingQA.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/AcademiaQA_testingQA.png" data-i18n-alt="diploma.academiaqa" alt="Diploma AcademiaQA Testing" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/academiaqa-testingqa.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="Diploma AcademiaQA Testing" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.academiaqa">AcademiaQA Testing</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Fundamental_Software_Testing_Certified.png" target="_blank" class="diploma-link">
+              <a href="media/Diplomas/certificate-fstc.pdf" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/04_Software_Testing_AICS.jpg" data-i18n-alt="diploma.fstc" alt="Fundamental Software Testing" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.fstc">Fundamental Testing Certified (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/testing-qa-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/testing-qa-talento-tech-2026.png" data-i18n-alt="diploma.testingqa2026" alt="Testing QA 2026" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.testingqa2026">Testing QA 2026 (PDF)</div>
               </a>
             </article>
           </div>
         </div>
 
         <!-- Tab Content: DevOps/Herramientas -->
-        <div class="tab-content" data-tab="devops">
+        <div class="tab-content" data-tab="devops" id="panel-devops" role="tabpanel" aria-labelledby="tab-devops">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Introducion_linea_Comando_Linux.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Introducion_linea_Comando_Linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/introduccion-linea-comando-linux.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.linux">Linux Comando</div>
               </a>
             </article>
-            <article class="diploma-item">
-              <a href="media/Diplomas/Git & Github 2026.pdf" target="_blank" class="diploma-link">
+<article class="diploma-item">
+              <a href="media/Diplomas/git-github-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/06_Git_Github.jpg" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
-                <div class="diploma-title" data-i18n="diploma.git">Git &amp; GitHub 2026 (PDF)</div>
+                <div class="diploma-title" data-i18n="diploma.git">Git & GitHub 2026 (PDF)</div>
               </a>
             </article>
           </div>
         </div>
 
         <!-- Tab Content: Metodología Ágil -->
-        <div class="tab-content" data-tab="agile">
+        <div class="tab-content" data-tab="agile" id="panel-agile" role="tabpanel" aria-labelledby="tab-agile">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Introducción a la Metodología Scrum.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Introducción a la Metodología Scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/introduccion-metodologia-scrum.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.scrum">Metodología Scrum</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Scrum_Fundamentals_Certified.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Scrum_Fundamentals_Certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/scrum-fundamentals-certified.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/scrum-fundamentals-certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.scrumfund">Scrum Fundamentals</div>
               </a>
             </article>
@@ -400,66 +721,224 @@
         </div>
 
         <!-- Tab Content: IA/ML -->
-        <div class="tab-content" data-tab="ia">
+        <div class="tab-content" data-tab="ia" id="panel-ia" role="tabpanel" aria-labelledby="tab-ia">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Introduccion%20a%20la%20Inteligencia%20Artificial%20%202025.pdf" target="_blank" class="diploma-link">
+              <a href="media/Diplomas/introduccion-inteligencia-artificial-2025.pdf" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/07_Introduccion_IA.jpg" data-i18n-alt="diploma.ia" alt="Introducción a IA" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.ia">Introducción a IA 2025 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Curso de IA. De 0 a Agentes domina la IA.jpg" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Curso de IA. De 0 a Agentes domina la IA.jpg" data-i18n-alt="diploma.iaagentes" alt="Curso de IA: De 0 a Agentes" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" data-i18n-alt="diploma.iaagentes" alt="Curso de IA: De 0 a Agentes" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.iaagentes">IA: De 0 a Agentes</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/certificado-curso-introduccion-ia-datos.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/certificado-curso-introduccion-ia-datos.png" data-i18n-alt="diploma.iaintro" alt="Curso Introducción IA para Datos" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.iaintro">Curso Introducción IA para Datos (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/certificado-desarrollo-con-ia.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/desarrollo-con-ia.png" data-i18n-alt="diploma.iadesarrollo" alt="Desarrollo con IA" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.iadesarrollo">Desarrollo con IA (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/certificado-ia-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/certificado-ia-2026.png" data-i18n-alt="diploma.ia2026" alt="Certificado IA 2026" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.ia2026">Certificado IA 2026 (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/certificado-ia-3-en-4-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/07_Introduccion_IA.jpg" data-i18n-alt="diploma.ia3en4" alt="Certificado IA 3 en 4 2026" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.ia3en4">Certificado IA 3 en 4 2026 (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-ia-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/07_Introduccion_IA.jpg" data-i18n-alt="diploma.iacert" alt="Introducción IA Certificación Ali Tovar" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.iacert">Introducción IA Certificación (PDF)</div>
               </a>
             </article>
           </div>
         </div>
 
-        <!-- Tab Content: Bootcamps/Otros -->
-        <div class="tab-content" data-tab="otros">
+<!-- Tab Content: Bootcamps/Otros -->
+        <div class="tab-content" data-tab="otros" id="panel-otros" role="tabpanel" aria-labelledby="tab-otros">
           <div class="diplomas-grid">
             <article class="diploma-item">
-              <a href="media/Diplomas/Argentina_Programa_SeProgramar.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Argentina_Programa_SeProgramar.png" data-i18n-alt="diploma.argprog" alt="Diploma Argentina Programa" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/argentina-programa-seprogramar.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Diploma Argentina Programa" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.argprog">Argentina Programa</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/argentina_programa_octubre_diciembre_2021.pdf" target="_blank" class="diploma-link">
+              <a href="media/Diplomas/argentina_programa_octubre_diciembre_2021.pdf" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/01_Argentina_Programa_2021.jpg" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.argprog2021">Arg Programa Oct-Dic 2021 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Certificado - Introducción a Bootcamps.pdf" target="_blank" class="diploma-link">
+              <a href="media/Diplomas/certificado-introduccion-bootcamps.pdf" target="_blank" rel="noopener" class="diploma-link">
                 <img src="media/Diplomas/02_Introduccion_Bootcamps.jpg" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.bootcamps">Introducción a Bootcamps (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Curso de Entrevistas Laborales en el munod tech.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Curso de Entrevistas Laborales en el munod tech.png" data-i18n-alt="diploma.entrevistas" alt="Curso Entrevistas Laborales" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/certificado-ap4-t2.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/01_Argentina_Programa_2021.jpg" data-i18n-alt="diploma.ap4" alt="Certificado AP4.0 T2" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.ap4">Certificado AP4.0 T2 (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/curso-entrevistas-laborales-tech.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Curso Entrevistas Laborales" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.entrevistas">Entrevistas Laborales IT</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Ali Valentin Tovar Morales.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Ali Valentin Tovar Morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Armá tu perfil profesional" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/ali-valentin-tovar-morales.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Armá tu perfil profesional" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.githubperfil">GitHub: Perfil Profesional</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Introducción a Bases de Datos y SQL.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Introducción a Bases de Datos y SQL.png" data-i18n-alt="diploma.bddsql" alt="Introducción a Bases de Datos y SQL" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/introduccion-bases-datos-sql.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Introducción a Bases de Datos y SQL" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.bddsql">Bases de Datos y SQL</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/Introducción a UX.png" target="_blank" class="diploma-link">
-                <img src="media/Diplomas/Introducción a UX.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/introduccion-ux.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.ux">Introducción a UX</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/python-no-programadores.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.python">Python para no programadores</div>
+              </a>
+            </article>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- ===================== TODOS LOS CERTIFICADOS (COLLAPSIBLE) ===================== -->
+      <section id="allcerts" data-i18n-aria="section.aria.allcerts" aria-label="Todos los certificados">
+        <div class="section-header">
+          <span class="section-label" data-i18n="certs.all.label">Todos</span>
+          <div class="section-line"></div>
+        </div>
+        <h2 data-i18n="certs.all.title">Todos los certificados</h2>
+        <div class="all-certs-toggle">
+          <button type="button" class="toggle-btn" id="allCertsToggle" aria-expanded="false" aria-controls="allCertsContent">
+            <span data-i18n="certs.ver-todos">Ver todos los certificados</span>
+            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <div class="all-certs-content" id="allCertsContent" hidden>
+          <div class="diplomas-grid">
+            <article class="diploma-item">
+              <a href="media/Diplomas/programacion-desde-cero.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.programacion">Programación Desde Cero</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.html5">HTML5 Fundamentos</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/03_HTML_CSS_Argentina_Programa_4.jpg" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/03_HTML_CSS_Argentina_Programa_4.jpg" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.htmlcss">HTML y CSS - Arg Programa 4.0</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/software-tester-qa.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.qatester">QA Tester</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/academiaqa-testingqa.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="AcademiaQA Testing" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.academiaqa">AcademiaQA Testing</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-linea-comando-linux.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.linux">Linux Comando</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-inteligencia-artificial-2025.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/07_Introduccion_IA.jpg" data-i18n-alt="diploma.ia" alt="Introducción a IA 2025" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.ia">Introducción a IA 2025 (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-metodologia-scrum.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.scrum">Metodología Scrum</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/argentina-programa-seprogramar.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Argentina Programa" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.argprog">Argentina Programa</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/argentina_programa_octubre_diciembre_2021.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/01_Argentina_Programa_2021.jpg" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.argprog2021">Arg Programa Oct-Dic 2021 (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/certificado-introduccion-bootcamps.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/02_Introduccion_Bootcamps.jpg" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.bootcamps">Introducción a Bootcamps (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/curso-entrevistas-laborales-tech.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Entrevistas Laborales IT" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.entrevistas">Entrevistas Laborales IT</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/ali-valentin-tovar-morales.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Perfil Profesional" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.githubperfil">GitHub: Perfil Profesional</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-bases-datos-sql.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Bases de Datos y SQL" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.bddsql">Bases de Datos y SQL</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/introduccion-ux.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.ux">Introducción a UX</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/python-no-programadores.png" target="_blank" rel="noopener" class="diploma-link">
+                <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+                <div class="diploma-title" data-i18n="diploma.python">Python para no programadores</div>
               </a>
             </article>
           </div>
@@ -467,7 +946,7 @@
       </section>
 
       <!-- ===================== EDUCACIÓN ===================== -->
-      <section data-i18n-aria="section.aria.education" aria-label="Académico">
+      <section id="education" data-i18n-aria="section.aria.education" aria-label="Académico">
         <div class="section-header">
           <span class="section-label" data-i18n="edu.label">Académico</span>
           <div class="section-line"></div>
@@ -483,7 +962,7 @@
           <p data-i18n="edu.degree1">Título universitario obtenido</p>
         </div>
 
-        <div class="edu-item" style="margin-top: 20px;">
+        <div class="edu-item edu-item--spaced">
           <strong>IUTIRLA</strong>
           <span data-i18n="edu.iutirla">Técnico Superior Universitario en Informática</span>
         </div>
@@ -493,40 +972,70 @@
         </div>
       </section>
 
-    </div><!-- /.cv-body -->
+      <!-- ===================== IDIOMAS Y DISPONIBILIDAD ===================== -->
+      <section class="languages-availability" data-i18n-aria="section.aria.langavail" aria-label="Idiomas y Disponibilidad">
+        <div class="section-header">
+          <span class="section-label" data-i18n="langavail.label">Disponibilidad</span>
+          <div class="section-line"></div>
+        </div>
+        <h2 data-i18n="langavail.title">Idiomas y Disponibilidad</h2>
+        <div class="langavail-grid">
+          <div class="langavail-item">
+            <h3 data-i18n="langavail.languages">Idiomas</h3>
+            <ul>
+              <li><strong>Español:</strong> Nativo</li>
+              <li><strong>Inglés:</strong> <span data-i18n="langavail.english">Básico</span></li>
+            </ul>
+          </div>
+          <div class="langavail-item">
+            <h3 data-i18n="langavail.availability">Disponibilidad</h3>
+            <ul>
+              <li data-i18n="langavail.remote">Remoto / Híbrido</li>
+              <li data-i18n="langavail.timezone">Zona horaria: GMT-3 (Buenos Aires)</li>
+              <li data-i18n="langavail.status">Disponible para nuevas oportunidades</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main><!-- /.cv-body -->
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <div class="footer-container">
+
+        <div class="footer-form" id="contact-form">
+          <h2 data-i18n="footer.contact">Contáctame</h2>
+          <form id="contactForm" autocomplete="on">
+            <div class="form-group honeypot-field" aria-hidden="true">
+              <label for="honeypot" aria-hidden="true">No completar este campo</label>
+              <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </div>
+            <div class="form-group">
+              <label for="nombre" data-i18n="footer.form.name">Nombre</label>
+              <input type="text" id="nombre" name="nombre" data-i18n-placeholder="footer.form.placeholder.name" placeholder="Tu nombre" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label for="email" data-i18n="footer.form.email">Correo electrónico</label>
+              <input type="email" id="email" name="email" data-i18n-placeholder="footer.form.placeholder.email" placeholder="Tu email" required>
+            </div>
+            <div class="form-group">
+              <label for="mensaje" data-i18n="footer.form.msg">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" data-i18n-placeholder="footer.form.placeholder.msg" placeholder="Tu mensaje" required minlength="10"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" data-i18n="footer.form.submit">Enviar mensaje</button>
+            <div id="formMessage" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+      </div>
+      <p class="footer-note">© <span id="current-year"></span> <span id="copyright-text">Ali Valentin Tovar Morales. Todos los derechos reservados.</span></p>
+    </footer>
+
   </div><!-- /.container -->
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="footer-container">
-
-      <div class="footer-form">
-        <h2 data-i18n="footer.contact">Contáctame</h2>
-        <form id="contactForm" autocomplete="on">
-          <div class="form-group honeypot-field" aria-hidden="true">
-            <label for="honeypot">No completar este campo</label>
-            <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
-          </div>
-          <div class="form-group">
-            <label for="nombre" data-i18n="footer.form.name">Nombre</label>
-            <input type="text" id="nombre" name="nombre" data-i18n-placeholder="footer.form.placeholder.name" placeholder="Tu nombre" required minlength="2">
-          </div>
-          <div class="form-group">
-            <label for="email" data-i18n="footer.form.email">Correo electrónico</label>
-            <input type="email" id="email" name="email" data-i18n-placeholder="footer.form.placeholder.email" placeholder="Tu email" required>
-          </div>
-          <div class="form-group">
-            <label for="mensaje" data-i18n="footer.form.msg">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" data-i18n-placeholder="footer.form.placeholder.msg" placeholder="Tu mensaje" required minlength="10"></textarea>
-          </div>
-          <button type="submit" id="submitBtn" data-i18n="footer.form.submit">Enviar mensaje</button>
-          <div id="formMessage" aria-live="polite"></div>
-        </form>
-      </div>
-
-    </div>
-    <p class="footer-note">© <span id="current-year"></span> <span id="copyright-text">Ali Valentin Tovar Morales. Todos los derechos reservados.</span></p>
-  </footer>
+  <!-- ===================== BACK TO TOP ===================== -->
+  <button id="backToTop" type="button" aria-label="Volver arriba" class="back-to-top" hidden>↑</button>
 
   <!-- ===================== SCRIPTS ===================== -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -545,6 +1054,7 @@
     <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma a inglés">EN</button>
     <button class="dark-toggle" id="darkToggle" aria-label="Cambiar modo oscuro/claro">🌙</button>
   </div>
+  <span class="visually-hidden" id="copyStatus" aria-live="polite"></span>
   <script src="js/Formulario.js"></script>
 </body>
 

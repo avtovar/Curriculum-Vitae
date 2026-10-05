@@ -22,3 +22,29 @@ Desktop.ini
 
 # Carpetas de node (si existieran en el futuro)
 node_modules/
+
+# Junk / descargas accidentales
+files(1)*
+files(*)*
+Captura*
+*.screenshot.png
+Screen Shot*
+
+# Dist de build local
+dist/
+
+# Carpeta local privada (nunca se sube)
+no_subir/
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials.json
+serviceAccountKey.json

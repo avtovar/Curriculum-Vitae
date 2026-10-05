@@ -7,11 +7,36 @@ import path from 'path';
 
 const requiredVars = ['EMAILJS_PUBLIC_KEY', 'EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID'];
 
-for (const v of requiredVars) {
-  if (!process.env[v]) {
-    console.error(`❌ Missing required environment variable: ${v}`);
+const missing = requiredVars.filter((v) => !process.env[v]);
+
+if (missing.length > 0) {
+  console.warn(`⚠️  EmailJS env vars not set (${missing.join(', ')}).`);
+  console.warn('   Skipping injection — placeholders in index.html/Formulario.js will remain.');
+  console.warn('   Set them (or run with NODE_ENV=production in CI) to inject for real.\n');
+
+  // Only fail hard when explicitly required (CI sets this)
+  if (process.env.NODE_ENV === 'production' || process.env.CI === 'true') {
+    console.error('❌ CI/production build requires EmailJS env vars. Aborting.');
     process.exit(1);
   }
+  // Local dev: warn and exit successfully (no in-place modification)
+  process.exit(0);
+}
+
+// Guard: if placeholders were already replaced (e.g. local run after CI),
+// detect and warn instead of crashing.
+const placeholdersPresent = ['index.html', 'js/Formulario.js'].some((f) => {
+  try {
+    return fs.readFileSync(f, 'utf8').includes('__EMAILJS_');
+  } catch {
+    return false;
+  }
+});
+
+if (!placeholdersPresent) {
+  console.warn('⚠️  No __EMAILJS_*__ placeholders found — files may already be injected.');
+  console.warn('   Nothing to do. Skipping in-place modification.\n');
+  process.exit(0);
 }
 
 const replacements = {

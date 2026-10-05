@@ -7,35 +7,54 @@ const translations = {
     "header.download": "Descargar CV (PDF)",
     "about.label": "Sobre mí",
     "about.title": "Extracto Profesional",
-    "about.text": "Profesional del área de Informática con una sólida trayectoria en <strong>Quality Assurance (QA)</strong>, especializado en garantizar la robustez, eficiencia y alta calidad de productos de software en sectores críticos como banca digital y fintech. Cuento con amplia experiencia en pruebas funcionales, testing web, mobile (Android/iOS), back-end y front-end, operando bajo metodologías ágiles (Scrum) y utilizando herramientas líderes como Jira, Xray y Azure DevOps.<br><br>Desde 2025, he profundizado en la integración de la <strong>Inteligencia Artificial aplicada</strong> para potenciar la productividad y la automatización. Durante 2026, me he enfocado en soluciones basadas en <strong>IA generativa y agentes inteligentes</strong>, utilizando herramientas como <strong>Claude, Claude Code y Claude Design</strong> para la automatización de flujos de trabajo, generación de documentación técnica y asistencia avanzada en desarrollo y QA. Me caracterizo por ser una persona proactiva, orientada a resultados y con gran capacidad para gestionar tareas críticas bajo presión en entornos tecnológicos altamente dinámicos.",
+    "about.text": "QA Engineer con 5+ años en banca digital y fintech. Diseño y automatizo pruebas web y mobile (Android/iOS) con Maestro, Python y Postman. Uso IA generativa (Claude Code, Gemini) para acelerar diseño de casos de prueba y documentación técnica. Busco roles de QA Automation/Lead en entornos fintech.",
+    "about.ia.title": "IA Aplicada al QA",
+    "about.ia.text": "Integración de IA generativa (Claude Code, Gemini, ChatGPT) en el ciclo de vida de QA: generación automatizada de casos de prueba (Gherkin/BDD), data-driven testing, documentación técnica, análisis de logs y creación de scripts de automatización. Aceleración de 40% en documentación QA y cobertura de casos edge mediante prompting estructurado. Uso de Claude Design para prototipado rápido de flujos de prueba y validación UX.",
     "skills.label": "Competencias",
     "skills.title": "Habilidades",
-    "skill.analisis": "Análisis Funcional",
-    "skill.regresion": "Regresión & Smoke Testing",
-    "skill.documentacion": "Documentación QA",
-    "skill.cajanegra": "Caja Negra / Caja Blanca",
+    "skills.cat.testing": "Testing",
+    "skills.cat.automation": "Automation & Code",
+    "skills.cat.apis": "APIs & Data",
+    "skills.cat.management": "Management & Methodology",
+    "skills.cat.ai": "AI & Domain",
+    "skill.manual": "Manual Testing",
+    "skill.automation": "Automation Testing",
+    "skill.funcional": "Functional Testing",
+    "skill.regresion": "Regression & Smoke",
+    "skill.cajanegra": "Black/White Box",
+    "skill.ux": "UX Validation",
+    "skill.gherkin": "Gherkin/BDD",
+    "skill.documentacion": "QA Documentation",
+    "skill.scrum": "Scrum/Agile",
+    "skill.fintech": "Fintech/Banking",
+    "skill.iaqa": "AI Applied to QA",
     "exp.label": "Trayectoria",
     "exp.title": "Experiencia",
     "exp.brubank.role": "QA Engineer",
     "exp.brubank.date": "abril 2021 — Presente",
     "exp.brubank.location": "Buenos Aires, Argentina",
-    "exp.brubank.bullet1": "Gestión y mantenimiento de sistemas de software, asegurando estabilidad y alineación con el negocio.",
-    "exp.brubank.bullet2": "Automatización de pruebas mobile y web con <strong>Maestro Studio y JavaScript</strong> para Android e iOS.",
-    "exp.brubank.bullet3": "Desarrollo de scripts y validaciones web con <strong>Python y PyCharm</strong> para optimizar procesos QA.",
-    "exp.brubank.bullet4": "Testing Front-end y Back-end, incluyendo validación de <strong>APIs REST y GraphQL</strong> con Postman.",
-    "exp.brubank.bullet5": "Experiencia en entornos bancarios críticos: Fail-Over, Promociones, QR, Tarjetas, eSIM y más.",
-    "exp.brubank.bullet6": "Integración de herramientas de IA (Claude Code, Gemini) para análisis y generación de casos de prueba.",
+    "exp.brubank.sub1.title": "Fail-Over & Resiliencia Bancaria",
+    "exp.brubank.sub1.bullet1": "Automaticé 25+ flujos críticos de Fail-Over con Maestro Studio (JS), reduciendo tiempo de regresión de 8h a 45min y cubriendo 95% de casos de fallo.",
+    "exp.brubank.sub1.bullet2": "Validé APIs REST/GraphQL de contingencia con Postman, detectando 12 defectos críticos pre-producción en módulos de transferencias y pagos.",
+    "exp.brubank.sub2.title": "QR, Tarjetas & eSIM (Core Banking)",
+    "exp.brubank.sub2.bullet1": "Lideré testing E2E de módulos QR V1/V2, Tarjetas Crédito/Débito y eSIM: 180+ casos funcionales, 0 escapes a producción en 6 releases.",
+    "exp.brubank.sub2.bullet2": "Implementé automatización mobile (Android/iOS) para onboarding digital, reduciendo QA manual de 3 días a 4 horas por sprint.",
+    "exp.brubank.sub3.title": "Promociones, Pyme & Banca Empresas",
+    "exp.brubank.sub3.bullet1": "Diseñé estrategia de pruebas para Promociones V2 y Pyme: 40+ casos de regresión automatizados, cobertura 87% en flujos de negocio.",
+    "exp.brubank.sub3.bullet2": "Integré Claude Code/Gemini para generación de casos de prueba y data-driven testing, acelerando documentación QA en 40%.",
     "exp.practia.role": "Semi Senior QA Tester",
     "exp.practia.date": "agosto 2020 — marzo 2021",
-    "exp.practia.client": "Cliente: Brubank",
+    "exp.practia.client": "Cliente: Brubank → incorporación directa",
     "exp.practia.bullet1": "Dominio en pruebas para plataformas Android e iOS y Back-end.",
     "exp.practia.bullet2": "Diseño y ejecución de casos de prueba meticulosos para identificar y resolver defectos.",
     "exp.practia.bullet3": "Colaboración estrecha con equipos multidisciplinarios bajo metodologías ágiles.",
-    "exp.qafuncional.role": "QA Tester",
-    "exp.qafuncional.date": "enero 2020 — julio 2020",
-    "exp.qafuncional.client": "Cliente: Edenor",
-    "exp.qafuncional.bullet1": "Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.",
-    "exp.qafuncional.bullet2": "Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.",
+    "exp.practia.edenor.company": "Edenor",
+    "exp.practia.edenor.role": "QA Tester (Cliente)",
+    "exp.practia.edenor.date": "enero 2020 — julio 2020",
+    "exp.practia.edenor.type": "Proyecto outsourcing",
+    "exp.practia.edenor.bullet1": "Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.",
+    "exp.practia.edenor.bullet2": "Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.",
+    "exp.datasystem.company": "Data System Tovar",
     "exp.datasystem.role": "Analista Tester QA",
     "exp.datasystem.date": "septiembre 2018 — agosto 2019",
     "exp.datasystem.country": "Argentina",
@@ -55,6 +74,10 @@ const translations = {
     "portfolio.bullet3": "Validación de interoperabilidad y diseño de pruebas manuales con documentación detallada.",
     "certs.label": "Certificados",
     "certs.title": "Certificaciones Destacadas",
+    "certs.all.label": "Todos",
+    "certs.all.title": "Todos los certificados",
+    "certs.ver-todos": "Ver todos los certificados",
+    "certs.ocultar": "Ocultar todos los certificados",
     "diplomas.label": "Formación",
     "diplomas.title": "Diplomas",
     "tabs.programacion": "Programación/Frontend",
@@ -87,12 +110,29 @@ const translations = {
     "diploma.python": "Python para no programadores",
     "diploma.fstccert": "FSTC Certified",
     "diploma.gitcolab": "Git: Desarrollo Colaborativo (PDF)",
+    "diploma.testingtalento": "Testing QA Talento Tech 2026 (PDF)",
+    "diploma.aics": "Software Testing AICS",
+    "diploma.testingqa2026": "Testing QA 2026 (PDF)",
+    "diploma.iaintro": "Curso Introducción IA para Datos (PDF)",
+    "diploma.iadesarrollo": "Desarrollo con IA (PDF)",
+    "diploma.ia2026": "Certificado IA 2026 (PDF)",
+    "diploma.ia3en4": "Certificado IA 3 en 4 2026 (PDF)",
+    "diploma.iacert": "Introducción IA Certificación (PDF)",
+    "diploma.ap4": "Certificado AP4.0 T2 (PDF)",
     "edu.label": "Académico",
     "edu.title": "Educación",
     "edu.universidad": "Licenciatura en Administración, mención Informática",
     "edu.iutirla": "Técnico Superior Universitario en Informática",
     "edu.degree1": "Título universitario obtenido",
     "edu.degree2": "Título universitario obtenido",
+    "langavail.label": "Disponibilidad",
+    "langavail.title": "Idiomas y Disponibilidad",
+    "langavail.languages": "Idiomas",
+    "langavail.english": "Básico",
+    "langavail.availability": "Disponibilidad",
+    "langavail.remote": "Remoto / Híbrido",
+    "langavail.timezone": "Zona horaria: GMT-3 (Buenos Aires)",
+    "langavail.status": "Disponible para nuevas oportunidades",
     "footer.contact": "Contáctame",
     "footer.form.name": "Nombre",
     "footer.form.email": "Correo electrónico",
@@ -116,6 +156,7 @@ const translations = {
     "exp.month_singular": " mes",
     "exp.month_plural": " meses",
     "exp.zero_months": "0 meses",
+    "exp.present": "Presente",
     "copied": "Copiado",
     "dark.aria": "Cambiar modo oscuro/claro",
     "lang.aria": "Cambiar idioma a inglés",
@@ -131,14 +172,88 @@ const translations = {
     "section.aria.certs": "Certificados",
     "section.aria.diplomas": "Formación",
     "section.aria.education": "Académico",
-    "img.alt.brubank": "Logo de Brubank",
-    "img.alt.practia": "Logo de Practia Global",
-    "img.alt.pcivil": "Logo de Protección Civil Miranda",
+    "section.aria.allcerts": "Todos los certificados",
+    "section.aria.langavail": "Idiomas y Disponibilidad",
+    "section.aria.iaqa": "IA aplicada al QA",
+    "img.alt.brubank": "Brubank",
+    "img.alt.practia": "Practia Global",
+    "img.alt.pcivil": "Protección Civil Miranda",
     "img.alt.degree1": "Título universitario Simón Rodríguez",
     "img.alt.degree2": "Título universitario IUTIRLA",
     "project.tag.funcional": "Funcional",
     "project.tag.regresion": "Regresión",
-    "honeypot.label": "No completar este campo"
+    "honeypot.label": "No completar este campo",
+    /* === NAV === */
+    "nav.about": "Sobre mí",
+    "nav.skills": "Competencias",
+    "nav.experience": "Experiencia",
+    "nav.projects": "Proyectos",
+    "nav.certs": "Certificados",
+    "nav.diplomas": "Formación",
+    "nav.education": "Académico",
+    "nav.contact": "Contacto",
+    "nav.aria.main": "Navegación principal",
+    "tabs.aria.categories": "Categorías de diplomas",
+    /* === HERO === */
+    "header.contact": "Contacto",
+    "header.linkedin": "LinkedIn",
+    "header.github": "GitHub",
+    "hero.valueprop": "Aseguro la calidad de aplicaciones bancarias y fintech usadas por miles de usuarios",
+    "hero.indicator1": "5+ años",
+    "hero.indicator2": "Android/iOS/Web",
+    "hero.indicator3": "Maestro + Python + Postman",
+    "hero.indicator4": "Fintech/Banking",
+    "hero.availability": "Disponible · Remoto/Híbrido · GMT-3",
+    /* === PROJECTS === */
+    "project.brubank1.title": "Fail-Over & Resiliencia Bancaria",
+    "project.brubank1.context": "Sistema de failover core banking",
+    "project.brubank1.role": "Rol: QA Lead Automation",
+    "project.brubank1.action": "25+ flujos Maestro, validación GraphQL API",
+    "project.brubank1.result": "Regresión 8h→45min, 95% cobertura fallos",
+    "project.brubank2.title": "QR, Tarjetas & eSIM (Core Banking)",
+    "project.brubank2.context": "Onboarding digital y pagos",
+    "project.brubank2.role": "Rol: QA Automation Engineer",
+    "project.brubank2.action": "180+ casos E2E, automatización Android/iOS",
+    "project.brubank2.result": "0 escapes en 6 releases, QA manual 3d→4h",
+    "project.brubank3.title": "Promociones, Pyme & Banca Empresas",
+    "project.brubank3.context": "Banca empresarial y motor promociones",
+    "project.brubank3.role": "Rol: QA Engineer",
+    "project.brubank3.action": "40+ regresión automatizada, IA generación casos",
+    "project.brubank3.result": "87% cobertura, 40% docs más rápido",
+    "project.demo1.title": "Maestro Mobile Automation Demo",
+    "project.demo1.context": "Flujos de ejemplo app demo",
+    "project.demo1.role": "Repositorio público",
+    "project.demo1.action": "Login, pago, transferencia con Maestro",
+    "project.demo1.result": "Código abierto, listo para usar",
+    "project.demo1.link": "Ver en GitHub →",
+    "project.demo2.title": "Postman API Testing Collection",
+    "project.demo2.context": "Colección documentada con tests",
+    "project.demo2.role": "Repositorio público",
+    "project.demo2.action": "Tests automatizados REST/GraphQL",
+    "project.demo2.result": "CI/CD ready, variables de entorno",
+    "project.demo2.link": "Ver en GitHub →",
+    "project.demo3.title": "QA Templates Repository",
+    "project.demo3.context": "Plantillas QA profesionales",
+    "project.demo3.role": "Repositorio público",
+    "project.demo3.action": "Plan de pruebas, casos, reporte bugs",
+    "project.demo3.result": "Estándar industria, personalizable",
+    "project.demo3.link": "Ver en GitHub →",
+    "project.demo4.title": "Apps Matemáticas Interactivas",
+    "project.demo4.context": "Aplicaciones educativas web/mobile",
+    "project.demo4.role": "Full Stack Developer & QA",
+    "project.demo4.action": "Desarrollo de apps interactivas (álgebra, geometría, cálculo) con React Native y Python",
+    "project.demo4.result": "Tests automatizados E2E, 95% cobertura, deploy CI/CD",
+    "project.demo4.link": "Ver en GitHub →",
+    "project.demo5.title": "Buscador Ofertas Empleo Interactivo",
+    "project.demo5.context": "Plataforma scraping + matching IA",
+    "project.demo5.role": "Backend Developer & QA Automation",
+    "project.demo5.action": "Scraping multi-fuente (LinkedIn, InfoJobs, Glassdoor), matching IA con embeddings, alertas temps real",
+    "project.demo5.result": "API REST documentada, tests contract, 99% uptime, Docker + K8s",
+    "project.demo5.link": "Ver en GitHub →",
+    "project.badge.confidential": "Confidencial",
+    "project.badge.public": "Público",
+    /* === BACK TO TOP === */
+    "backtotop.aria": "Volver arriba"
   },
   en: {
     "head.title": "CV - Ali Valentin Tovar Morales | QA Engineer",
@@ -147,35 +262,54 @@ const translations = {
     "header.download": "Download CV (PDF)",
     "about.label": "About Me",
     "about.title": "Professional Summary",
-    "about.text": "IT professional with a solid career in <strong>Quality Assurance (QA)</strong>, specialized in ensuring robustness, efficiency, and high quality of software products in critical sectors such as digital banking and fintech. Extensive experience in functional testing, web testing, mobile (Android/iOS), back-end and front-end, operating under agile methodologies (Scrum) and using leading tools such as Jira, Xray, and Azure DevOps.<br><br>Since 2025, I have deepened the integration of <strong>Applied Artificial Intelligence</strong> to boost productivity and automation. During 2026, I have focused on solutions based on <strong>generative AI and intelligent agents</strong>, using tools like <strong>Claude, Claude Code, and Claude Design</strong> for workflow automation, technical documentation generation, and advanced assistance in development and QA. I am proactive, results-oriented, and highly capable of managing critical tasks under pressure in highly dynamic technological environments.",
+    "about.text": "QA Engineer with 5+ years in digital banking and fintech. Design and automate web and mobile (Android/iOS) tests with Maestro, Python, and Postman. Use generative AI (Claude Code, Gemini) to accelerate test case design and technical documentation. Seeking QA Automation/Lead roles in fintech environments.",
+    "about.ia.title": "AI Applied to QA",
+    "about.ia.text": "Integration of generative AI (Claude Code, Gemini, ChatGPT) into the QA lifecycle: automated test case generation (Gherkin/BDD), data-driven testing, technical documentation, log analysis, and automation script creation. 40% acceleration in QA documentation and edge-case coverage through structured prompting. Use of Claude Design for rapid prototyping of test flows and UX validation.",
     "skills.label": "Competencies",
     "skills.title": "Skills",
-    "skill.analisis": "Functional Analysis",
-    "skill.regresion": "Regression & Smoke Testing",
+    "skills.cat.testing": "Testing",
+    "skills.cat.automation": "Automation & Code",
+    "skills.cat.apis": "APIs & Data",
+    "skills.cat.management": "Management & Methodology",
+    "skills.cat.ai": "AI & Domain",
+    "skill.manual": "Manual Testing",
+    "skill.automation": "Automation Testing",
+    "skill.funcional": "Functional Testing",
+    "skill.regresion": "Regression & Smoke",
+    "skill.cajanegra": "Black/White Box",
+    "skill.ux": "UX Validation",
+    "skill.gherkin": "Gherkin/BDD",
     "skill.documentacion": "QA Documentation",
-    "skill.cajanegra": "Black Box / White Box",
+    "skill.scrum": "Scrum/Agile",
+    "skill.fintech": "Fintech/Banking",
+    "skill.iaqa": "AI Applied to QA",
     "exp.label": "Experience",
     "exp.title": "Work History",
     "exp.brubank.role": "QA Engineer",
     "exp.brubank.date": "April 2021 — Present",
     "exp.brubank.location": "Buenos Aires, Argentina",
-    "exp.brubank.bullet1": "Management and maintenance of software systems, ensuring stability and business alignment.",
-    "exp.brubank.bullet2": "Mobile and web test automation with <strong>Maestro Studio and JavaScript</strong> for Android and iOS.",
-    "exp.brubank.bullet3": "Script and web validation development with <strong>Python and PyCharm</strong> to optimize QA processes.",
-    "exp.brubank.bullet4": "Front-end and Back-end testing, including <strong>REST and GraphQL API</strong> validation with Postman.",
-    "exp.brubank.bullet5": "Experience in critical banking environments: Fail-Over, Promotions, QR, Cards, eSIM, and more.",
-    "exp.brubank.bullet6": "Integration of AI tools (Claude Code, Gemini) for test case analysis and generation.",
+    "exp.brubank.sub1.title": "Fail-Over & Banking Resilience",
+    "exp.brubank.sub1.bullet1": "Automated 25+ critical Fail-Over flows with Maestro Studio (JS), reducing regression time from 8h to 45min and covering 95% of failure cases.",
+    "exp.brubank.sub1.bullet2": "Validated contingency REST/GraphQL APIs with Postman, detecting 12 critical pre-production defects in transfers and payments modules.",
+    "exp.brubank.sub2.title": "QR, Cards & eSIM (Core Banking)",
+    "exp.brubank.sub2.bullet1": "Led E2E testing of QR V1/V2, Credit/Debit Cards, and eSIM modules: 180+ functional cases, 0 production escapes across 6 releases.",
+    "exp.brubank.sub2.bullet2": "Implemented mobile automation (Android/iOS) for digital onboarding, reducing manual QA from 3 days to 4 hours per sprint.",
+    "exp.brubank.sub3.title": "Promotions, SME & Corporate Banking",
+    "exp.brubank.sub3.bullet1": "Designed test strategy for Promotions V2 and SME: 40+ automated regression cases, 87% coverage on business flows.",
+    "exp.brubank.sub3.bullet2": "Integrated Claude Code/Gemini for test case generation and data-driven testing, accelerating QA documentation by 40%.",
     "exp.practia.role": "Semi Senior QA Tester",
     "exp.practia.date": "August 2020 — March 2021",
-    "exp.practia.client": "Client: Brubank",
+    "exp.practia.client": "Client: Brubank → direct hire",
     "exp.practia.bullet1": "Proficiency in testing for Android, iOS, and Back-end platforms.",
     "exp.practia.bullet2": "Design and execution of meticulous test cases to identify and resolve defects.",
     "exp.practia.bullet3": "Close collaboration with multidisciplinary teams under agile methodologies.",
-    "exp.qafuncional.role": "QA Tester",
-    "exp.qafuncional.date": "January 2020 — July 2020",
-    "exp.qafuncional.client": "Client: Edenor",
-    "exp.qafuncional.bullet1": "Web and Mobile testing specialist for Edenor, focusing on Manual and Regression Testing.",
-    "exp.qafuncional.bullet2": "Efficient bug report management, tracking, and detailed documentation.",
+    "exp.practia.edenor.company": "Edenor",
+    "exp.practia.edenor.role": "QA Tester (Client)",
+    "exp.practia.edenor.date": "January 2020 — July 2020",
+    "exp.practia.edenor.type": "Outsourcing project",
+    "exp.practia.edenor.bullet1": "Web and Mobile testing specialist for Edenor, focusing on Manual and Regression Testing.",
+    "exp.practia.edenor.bullet2": "Efficient bug report management, tracking, and detailed documentation.",
+    "exp.datasystem.company": "Data System Tovar",
     "exp.datasystem.role": "QA Tester Analyst",
     "exp.datasystem.date": "September 2018 — August 2019",
     "exp.datasystem.country": "Argentina",
@@ -195,6 +329,10 @@ const translations = {
     "portfolio.bullet3": "Interoperability validation and manual test design with detailed documentation.",
     "certs.label": "Certificates",
     "certs.title": "Featured Certifications",
+    "certs.all.label": "All",
+    "certs.all.title": "All certificates",
+    "certs.ver-todos": "View all certificates",
+    "certs.ocultar": "Hide all certificates",
     "diplomas.label": "Education",
     "diplomas.title": "Diplomas",
     "tabs.programacion": "Programming/Frontend",
@@ -227,12 +365,29 @@ const translations = {
     "diploma.python": "Python for Non-Programmers",
     "diploma.fstccert": "FSTC Certified",
     "diploma.gitcolab": "Git: Collaborative Development (PDF)",
+    "diploma.testingtalento": "Testing QA Talento Tech 2026 (PDF)",
+    "diploma.aics": "Software Testing AICS",
+    "diploma.testingqa2026": "Testing QA 2026 (PDF)",
+    "diploma.iaintro": "AI Introduction for Data (PDF)",
+    "diploma.iadesarrollo": "Development with AI (PDF)",
+    "diploma.ia2026": "AI Certificate 2026 (PDF)",
+    "diploma.ia3en4": "AI Certificate 3-in-4 2026 (PDF)",
+    "diploma.iacert": "AI Introduction Certificate (PDF)",
+    "diploma.ap4": "AP4.0 T2 Certificate (PDF)",
     "edu.label": "Academic",
     "edu.title": "Education",
     "edu.universidad": "Bachelor's Degree in Administration, IT Major",
     "edu.iutirla": "Higher University Technician in IT",
     "edu.degree1": "University degree obtained",
     "edu.degree2": "University degree obtained",
+    "langavail.label": "Availability",
+    "langavail.title": "Languages & Availability",
+    "langavail.languages": "Languages",
+    "langavail.english": "Basic",
+    "langavail.availability": "Availability",
+    "langavail.remote": "Remote / Hybrid",
+    "langavail.timezone": "Timezone: GMT-3 (Buenos Aires)",
+    "langavail.status": "Available for new opportunities",
     "footer.contact": "Contact Me",
     "footer.form.name": "Name",
     "footer.form.email": "Email",
@@ -249,6 +404,77 @@ const translations = {
     "footer.form.short_msg": "The message must be at least 10 characters long.",
     "footer.form.sending_msg": "Sending message...",
     "footer.copyright": "All rights reserved.",
+    /* === NAV === */
+    "nav.about": "About Me",
+    "nav.skills": "Skills",
+    "nav.experience": "Experience",
+    "nav.projects": "Projects",
+    "nav.certs": "Certificates",
+    "nav.diplomas": "Education",
+    "nav.education": "Academic",
+    "nav.contact": "Contact",
+    "nav.aria.main": "Main navigation",
+    "tabs.aria.categories": "Diploma categories",
+    /* === HERO === */
+    "header.contact": "Contact",
+    "header.linkedin": "LinkedIn",
+    "header.github": "GitHub",
+    "hero.valueprop": "I ensure the quality of banking and fintech applications used by thousands of users",
+    "hero.indicator1": "5+ years",
+    "hero.indicator2": "Android/iOS/Web",
+    "hero.indicator3": "Maestro + Python + Postman",
+    "hero.indicator4": "Fintech/Banking",
+    "hero.availability": "Available · Remote/Hybrid · GMT-3",
+    /* === PROJECTS === */
+    "project.brubank1.title": "Fail-Over & Banking Resilience",
+    "project.brubank1.context": "Core banking failover system",
+    "project.brubank1.role": "Role: QA Lead Automation",
+    "project.brubank1.action": "25+ Maestro flows, GraphQL API validation",
+    "project.brubank1.result": "Regression 8h→45min, 95% failure coverage",
+    "project.brubank2.title": "QR, Cards & eSIM (Core Banking)",
+    "project.brubank2.context": "Digital onboarding & payments",
+    "project.brubank2.role": "Role: QA Automation Engineer",
+    "project.brubank2.action": "180+ E2E cases, mobile automation Android/iOS",
+    "project.brubank2.result": "0 escapes in 6 releases, manual QA 3d→4h",
+    "project.brubank3.title": "Promotions, SME & Corporate Banking",
+    "project.brubank3.context": "Business banking & promotions engine",
+    "project.brubank3.role": "Role: QA Engineer",
+    "project.brubank3.action": "40+ automated regression, AI-assisted test generation",
+    "project.brubank3.result": "87% coverage, 40% faster docs",
+    "project.demo1.title": "Maestro Mobile Automation Demo",
+    "project.demo1.context": "Demo app flow examples",
+    "project.demo1.role": "Public repository",
+    "project.demo1.action": "Login, payment, transfer with Maestro",
+    "project.demo1.result": "Open source, ready to use",
+    "project.demo1.link": "View on GitHub →",
+    "project.demo2.title": "Postman API Testing Collection",
+    "project.demo2.context": "Documented collection with automated tests",
+    "project.demo2.role": "Public repository",
+    "project.demo2.action": "Automated REST/GraphQL tests",
+    "project.demo2.result": "CI/CD ready, environment variables",
+    "project.demo2.link": "View on GitHub →",
+    "project.demo3.title": "QA Templates Repository",
+    "project.demo3.context": "Professional QA templates",
+    "project.demo3.role": "Public repository",
+    "project.demo3.action": "Test plan, test cases, bug report templates",
+    "project.demo3.result": "Industry standard, customizable",
+    "project.demo3.link": "View on GitHub →",
+    "project.demo4.title": "Interactive Math Apps",
+    "project.demo4.context": "Educational web/mobile applications",
+    "project.demo4.role": "Full Stack Developer & QA",
+    "project.demo4.action": "Built interactive apps (algebra, geometry, calculus) with React Native and Python",
+    "project.demo4.result": "Automated E2E tests, 95% coverage, CI/CD deploy",
+    "project.demo4.link": "View on GitHub →",
+    "project.demo5.title": "Interactive Job Search Engine",
+    "project.demo5.context": "Multi-source scraping + AI matching platform",
+    "project.demo5.role": "Backend Developer & QA Automation",
+    "project.demo5.action": "Multi-source scraping (LinkedIn, InfoJobs, Glassdoor), AI embeddings matching, real-time alerts",
+    "project.demo5.result": "Documented REST API, contract tests, 99% uptime, Docker + K8s",
+    "project.demo5.link": "View on GitHub →",
+    "project.badge.confidential": "Confidential",
+    "project.badge.public": "Public",
+    /* === BACK TO TOP === */
+    "backtotop.aria": "Back to top",
     "exp.brubank.calculating": "calculating...",
     "exp.and": " and ",
     "exp.year_singular": " year",
@@ -256,6 +482,7 @@ const translations = {
     "exp.month_singular": " month",
     "exp.month_plural": " months",
     "exp.zero_months": "0 months",
+    "exp.present": "Present",
     "copied": "Copied",
     "dark.aria": "Toggle dark/light mode",
     "lang.aria": "Switch language to English",
@@ -271,9 +498,12 @@ const translations = {
     "section.aria.certs": "Certificates",
     "section.aria.diplomas": "Education",
     "section.aria.education": "Academic",
-    "img.alt.brubank": "Brubank Logo",
-    "img.alt.practia": "Practia Global Logo",
-    "img.alt.pcivil": "Protección Civil Miranda Logo",
+    "section.aria.allcerts": "All certificates",
+    "section.aria.langavail": "Languages & Availability",
+    "section.aria.iaqa": "AI applied to QA",
+    "img.alt.brubank": "Brubank",
+    "img.alt.practia": "Practia Global",
+    "img.alt.pcivil": "Protección Civil Miranda",
     "img.alt.degree1": "University degree Simón Rodríguez",
     "img.alt.degree2": "University degree IUTIRLA",
     "project.tag.funcional": "Functional",
@@ -321,6 +551,16 @@ function setLanguage(lang) {
 
   // Update experience calculation
   updateExperienceDisplay();
+
+  // Respect expansion state of the "all certificates" toggle
+  const allCertsToggleEl = document.getElementById('allCertsToggle');
+  if (allCertsToggleEl) {
+    const span = allCertsToggleEl.querySelector('span[data-i18n]');
+    if (span) {
+      const isOpen = allCertsToggleEl.getAttribute('aria-expanded') === 'true';
+      span.textContent = getTranslation(isOpen ? 'certs.ocultar' : 'certs.ver-todos');
+    }
+  }
 
   // Update lang toggle button
   const langToggle = document.getElementById('langToggle');
@@ -414,7 +654,8 @@ function calculateExperience(startDate) {
 function updateExperienceDisplay() {
   const expElement = document.getElementById("brubank-experience");
   if (expElement) {
-    expElement.textContent = calculateExperience("2021-04-01");
+    const duration = calculateExperience("2021-04-01");
+    expElement.textContent = duration;
   }
 }
 
@@ -439,29 +680,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     msg.textContent = "";
-    msg.style.color = "#ef4444";
+    msg.style.color = "#f87171";
 
     if (!nombre || !email || !mensaje) {
       msg.textContent = getTranslation('footer.form.required');
+      if (!nombre) {
+        const el = document.getElementById('nombre');
+        el.setAttribute('aria-invalid', 'true');
+        el.setAttribute('aria-describedby', 'formMessage');
+      }
+      if (!email) {
+        const el = document.getElementById('email');
+        el.setAttribute('aria-invalid', 'true');
+        el.setAttribute('aria-describedby', 'formMessage');
+      }
+      if (!mensaje) {
+        const el = document.getElementById('mensaje');
+        el.setAttribute('aria-invalid', 'true');
+        el.setAttribute('aria-describedby', 'formMessage');
+      }
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       msg.textContent = getTranslation('footer.form.invalid_email');
+      const el = document.getElementById('email');
+      el.setAttribute('aria-invalid', 'true');
+      el.setAttribute('aria-describedby', 'formMessage');
       return;
     }
 
     if (mensaje.length < 10) {
       msg.textContent = getTranslation('footer.form.short_msg');
+      const el = document.getElementById('mensaje');
+      el.setAttribute('aria-invalid', 'true');
+      el.setAttribute('aria-describedby', 'formMessage');
       return;
     }
 
-    msg.style.color = "var(--accent)";
+    // Limpiar aria-invalid en éxito al pasar validación
+    ['nombre', 'email', 'mensaje'].forEach(id => {
+      document.getElementById(id).removeAttribute('aria-invalid');
+    });
+
+    msg.style.color = "var(--accent-light)";
     msg.textContent = getTranslation('footer.form.sending_msg');
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = getTranslation('footer.form.sending');
+      submitBtn.setAttribute('aria-busy', 'true');
     }
     
     const serviceID = '__EMAILJS_SERVICE_ID__'; 
@@ -476,20 +744,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     emailjs.send(serviceID, templateID, templateParams)
       .then(() => {
-        msg.style.color = "var(--accent)";
+        msg.style.color = "var(--accent-light)";
         msg.textContent = getTranslation('footer.form.success');
         form.reset();
+        ['nombre', 'email', 'mensaje'].forEach(id => {
+          document.getElementById(id).removeAttribute('aria-invalid');
+        });
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = getTranslation('footer.form.submit');
+          submitBtn.removeAttribute('aria-busy');
         }
       }, (err) => {
-        msg.style.color = "#ef4444";
+        msg.style.color = "#f87171";
         msg.textContent = getTranslation('footer.form.error');
         console.error('EmailJS Error:', err);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = getTranslation('footer.form.submit');
+          submitBtn.removeAttribute('aria-busy');
         }
       });
   });
@@ -498,47 +771,92 @@ document.addEventListener("DOMContentLoaded", function () {
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
+  // Roving tabindex: primer tab focusable, resto -1
+  tabButtons.forEach((btn, i) => {
+    btn.setAttribute("tabindex", i === 0 ? "0" : "-1");
+  });
+
+  function activateTab(button) {
+    const tabName = button.dataset.tab;
+
+    tabButtons.forEach(btn => {
+      btn.classList.remove("active");
+      btn.setAttribute("aria-selected", "false");
+      btn.setAttribute("tabindex", "-1");
+    });
+    tabContents.forEach(content => content.classList.remove("active"));
+
+    button.classList.add("active");
+    button.setAttribute("aria-selected", "true");
+    button.setAttribute("tabindex", "0");
+    const activeContent = document.querySelector(`.tab-content[data-tab="${tabName}"]`);
+    if (activeContent) {
+      activeContent.classList.add("active");
+    }
+  }
+
   tabButtons.forEach(button => {
     button.addEventListener("click", function () {
-      const tabName = this.dataset.tab;
+      activateTab(this);
+    });
 
-      tabButtons.forEach(btn => btn.classList.remove("active"));
-      tabContents.forEach(content => content.classList.remove("active"));
+    button.addEventListener("keydown", function (e) {
+      const buttons = Array.from(tabButtons);
+      const index = buttons.indexOf(this);
+      let targetIndex = null;
 
-      this.classList.add("active");
-      const activeContent = document.querySelector(`.tab-content[data-tab="${tabName}"]`);
-      if (activeContent) {
-        activeContent.classList.add("active");
+      switch (e.key) {
+        case "ArrowLeft":
+        case "ArrowUp":
+          targetIndex = (index - 1 + buttons.length) % buttons.length;
+          break;
+        case "ArrowRight":
+        case "ArrowDown":
+          targetIndex = (index + 1) % buttons.length;
+          break;
+        case "Home":
+          targetIndex = 0;
+          break;
+        case "End":
+          targetIndex = buttons.length - 1;
+          break;
+        default:
+          return;
+      }
+
+      e.preventDefault();
+      const target = buttons[targetIndex];
+      target.click();
+      target.focus();
+    });
+  });
+
+  // Collapsible "All Certificates" section
+  const allCertsToggle = document.getElementById('allCertsToggle');
+  const allCertsContent = document.getElementById('allCertsContent');
+  
+  if (allCertsToggle && allCertsContent) {
+    allCertsToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      allCertsContent.hidden = isExpanded;
+      
+      // Update button text
+      const textSpan = this.querySelector('span');
+      if (textSpan) {
+        textSpan.textContent = isExpanded ? getTranslation('certs.ver-todos') : getTranslation('certs.ocultar');
+      }
+      
+      // Rotate icon
+      const icon = this.querySelector('.toggle-icon');
+      if (icon) {
+        icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
       }
     });
-  });
+  }
 
-  // Click to copy functionality
-  const copyElements = document.querySelectorAll(".contact-email, .contact-phone");
-  copyElements.forEach(el => {
-    el.addEventListener("click", function(e) {
-      if (e.button !== 0) return;
-      
-      const textToCopy = this.href.replace("mailto:", "").replace("tel:", "");
-      
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = this.innerHTML;
-        const successSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-        
-        this.innerHTML = successSvg + " " + getTranslation('copied');
-        this.style.filter = "brightness(1.3)";
-        
-        setTimeout(() => {
-          this.innerHTML = originalText;
-          this.style.filter = "";
-        }, 2000);
-      }).catch(err => {
-        console.error("Error al copiar: ", err);
-      });
-      
-      e.preventDefault();
-    });
-  });
+  // Copy-to-clipboard de email/teléfono eliminado: los enlaces mailto:/tel: ya abren el cliente.
+  // El usuario puede seleccionar y copiar manualmente si lo necesita.
 
   // Dynamic year in footer
   const yearSpan = document.getElementById("current-year");
@@ -589,5 +907,112 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setLanguage(currentLang);
+
+  // ===================== FADE-IN ANIMATIONS (IntersectionObserver) =====================
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (!prefersReducedMotion) {
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe sections
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('fade-in');
+      fadeInObserver.observe(section);
+    });
+
+    // Observe project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.classList.add('fade-in');
+      fadeInObserver.observe(card);
+    });
+
+    // Observe experience items
+    document.querySelectorAll('.experience-item').forEach(item => {
+      item.classList.add('fade-in');
+      fadeInObserver.observe(item);
+    });
+
+    // Observe diploma items
+    document.querySelectorAll('.diploma-item').forEach(item => {
+      item.classList.add('fade-in');
+      fadeInObserver.observe(item);
+    });
+  } else {
+    // If reduced motion, make all visible immediately
+    document.querySelectorAll('.fade-in, section, .project-card, .experience-item, .diploma-item').forEach(el => {
+      el.classList.add('visible');
+    });
+  }
+
+  // ===================== ACTIVE NAV HIGHLIGHT (IntersectionObserver) =====================
+  const navLinks = document.querySelectorAll('.sticky-nav .nav-list a');
+  const sections = document.querySelectorAll('section[id]');
+  
+  if (navLinks.length && sections.length && !prefersReducedMotion) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(section => navObserver.observe(section));
+  }
+
+  // ===================== BACK TO TOP BUTTON =====================
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    const toggleBackToTop = () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.hidden = false;
+        // Force reflow for animation
+        requestAnimationFrame(() => {
+          backToTopBtn.classList.add('show');
+        });
+      } else {
+        backToTopBtn.classList.remove('show');
+        setTimeout(() => {
+          if (window.scrollY <= 300) {
+            backToTopBtn.hidden = true;
+          }
+        }, 300);
+      }
+    };
+
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+
+    // Initial check
+    toggleBackToTop();
+  }
+
+  // Update back-to-top aria-label on language change
+  const originalSetLanguage = setLanguage;
+  setLanguage = function(lang) {
+    originalSetLanguage(lang);
+    if (backToTopBtn) {
+      backToTopBtn.setAttribute('aria-label', getTranslation('backtotop.aria'));
+    }
+  };
 });
 
