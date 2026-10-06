@@ -18,7 +18,7 @@ if (missing.length > 0) {
 
 // Guard: if placeholders were already replaced (e.g. local run after CI),
 // detect and warn instead of crashing.
-const placeholdersPresent = ['index.html', 'js/Formulario.js'].some((f) => {
+const placeholdersPresent = ['index.html', 'js/modules/form.js'].some((f) => {
   try {
     return fs.readFileSync(f, 'utf8').includes('__EMAILJS_');
   } catch {
@@ -58,7 +58,7 @@ function replaceInFile(filePath) {
 // Process files
 const filesToProcess = [
   'index.html',
-  'js/Formulario.js',
+  'js/modules/form.js',
 ];
 
 console.log('🔧 Injecting EmailJS configuration...\n');

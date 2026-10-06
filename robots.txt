@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avtovar.github.io/Curriculum-Vitae/sitemap.xml

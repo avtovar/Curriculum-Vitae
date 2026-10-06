@@ -1,31 +1,59 @@
-/* ===================== GOOGLE FONTS ===================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300&display=swap');
-
 /* ===================== VARIABLES ===================== */
 :root {
+  /* Surfaces */
+  --body-bg:        #f1f5f9;
+  --white:          #ffffff;
+  --container-bg:   #ffffff;
+  --card-bg:        #ffffff;
+  --card-border:    #e2e8f0;
+  --card-hover:     #f8fafc;
+
+  /* Text */
+  --text-main:      #0f172a;
+  --text-muted:     #475569;
+
+  /* Accent */
   --accent:         #15803d;
   --accent-dark:    #166534;
+  --accent-light:   #22c55e;
+  --accent-lighter: #bbf7d0;
+  --accent-text:    #15803d;
+
+  /* UI */
+  --border:         #e2e8f0;
+  --input-border:   #94a3b8;
+
+  /* Other */
   --tool-accent:    #fbbf24;
   --pdf-bg-start:   #f3f4f6;
   --pdf-bg-end:     #e5e7eb;
   --pdf-bg-hover-start: #e5e7eb;
   --pdf-bg-hover-end:   #d1d5db;
   --pdf-text:       #374151;
-  --accent-light:   #22c55e;
-  --accent-lighter: #bbf7d0;
-  --navy:           #0f172a; /* Azul noche profundo */
+  --navy:           #0f172a;
   --navy-mid:       #1e293b;
   --navy-card:      #334155;
-  --body-bg:        #f1f5f9; /* Gris azulado muy claro y limpio */
-  --white:          #ffffff; /* Blanco puro para las tarjetas */
-  --text-main:      #0f172a; /* Texto casi negro para máximo contraste */
-  --text-muted:     #475569; /* Gris oscuro para texto secundario */
-  --border:         #e2e8f0; /* Bordes sutiles pero definidos */
   --shadow-sm:      0 1px 3px rgba(0,0,0,0.1);
   --shadow-md:      0 4px 12px rgba(0,0,0,0.08);
   --shadow-lg:      0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
   --radius:         12px;
   --transition:     0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark-mode {
+  color-scheme: dark;
+  --body-bg:        #0d1117;
+  --white:          #1e2738;
+  --container-bg:   #1e2738;
+  --card-bg:        #253047;
+  --card-border:    #3a4a6a;
+  --card-hover:     #2d3d5a;
+  --text-main:      #e2e8f0;
+  --text-muted:     #94a3b8;
+  --accent-text:    #4ade80;
+  --border:         #3a4a6a;
+  --input-border:   #64748b;
+  --input-bg:       #1a2a44;
 }
 
 /* ===================== RESET ===================== */
@@ -44,6 +72,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
+  transition: background-color .25s, color .25s;
 }
 
 body::before {
@@ -121,17 +150,17 @@ body::before {
   background: var(--accent-lighter);
 }
 
-body.dark-mode .sticky-nav {
+html.dark-mode .sticky-nav {
   background: rgba(30, 39, 56, 0.9);
   border-bottom-color: var(--border);
 }
 
-body.dark-mode .nav-list a {
+html.dark-mode .nav-list a {
   color: var(--text-main);
 }
 
-body.dark-mode .nav-list a:hover,
-body.dark-mode .nav-list a.active {
+html.dark-mode .nav-list a:hover,
+html.dark-mode .nav-list a.active {
   color: var(--accent-light);
   background: rgba(21, 128, 61, 0.15);
 }
@@ -723,11 +752,11 @@ section h2 {
   color: #ef4444;
 }
 
-body.dark-mode .project-badge.public {
+html.dark-mode .project-badge.public {
   color: var(--accent-light);
 }
 
-body.dark-mode .project-badge.confidential {
+html.dark-mode .project-badge.confidential {
   color: #f87171;
 }
 
@@ -870,7 +899,7 @@ body.dark-mode .project-badge.confidential {
   bottom: 0;
 }
 
-body.dark-mode .experience-item::after {
+html.dark-mode .experience-item::after {
   background: var(--navy);
   box-shadow: 0 0 0 4px var(--navy);
 }
@@ -878,9 +907,15 @@ body.dark-mode .experience-item::after {
 /* ===================== DIPLOMAS / CERTIFICACIONES ===================== */
 .diplomas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
   margin-top: 8px;
+}
+
+/* Sección "Todos" y "Académico" con el mismo ancho que "Formación" */
+#allcerts .diplomas-grid,
+#certs .diplomas-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .diploma-item {
@@ -910,10 +945,16 @@ body.dark-mode .experience-item::after {
 .diploma-img {
   width: 100%;
   height: 130px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
   border-bottom: 1px solid var(--border);
   transition: transform 0.4s ease;
+}
+
+html.dark-mode .diploma-item img {
+  filter: brightness(.92);
+  border: 1px solid var(--card-border);
 }
 
 .diploma-item:hover .diploma-img {
@@ -999,6 +1040,10 @@ body.dark-mode .experience-item::after {
   margin-top: 8px;
 }
 
+.langavail-item {
+  padding-left: 10px;
+}
+
 .langavail-item h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
@@ -1069,6 +1114,7 @@ body.dark-mode .experience-item::after {
 .degree-img {
   max-width: 300px;
   width: 100%;
+  height: auto;
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
@@ -1256,7 +1302,7 @@ body.dark-mode .experience-item::after {
 }
 
 /* ===================== MODO OSCURO ===================== */
-body.dark-mode {
+html.dark-mode {
   --cream:        #141b27;
   --cream-dim:    #1a2235;
   --card-bg:      #253047;         /* Card backgrounds - lighter than page */
@@ -1271,210 +1317,224 @@ body.dark-mode {
   background:     #0d1117;
 }
 
-body.dark-mode .container {
+/* Header keeps its navy gradient in dark mode, so its text must stay light */
+html.dark-mode header,
+html.dark-mode header h1 {
+  color: #ffffff;
+}
+
+html.dark-mode .btn-primary {
+  color: #ffffff;
+}
+
+html.dark-mode .btn-secondary {
+  color: #ffffff;
+}
+
+html.dark-mode .container {
   background: var(--container-bg);
   box-shadow: 0 16px 48px rgba(0,0,0,0.5);
 }
 
 /* Card backgrounds in dark mode */
-body.dark-mode section,
-body.dark-mode .experience-item,
-body.dark-mode .edu-item,
-body.dark-mode .diploma-item,
-body.dark-mode .project-card,
-body.dark-mode .skills-category,
-body.dark-mode .langavail-item {
+html.dark-mode section,
+html.dark-mode .experience-item,
+html.dark-mode .edu-item,
+html.dark-mode .diploma-item,
+html.dark-mode .project-card,
+html.dark-mode .skills-category,
+html.dark-mode .langavail-item {
   background: var(--card-bg);
   border-color: var(--card-border);
 }
 
-body.dark-mode section:hover,
-body.dark-mode .experience-item:hover,
-body.dark-mode .edu-item:hover,
-body.dark-mode .diploma-item:hover {
+html.dark-mode section:hover,
+html.dark-mode .experience-item:hover,
+html.dark-mode .edu-item:hover,
+html.dark-mode .diploma-item:hover {
   background: var(--card-hover);
   border-color: var(--accent);
 }
 
-body.dark-mode .contact-bar {
+html.dark-mode .contact-bar {
   background: var(--cream);
   border-bottom-color: var(--border);
 }
 
-body.dark-mode .contact-bar a {
+html.dark-mode .contact-bar a {
   color: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-body.dark-mode .contact-github {
+html.dark-mode .contact-github {
   background-color: var(--card-bg);
 }
 
-body.dark-mode .contact-bar a:hover {
+html.dark-mode .contact-bar a:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   filter: brightness(1.2);
 }
 
-body.dark-mode .badge-link {
+html.dark-mode .badge-link {
   box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
-body.dark-mode .badge-link:hover {
+html.dark-mode .badge-link:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   border-color: var(--accent-light);
 }
 
-body.dark-mode .footer-form input,
-body.dark-mode .footer-form textarea {
+html.dark-mode .footer-form input,
+html.dark-mode .footer-form textarea {
   color: var(--text-main);
   background: var(--input-bg);
   border-color: var(--input-border);
 }
 
-body.dark-mode .footer-form input::placeholder,
-body.dark-mode .footer-form textarea::placeholder {
+html.dark-mode .footer-form input::placeholder,
+html.dark-mode .footer-form textarea::placeholder {
   color: rgba(255,255,255,0.65);
 }
 
-body.dark-mode .footer-form input:focus,
-body.dark-mode .footer-form textarea:focus {
+html.dark-mode .footer-form input:focus,
+html.dark-mode .footer-form textarea:focus {
   border-color: var(--accent);
   background: var(--card-hover);
 }
 
-body.dark-mode section h2,
-body.dark-mode .exp-title-block h3,
-body.dark-mode .edu-item strong,
-body.dark-mode .skills-category h3,
-body.dark-mode .subproject h4,
-body.dark-mode .project-card h3,
-body.dark-mode .project-header h3,
-body.dark-mode .ia-qa-section h3,
-body.dark-mode .langavail-item h3 {
+html.dark-mode section h2,
+html.dark-mode .exp-title-block h3,
+html.dark-mode .edu-item strong,
+html.dark-mode .skills-category h3,
+html.dark-mode .subproject h4,
+html.dark-mode .project-card h3,
+html.dark-mode .project-header h3,
+html.dark-mode .ia-qa-section h3,
+html.dark-mode .langavail-item h3 {
   color: var(--text-main);
 }
 
-body.dark-mode .skills-category h3 {
+html.dark-mode .skills-category h3 {
   border-bottom-color: var(--accent);
 }
 
-body.dark-mode .skill-tag:not(.tool) {
+html.dark-mode .skill-tag:not(.tool) {
   background: var(--card-bg);
   border-color: var(--card-border);
   color: var(--text-main);
 }
 
-body.dark-mode .skill-tag:not(.tool):hover {
+html.dark-mode .skill-tag:not(.tool):hover {
   background: var(--navy);
   color: var(--white);
   border-color: var(--navy);
 }
 
-body.dark-mode .skill-tag.tool {
+html.dark-mode .skill-tag.tool {
   background: var(--navy);
   color: var(--tool-accent);
   border-color: var(--navy-mid);
 }
 
-body.dark-mode .skill-tag.tool:hover {
+html.dark-mode .skill-tag.tool:hover {
   background: var(--accent);
   color: var(--white);
 }
 
-body.dark-mode .project-card {
+html.dark-mode .project-card {
   background: var(--card-bg);
   border-color: rgba(21, 128, 61,0.2);
 }
 
-body.dark-mode .project-card strong {
+html.dark-mode .project-card strong {
   color: var(--accent-light);
 }
 
-body.dark-mode .tech-tag {
+html.dark-mode .tech-tag {
   background: var(--card-hover);
   color: var(--accent-light);
   border-color: var(--card-border);
 }
 
-body.dark-mode .toggle-btn {
+html.dark-mode .toggle-btn {
   background: var(--card-bg);
   border-color: var(--card-border);
   color: var(--text-main);
 }
 
-body.dark-mode .toggle-btn:hover {
+html.dark-mode .toggle-btn:hover {
   background: var(--navy);
   color: var(--white);
   border-color: var(--navy);
 }
 
-body.dark-mode .languages-availability {
+html.dark-mode .languages-availability {
   background: var(--navy);
   border-color: rgba(21, 128, 61,0.2);
 }
 
-body.dark-mode .languages-availability h2 {
+html.dark-mode .languages-availability h2 {
   color: var(--accent-light);
 }
 
-body.dark-mode .langavail-item h3 {
+html.dark-mode .langavail-item h3 {
   color: var(--accent-light);
   border-bottom-color: rgba(21, 128, 61,0.3);
 }
 
-body.dark-mode .langavail-item li {
+html.dark-mode .langavail-item li {
   color: var(--text-main);
 }
 
-body.dark-mode .langavail-item li strong {
+html.dark-mode .langavail-item li strong {
   color: var(--accent-light);
 }
 
-body.dark-mode .degree-img {
+html.dark-mode .degree-img {
   border-color: var(--card-border);
   box-shadow: var(--shadow-md);
 }
 
-body.dark-mode .company-logo,
-body.dark-mode .company-logo-large {
+html.dark-mode .company-logo,
+html.dark-mode .company-logo-large {
   background: var(--card-bg);
   border-color: var(--card-border);
 }
 
-body.dark-mode .company-logo-placeholder {
+html.dark-mode .company-logo-placeholder {
   background: var(--card-bg);
   color: var(--text-muted);
   border-color: var(--card-border);
 }
 
-body.dark-mode .diploma-img {
+html.dark-mode .diploma-img {
   border-bottom-color: var(--card-border);
 }
 
-body.dark-mode .diploma-title {
+html.dark-mode .diploma-title {
   color: var(--text-main);
 }
 
-body.dark-mode .diploma-item-pdf .diploma-pdf-preview {
+html.dark-mode .diploma-item-pdf .diploma-pdf-preview {
   background: linear-gradient(135deg, var(--card-hover) 0%, var(--card-bg) 100%);
   border-bottom-color: var(--card-border);
 }
 
-body.dark-mode .diploma-item-pdf:hover .diploma-pdf-preview {
+html.dark-mode .diploma-item-pdf:hover .diploma-pdf-preview {
   background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-hover) 100%);
 }
 
-body.dark-mode .diploma-pdf-preview span {
+html.dark-mode .diploma-pdf-preview span {
   color: var(--text-muted);
 }
 
-body.dark-mode .project-link {
+html.dark-mode .project-link {
   color: var(--accent-light);
   border-top-color: rgba(255,255,255,0.1);
 }
 
-body.dark-mode .project-link:hover {
+html.dark-mode .project-link:hover {
   color: var(--white);
 }
 
@@ -1519,15 +1579,15 @@ body.dark-mode .project-link:hover {
   box-shadow: var(--shadow-lg);
 }
 
-body.dark-mode .dark-toggle,
-body.dark-mode .lang-toggle {
+html.dark-mode .dark-toggle,
+html.dark-mode .lang-toggle {
   background: var(--accent);
   color: var(--white);
   border-color: var(--accent);
 }
 
-body.dark-mode .dark-toggle:hover,
-body.dark-mode .lang-toggle:hover {
+html.dark-mode .dark-toggle:hover,
+html.dark-mode .lang-toggle:hover {
   background: var(--accent-light);
 }
 
@@ -1683,9 +1743,9 @@ button:focus-visible,
   outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
-body.dark-mode a:focus-visible,
-body.dark-mode button:focus-visible,
-body.dark-mode [tabindex]:focus-visible {
+html.dark-mode a:focus-visible,
+html.dark-mode button:focus-visible,
+html.dark-mode [tabindex]:focus-visible {
   outline-color: var(--accent-light);
 }
 
@@ -1786,13 +1846,13 @@ section.fade-in.visible {
   color: var(--accent);
 }
 
-body.dark-mode .back-to-top {
+html.dark-mode .back-to-top {
   background: var(--accent);
   color: var(--white);
   border-color: var(--accent);
 }
 
-body.dark-mode .back-to-top:hover {
+html.dark-mode .back-to-top:hover {
   background: var(--accent-light);
   border-color: var(--accent-light);
   color: var(--white);
@@ -1823,6 +1883,23 @@ body.dark-mode .back-to-top:hover {
 
 /* ===================== ESTILOS DE IMPRESIÓN ===================== */
 @media print {
+  html.dark-mode {
+    --text-main: #000;
+    --card-bg: #fff;
+    --container-bg: #fff;
+    --body-bg: #fff;
+    background: #fff;
+  }
+  html.dark-mode .container,
+  html.dark-mode section,
+  html.dark-mode .experience-item,
+  html.dark-mode .project-card,
+  html.dark-mode .diploma-item,
+  html.dark-mode .edu-item {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #ccc !important;
+  }
   body {
     background: white;
     color: black;
@@ -1889,6 +1966,18 @@ body.dark-mode .back-to-top:hover {
 }
 
 /* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .sticky-nav {
+    padding: 0 24px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 680px) {
   .container { margin: 0; border-radius: 0; }
   .cv-body { padding: 0 20px 32px; }

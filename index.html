@@ -24,9 +24,28 @@
   <!-- Canonical -->
   <link rel="canonical" href="https://avtovar.github.io/Curriculum-Vitae/">
 
+  <!-- Theme & Color Scheme -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f1f5f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap">
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
   <title data-i18n="head.title">CV - Ali Valentin Tovar Morales | QA Engineer</title>
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Anti-FOUC Theme Script -->
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      var dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark-mode', dark);
+    } catch (e) {}
+  </script>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -49,7 +68,7 @@
   </script>
 </head>
 
-<body class="dark-mode">
+<body>
   <a href="#about" class="skip-link">Saltar al contenido</a>
   <div class="container">
 
@@ -69,7 +88,9 @@
 
     <!-- ===================== ENCABEZADO (HERO) ===================== -->
     <header>
-      <img src="media/profile-photo.jpg" class="hero-photo" alt="Ali Valentin Tovar Morales" loading="lazy">
+      <picture>
+              <img src="media/profile-photo.jpg" class="hero-photo" alt="Ali Valentin Tovar Morales" width="110" height="110" loading="lazy">
+            </picture>
       <h1>Ali Valentin Tovar Morales</h1>
       <p class="title" data-i18n="header.role">QA Engineer | Manual & Automation Web y Mobile | API Testing | Azure DevOps | Atlassian</p>
       <p class="hero-value-prop" data-i18n="hero.valueprop">Aseguro la calidad de aplicaciones bancarias y fintech usadas por miles de usuarios</p>
@@ -212,7 +233,9 @@
         <!-- BRUBANK - 3 Sub-projects -->
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/Brubank_imagen.jpeg" data-i18n-alt="img.alt.brubank" alt="Brubank" class="company-logo" loading="lazy">
+            <picture>
+              <img src="media/Brubank_imagen.jpeg" data-i18n-alt="img.alt.brubank" alt="Brubank" class="company-logo" width="44" height="44" loading="lazy">
+            </picture>
             <div class="exp-title-block">
               <h3>Brubank</h3>
               <span class="exp-role" data-i18n="exp.brubank.role">QA Engineer</span>
@@ -273,7 +296,9 @@
 
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/Practia_Global_imagen.jpg" data-i18n-alt="img.alt.practia" alt="Practia Global" class="company-logo" loading="lazy">
+            <picture>
+              <img src="media/Practia_Global_imagen.jpg" data-i18n-alt="img.alt.practia" alt="Practia Global" class="company-logo" width="44" height="44" loading="lazy">
+            </picture>
             <div class="exp-title-block">
               <h3>Practia Global</h3>
               <span class="exp-role" data-i18n="exp.practia.role">Semi Senior QA Tester</span>
@@ -344,7 +369,9 @@
 
         <div class="experience-item">
           <div class="exp-header">
-            <img src="media/PCMiranda_Imagen.jpg" data-i18n-alt="img.alt.pcivil" alt="Protección Civil Miranda" class="company-logo" loading="lazy">
+            <picture>
+              <img src="media/PCMiranda_Imagen.jpg" data-i18n-alt="img.alt.pcivil" alt="Protección Civil Miranda" class="company-logo" width="44" height="44" loading="lazy">
+            </picture>
             <div class="exp-title-block">
               <h3>Protección Civil Miranda</h3>
               <span class="exp-role" data-i18n="exp.pcivil.role">Coordinador de Procesos Informáticos</span>
@@ -551,49 +578,70 @@
         <div class="diplomas-grid">
           <article class="diploma-item">
             <a href="media/Diplomas/fundamental-software-testing-certified.png" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/fundamental-software-testing-certified.png" data-i18n-alt="diploma.fstccert" alt="FSTC Certificate" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.fstccert">FSTC Certified</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/scrum-fundamentals-certified.png" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/scrum-fundamentals-certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals Certified" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.scrumfund">Scrum Fundamentals Certified</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/software-tester-qa-avanzado.jpg" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/software-tester-qa-avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.qavanzado">QA Avanzado</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/git-github-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
-              <img src="media/Diplomas/git-github-2026.pdf" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
+              <img src="media/Diplomas/06-git-github.jpg" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
               <div class="diploma-title" data-i18n="diploma.git">Git & GitHub 2026 (PDF)</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/front-ja-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/front-end-js-2025.png" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.frontend">Front-End JS 2025 (PDF)</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" data-i18n-alt="diploma.iaagentes" alt="IA: De 0 a Agentes" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.iaagentes">IA: De 0 a Agentes</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/2026-08-06_testing-qa-talento-tech-es.pdf" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/testing-qa-talento-tech-2026.png" data-i18n-alt="diploma.testingtalento" alt="Testing QA Talento Tech 2026" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.testingtalento">Testing QA Talento Tech 2026 (PDF)</div>
             </a>
           </article>
           <article class="diploma-item">
             <a href="media/Diplomas/software-tester-qa.png" target="_blank" rel="noopener" class="diploma-link">
+              <picture>
+              
               <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.aics" alt="Software Testing AICS" class="diploma-img" loading="lazy">
+            </picture>
               <div class="diploma-title" data-i18n="diploma.aics">Software Testing AICS</div>
             </a>
           </article>
@@ -623,25 +671,37 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/programacion-desde-cero.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.programacion">Programación Desde Cero</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.html5">HTML5 Fundamentos</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/front-ja-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/front-end-js-2025.png" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/front-end-js-2025.png" data-i18n-alt="diploma.frontend" alt="Front End JS 2025" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.frontend">Front-End JS 2025 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.htmlcss">HTML y CSS - Arg Programa 4.0</div>
               </a>
             </article>
@@ -653,31 +713,46 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/software-tester-qa.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.qatester">QA Tester</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/software-tester-qa-avanzado.jpg" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/software-tester-qa-avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/software-tester-qa-avanzado.jpg" data-i18n-alt="diploma.qavanzado" alt="QA Avanzado" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.qavanzado">QA Avanzado</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/academiaqa-testingqa.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="Diploma AcademiaQA Testing" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="Diploma AcademiaQA Testing" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.academiaqa">AcademiaQA Testing</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificate-fstc.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/fundamental-software-testing-certified.png" data-i18n-alt="diploma.fstc" alt="Fundamental Software Testing" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/fundamental-software-testing-certified.png" data-i18n-alt="diploma.fstc" alt="Fundamental Software Testing" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.fstc">Fundamental Testing Certified (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/testing-qa-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/testing-qa-talento-tech-2026.png" data-i18n-alt="diploma.testingqa2026" alt="Testing QA 2026" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/testing-qa-talento-tech-2026.png" data-i18n-alt="diploma.testingqa2026" alt="Testing QA 2026" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.testingqa2026">Testing QA 2026 (PDF)</div>
               </a>
             </article>
@@ -689,13 +764,16 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-linea-comando-linux.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.linux">Linux Comando</div>
               </a>
             </article>
 <article class="diploma-item">
               <a href="media/Diplomas/git-github-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
-              <img src="media/Diplomas/git-github-2026.pdf" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
+              <img src="media/Diplomas/06-git-github.jpg" data-i18n-alt="diploma.git" alt="Git & GitHub 2026" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.git">Git & GitHub 2026 (PDF)</div>
               </a>
             </article>
@@ -707,13 +785,19 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-metodologia-scrum.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.scrum">Metodología Scrum</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/scrum-fundamentals-certified.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/scrum-fundamentals-certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/scrum-fundamentals-certified.png" data-i18n-alt="diploma.scrumfund" alt="Scrum Fundamentals" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.scrumfund">Scrum Fundamentals</div>
               </a>
             </article>
@@ -725,44 +809,74 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-inteligencia-artificial-2025.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia" alt="Introducción a IA" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia" alt="Introducción a IA" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ia">Introducción a IA 2025 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" data-i18n-alt="diploma.iaagentes" alt="Curso de IA: De 0 a Agentes" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/curso-ia-de-0-a-agentes-domina-ia.jpg" data-i18n-alt="diploma.iaagentes" alt="Curso de IA: De 0 a Agentes" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.iaagentes">IA: De 0 a Agentes</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-curso-introduccion-ia-datos.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/certificado-curso-introduccion-ia-datos.png" data-i18n-alt="diploma.iaintro" alt="Curso Introducción IA para Datos" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/certificado-curso-introduccion-ia-datos.png" data-i18n-alt="diploma.iaintro" alt="Curso Introducción IA para Datos" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.iaintro">Curso Introducción IA para Datos (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-desarrollo-con-ia.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/desarrollo-con-ia.png" data-i18n-alt="diploma.iadesarrollo" alt="Desarrollo con IA" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/desarrollo-con-ia.png" data-i18n-alt="diploma.iadesarrollo" alt="Desarrollo con IA" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.iadesarrollo">Desarrollo con IA (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-ia-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/certificado-ia-2026.png" data-i18n-alt="diploma.ia2026" alt="Certificado IA 2026" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/certificado-ia-2026.png" data-i18n-alt="diploma.ia2026" alt="Certificado IA 2026" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ia2026">Certificado IA 2026 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
-              <a href="media/Diplomas/certificado-ia-3-en-4-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia3en4" alt="Certificado IA 3 en 4 2026" class="diploma-img" loading="lazy">
+              <a href="media/Diplomas/certificado-ia-2026.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia3en4" alt="Certificado IA 3 en 4 2026" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ia3en4">Certificado IA 3 en 4 2026 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-ia-certificacion-ali-tovar.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.iacert" alt="Introducción IA Certificación Ali Tovar" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.iacert" alt="Introducción IA Certificación Ali Tovar" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.iacert">Introducción IA Certificación (PDF)</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/aprende-claude-desde-cero.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.claude" alt="Aprende Claude desde cero" class="diploma-img" loading="lazy">
+            </picture>
+                <div class="diploma-title" data-i18n="diploma.claude">Aprende Claude desde cero (PDF)</div>
               </a>
             </article>
           </div>
@@ -773,60 +887,83 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/argentina-programa-seprogramar.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Diploma Argentina Programa" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Diploma Argentina Programa" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.argprog">Argentina Programa</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-ap4-t2.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.argprog2021">Arg Programa Oct-Dic 2021 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-introduccion-bootcamps.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/certificado-introduccion-bootcamps.pdf" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
+                <img src="media/Diplomas/02-introduccion-bootcamps.jpg" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.bootcamps">Introducción a Bootcamps (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-ap4-t2.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.ap4" alt="Certificado AP4.0 T2" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.ap4" alt="Certificado AP4.0 T2" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ap4">Certificado AP4.0 T2 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/curso-entrevistas-laborales-tech.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Curso Entrevistas Laborales" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Curso Entrevistas Laborales" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.entrevistas">Entrevistas Laborales IT</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/ali-valentin-tovar-morales.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Armá tu perfil profesional" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Armá tu perfil profesional" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.githubperfil">GitHub: Perfil Profesional</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-bases-datos-sql.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Introducción a Bases de Datos y SQL" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Introducción a Bases de Datos y SQL" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.bddsql">Bases de Datos y SQL</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-ux.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ux">Introducción a UX</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/python-no-programadores.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.python">Python para no programadores</div>
               </a>
             </article>
           </div>
-        </div>
         </div>
       </section>
 
@@ -847,98 +984,152 @@
           <div class="diplomas-grid">
             <article class="diploma-item">
               <a href="media/Diplomas/programacion-desde-cero.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/programacion-desde-cero.png" data-i18n-alt="diploma.programacion" alt="Programación desde Cero" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.programacion">Programación Desde Cero</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.html5" alt="HTML5 Fundamentos" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.html5">HTML5 Fundamentos</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/html5-fundamentos-pagina-web.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/html5-fundamentos-pagina-web.png" data-i18n-alt="diploma.htmlcss" alt="HTML y CSS Argentina Programa 4.0" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.htmlcss">HTML y CSS - Arg Programa 4.0</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/software-tester-qa.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/software-tester-qa.png" data-i18n-alt="diploma.qatester" alt="QA Tester" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.qatester">QA Tester</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/academiaqa-testingqa.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="AcademiaQA Testing" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/academiaqa-testingqa.png" data-i18n-alt="diploma.academiaqa" alt="AcademiaQA Testing" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.academiaqa">AcademiaQA Testing</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-linea-comando-linux.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-linea-comando-linux.png" data-i18n-alt="diploma.linux" alt="Linux Comando" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.linux">Linux Comando</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-inteligencia-artificial-2025.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia" alt="Introducción a IA 2025" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.ia" alt="Introducción a IA 2025" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ia">Introducción a IA 2025 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-metodologia-scrum.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-metodologia-scrum.png" data-i18n-alt="diploma.scrum" alt="Metodología Scrum" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.scrum">Metodología Scrum</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/argentina-programa-seprogramar.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Argentina Programa" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog" alt="Argentina Programa" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.argprog">Argentina Programa</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-ap4-t2.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/argentina-programa-seprogramar.png" data-i18n-alt="diploma.argprog2021" alt="Argentina Programa 2021" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.argprog2021">Arg Programa Oct-Dic 2021 (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/certificado-introduccion-bootcamps.pdf" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/certificado-introduccion-bootcamps.pdf" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
+                <img src="media/Diplomas/02-introduccion-bootcamps.jpg" data-i18n-alt="diploma.bootcamps" alt="Introducción a Bootcamps" class="diploma-img" loading="lazy">
                 <div class="diploma-title" data-i18n="diploma.bootcamps">Introducción a Bootcamps (PDF)</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/curso-entrevistas-laborales-tech.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Entrevistas Laborales IT" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/curso-entrevistas-laborales-tech.png" data-i18n-alt="diploma.entrevistas" alt="Entrevistas Laborales IT" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.entrevistas">Entrevistas Laborales IT</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/ali-valentin-tovar-morales.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Perfil Profesional" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/ali-valentin-tovar-morales.png" data-i18n-alt="diploma.githubperfil" alt="GitHub: Perfil Profesional" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.githubperfil">GitHub: Perfil Profesional</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-bases-datos-sql.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Bases de Datos y SQL" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-bases-datos-sql.png" data-i18n-alt="diploma.bddsql" alt="Bases de Datos y SQL" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.bddsql">Bases de Datos y SQL</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/introduccion-ux.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-ux.png" data-i18n-alt="diploma.ux" alt="Introducción a UX" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.ux">Introducción a UX</div>
               </a>
             </article>
             <article class="diploma-item">
               <a href="media/Diplomas/python-no-programadores.png" target="_blank" rel="noopener" class="diploma-link">
-                <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+                <picture>
+              
+              <img src="media/Diplomas/python-no-programadores.png" data-i18n-alt="diploma.python" alt="Python para no programadores" class="diploma-img" loading="lazy">
+            </picture>
                 <div class="diploma-title" data-i18n="diploma.python">Python para no programadores</div>
+              </a>
+            </article>
+            <article class="diploma-item">
+              <a href="media/Diplomas/aprende-claude-desde-cero.pdf" target="_blank" rel="noopener" class="diploma-link">
+                <picture>
+              
+              <img src="media/Diplomas/introduccion-inteligencia-artificial-2025.png" data-i18n-alt="diploma.claude" alt="Aprende Claude desde cero" class="diploma-img" loading="lazy">
+            </picture>
+                <div class="diploma-title" data-i18n="diploma.claude">Aprende Claude desde cero (PDF)</div>
               </a>
             </article>
           </div>
@@ -958,7 +1149,9 @@
           <span data-i18n="edu.universidad">Licenciatura en Administración, mención Informática</span>
         </div>
         <div class="degree-img-container">
-          <img src="media/Titulo/titulo Universitario Ali Tovar.jpg" data-i18n-alt="img.alt.degree1" alt="Título universitario Simón Rodríguez" class="degree-img" loading="lazy">
+          <picture>
+              <img src="media/Titulo/titulo-universitario-ali-tovar.jpg" data-i18n-alt="img.alt.degree1" alt="Título universitario Simón Rodríguez" class="degree-img" width="300" height="424" loading="lazy">
+            </picture>
           <p data-i18n="edu.degree1">Título universitario obtenido</p>
         </div>
 
@@ -967,7 +1160,9 @@
           <span data-i18n="edu.iutirla">Técnico Superior Universitario en Informática</span>
         </div>
         <div class="degree-img-container">
-          <img src="media/Titulo/Titulo de TSU Informatica Ali Tovar.jpg" data-i18n-alt="img.alt.degree2" alt="Título universitario IUTIRLA" class="degree-img" loading="lazy">
+          <picture>
+              <img src="media/Titulo/titulo-tsu-informatica-ali-tovar.jpg" data-i18n-alt="img.alt.degree2" alt="Título universitario IUTIRLA" class="degree-img" width="300" height="371" loading="lazy">
+            </picture>
           <p data-i18n="edu.degree2">Título universitario obtenido</p>
         </div>
       </section>
@@ -1055,7 +1250,7 @@
     <button class="dark-toggle" id="darkToggle" aria-label="Cambiar modo oscuro/claro">🌙</button>
   </div>
   <span class="visually-hidden" id="copyStatus" aria-live="polite"></span>
-  <script src="js/Formulario.js"></script>
+  <script type="module" src="js/modules/main.js"></script>
 </body>
 
 </html>

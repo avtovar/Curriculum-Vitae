@@ -37,7 +37,7 @@ jobs:
 
       - name: Guard - warn if secrets not injected
         run: |
-          if grep -rE '__EMAILJS_(PUBLIC_KEY|SERVICE_ID|TEMPLATE_ID)__' index.html js/Formulario.js; then
+          if grep -rE '__EMAILJS_(PUBLIC_KEY|SERVICE_ID|TEMPLATE_ID)__' index.html js/modules/form.js; then
             echo "::warning::EmailJS placeholders still present. Configure secrets in Settings → Secrets and variables → Actions to enable the contact form."
           else
             echo "✅ All EmailJS placeholders replaced."
