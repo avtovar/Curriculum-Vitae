@@ -34,6 +34,11 @@ Screen Shot*
 # Dist de build local
 dist/
 
+# Artefactos de tests (Playwright)
+test-results/
+playwright-report/
+tests/screenshots/
+
 # Carpeta local privada (nunca se sube)
 no_subir/
 

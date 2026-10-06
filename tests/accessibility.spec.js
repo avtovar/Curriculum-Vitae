@@ -1,16 +1,22 @@
 import { test, expect } from '@playwright/test';
-import AxeBuilder from 'axe-playwright';
+import { injectAxe, getViolations } from 'axe-playwright';
 
 test.describe('Accessibility (axe-core)', () => {
   test('should not have any automatically detectable accessibility violations', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      .analyze();
+    // Disable CSS animations so axe measures final colors (fadeUp/fadeIn start at opacity:0,
+    // which creates false-positive color-contrast violations mid-animation)
+    await page.addStyleTag({
+      content: '*, *::before, *::after { animation: none !important; transition: none !important; }',
+    });
 
-    expect(accessibilityScanResults.violations).toEqual([]);
+    await injectAxe(page);
+    const violations = await getViolations(page);
+    const readable = violations.map(v => `${v.id}: ${v.help} (${v.nodes.length} nodes)`);
+
+    expect(readable, readable.join('\n')).toEqual([]);
   });
 
   test('should have proper heading structure', async ({ page }) => {
