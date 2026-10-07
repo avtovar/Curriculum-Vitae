@@ -1968,6 +1968,30 @@ html.dark-mode .back-to-top:hover {
 }
 
 /* ===================== RESPONSIVE ===================== */
+@media (max-width: 1400px) {
+  .sticky-nav {
+    padding: 0 40px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sticky-nav {
+    padding: 0 32px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .sticky-nav {
     padding: 0 24px;
