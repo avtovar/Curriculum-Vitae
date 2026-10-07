@@ -241,7 +241,11 @@
               <span class="exp-role" data-i18n="exp.brubank.role">QA Engineer</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.brubank.date">abril 2021 — Presente</span> (<span id="brubank-experience">Presente</span>) &nbsp;·&nbsp; <span data-i18n="exp.brubank.location">Buenos Aires, Argentina</span></p>
+          <p class="exp-meta">
+            <span><span data-i18n="exp.brubank.date">abril 2021 — Presente</span> <span class="exp-duration">(<span id="brubank-experience">Presente</span>)</span></span>
+            <span class="exp-meta-sep" aria-hidden="true">·</span>
+            <span data-i18n="exp.brubank.location">Buenos Aires, Argentina</span>
+          </p>
           
           <!-- Sub-project 1: Fail-Over & Resiliencia -->
           <div class="subproject">
@@ -304,7 +308,11 @@
               <span class="exp-role" data-i18n="exp.practia.role">Semi Senior QA Tester</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.practia.date">agosto 2020 — marzo 2021</span> &nbsp;·&nbsp; <span data-i18n="exp.practia.client">Cliente: Brubank → incorporación directa</span></p>
+          <p class="exp-meta">
+            <span data-i18n="exp.practia.date">agosto 2020 — marzo 2021</span>
+            <span class="exp-meta-sep" aria-hidden="true">·</span>
+            <span data-i18n="exp.practia.client">Cliente: Brubank → incorporación directa</span>
+          </p>
           <ul>
             <li data-i18n="exp.practia.bullet1">Dominio en pruebas para plataformas Android e iOS y Back-end.</li>
             <li data-i18n="exp.practia.bullet2">Diseño y ejecución de casos de prueba meticulosos para identificar y resolver defectos.</li>
@@ -328,7 +336,11 @@
                 <span class="client-role" data-i18n="exp.practia.edenor.role">QA Tester (Cliente)</span>
               </div>
             </div>
-            <p class="client-meta"><span data-i18n="exp.practia.edenor.date">enero 2020 — julio 2020</span> &nbsp;·&nbsp; <span data-i18n="exp.practia.edenor.type">Proyecto outsourcing</span></p>
+            <p class="client-meta">
+              <span data-i18n="exp.practia.edenor.date">enero 2020 — julio 2020</span>
+              <span class="exp-meta-sep" aria-hidden="true">·</span>
+              <span data-i18n="exp.practia.edenor.type">Proyecto outsourcing</span>
+            </p>
             <ul>
               <li data-i18n="exp.practia.edenor.bullet1">Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.</li>
               <li data-i18n="exp.practia.edenor.bullet2">Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.</li>
@@ -352,7 +364,11 @@
               <span class="exp-role" data-i18n="exp.datasystem.role">Analista Tester QA</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.datasystem.date">septiembre 2018 — agosto 2019</span> &nbsp;·&nbsp; <span data-i18n="exp.datasystem.country">Argentina</span></p>
+          <p class="exp-meta">
+            <span data-i18n="exp.datasystem.date">septiembre 2018 — agosto 2019</span>
+            <span class="exp-meta-sep" aria-hidden="true">·</span>
+            <span data-i18n="exp.datasystem.country">Argentina</span>
+          </p>
           <ul>
             <li data-i18n="exp.datasystem.bullet1">Especialista en Análisis de Requerimientos y Testing Funcional de Caja Negra.</li>
             <li data-i18n="exp.datasystem.bullet2">Desarrollador de estrategias de prueba efectivas y proactividad en resolución de incidencias.</li>
@@ -377,7 +393,11 @@
               <span class="exp-role" data-i18n="exp.pcivil.role">Coordinador de Procesos Informáticos</span>
             </div>
           </div>
-          <p class="exp-meta"><span data-i18n="exp.pcivil.date">octubre 2011 — mayo 2017</span> &nbsp;·&nbsp; <span data-i18n="exp.pcivil.country">Venezuela</span></p>
+          <p class="exp-meta">
+            <span data-i18n="exp.pcivil.date">octubre 2011 — mayo 2017</span>
+            <span class="exp-meta-sep" aria-hidden="true">·</span>
+            <span data-i18n="exp.pcivil.country">Venezuela</span>
+          </p>
           <ul>
             <li data-i18n="exp.pcivil.bullet1">Ejecución de pruebas sistemáticas y rigurosas para asegurar la calidad del software institucional.</li>
             <li data-i18n="exp.pcivil.bullet2">Creación y análisis de métricas para optimizar la eficiencia del proceso de testing.</li>
@@ -401,8 +421,9 @@
           <div class="section-line"></div>
         </div>
         <h2 data-i18n="portfolio.title">Proyectos Destacados</h2>
-        
+
         <!-- Brubank Core Projects (Confidential) -->
+        <h3 class="projects-subtitle" data-i18n="portfolio.confidential">Proyectos confidenciales</h3>
         <div class="projects-grid">
           <article class="project-card fade-in">
             <div class="project-header">
@@ -461,8 +482,11 @@
               <span class="tech-tag">Bantotal</span>
             </div>
           </article>
+        </div>
 
-          <!-- Demo Projects (Public) -->
+        <!-- Demo Projects (Public) -->
+        <h3 class="projects-subtitle" data-i18n="portfolio.public">Repositorios públicos</h3>
+        <div class="projects-grid">
           <article class="project-card fade-in demo-project">
             <div class="project-header">
               <h3 data-i18n="project.demo1.title">Maestro Mobile Automation Demo</h3>
@@ -658,7 +682,7 @@
 
         <!-- Tab Navigation -->
         <div class="diplomas-tabs-nav" role="tablist" aria-label="Categorías de diplomas" data-i18n-aria="tabs.aria.categories">
-          <button class="tab-button active" data-tab="programacion" data-i18n="tabs.programacion" id="tab-programacion" role="tab" aria-selected="true" aria-controls="panel-programacion">Programación/Frontend</button>
+          <button class="tab-button active" data-tab="programacion" data-i18n="tabs.programacion" id="tab-programacion" role="tab" aria-selected="true" aria-controls="panel-programacion">Programación</button>
           <button class="tab-button" data-tab="qa" data-i18n="tabs.qa" id="tab-qa" role="tab" aria-selected="false" aria-controls="panel-qa">QA/Testing</button>
           <button class="tab-button" data-tab="devops" data-i18n="tabs.devops" id="tab-devops" role="tab" aria-selected="false" aria-controls="panel-devops">DevOps/Herramientas</button>
           <button class="tab-button" data-tab="agile" data-i18n="tabs.agile" id="tab-agile" role="tab" aria-selected="false" aria-controls="panel-agile">Metodología Ágil</button>
@@ -1145,25 +1169,29 @@
         <h2 data-i18n="edu.title">Educación</h2>
 
         <div class="edu-item">
-          <strong>Universidad Nacional Experimental Simón Rodríguez</strong>
-          <span data-i18n="edu.universidad">Licenciatura en Administración, mención Informática</span>
-        </div>
-        <div class="degree-img-container">
-          <picture>
+          <div class="edu-info">
+            <strong>Universidad Nacional Experimental Simón Rodríguez</strong>
+            <span data-i18n="edu.universidad">Licenciatura en Administración, mención Informática</span>
+          </div>
+          <div class="degree-img-container">
+            <picture>
               <img src="media/Titulo/titulo-universitario-ali-tovar.jpg" data-i18n-alt="img.alt.degree1" alt="Título universitario Simón Rodríguez" class="degree-img" width="300" height="424" loading="lazy">
             </picture>
-          <p data-i18n="edu.degree1">Título universitario obtenido</p>
+            <p data-i18n="edu.degree1">Licenciatura</p>
+          </div>
         </div>
 
         <div class="edu-item edu-item--spaced">
-          <strong>IUTIRLA</strong>
-          <span data-i18n="edu.iutirla">Técnico Superior Universitario en Informática</span>
-        </div>
-        <div class="degree-img-container">
-          <picture>
+          <div class="edu-info">
+            <strong>IUTIRLA</strong>
+            <span data-i18n="edu.iutirla">Técnico Superior Universitario en Informática</span>
+          </div>
+          <div class="degree-img-container">
+            <picture>
               <img src="media/Titulo/titulo-tsu-informatica-ali-tovar.jpg" data-i18n-alt="img.alt.degree2" alt="Título universitario IUTIRLA" class="degree-img" width="300" height="371" loading="lazy">
             </picture>
-          <p data-i18n="edu.degree2">Título universitario obtenido</p>
+            <p data-i18n="edu.degree2">Técnico Superior</p>
+          </div>
         </div>
       </section>
 

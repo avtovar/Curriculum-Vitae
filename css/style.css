@@ -23,6 +23,10 @@
   --border:         #e2e8f0;
   --input-border:   #94a3b8;
 
+  /* Sticky nav (opaque enough to fade scrolled items) */
+  --nav-bg:         rgba(255, 255, 255, 0.85);
+  --nav-fade:       rgba(255, 255, 255, 0.98);
+
   /* Other */
   --tool-accent:    #fbbf24;
   --pdf-bg-start:   #f3f4f6;
@@ -54,6 +58,9 @@ html.dark-mode {
   --border:         #3a4a6a;
   --input-border:   #64748b;
   --input-bg:       #1a2a44;
+
+  --nav-bg:         rgba(30, 39, 56, 0.9);
+  --nav-fade:       rgba(30, 39, 56, 0.98);
 }
 
 /* ===================== RESET ===================== */
@@ -109,11 +116,11 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  padding: 0 48px;
-  margin: 0 0 24px;
+  padding: 0 24px;
+  margin: 0;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -126,16 +133,18 @@ body::before {
 
 .nav-list {
   display: flex;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 4px;
   list-style: none;
-  padding: 12px 0;
+  padding: 10px 0;
   min-width: max-content;
+  justify-content: center;
 }
 
 .nav-list a {
   display: block;
-  padding: 8px 16px;
-  font-size: 0.8rem;
+  padding: 8px 12px;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
@@ -151,7 +160,7 @@ body::before {
 }
 
 html.dark-mode .sticky-nav {
-  background: rgba(30, 39, 56, 0.9);
+  background: var(--nav-bg);
   border-bottom-color: var(--border);
 }
 
@@ -427,7 +436,7 @@ section:hover {
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   white-space: nowrap;
 }
 
@@ -453,6 +462,28 @@ section h2 {
   border-left: 3px solid var(--accent);
   padding-left: 18px;
   font-style: italic;
+}
+
+/* IA Aplicada al QA */
+.ia-qa-section {
+  margin-top: 24px;
+}
+
+.ia-qa-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.ia-qa-section p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
 }
 
 /* ===================== HABILIDADES ===================== */
@@ -559,7 +590,7 @@ section h2 {
 
 .exp-title-block .exp-role {
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -570,8 +601,17 @@ section h2 {
   color: var(--text-muted);
   margin-bottom: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 4px 12px;
+}
+
+.exp-duration {
+  white-space: nowrap;
+}
+
+.exp-meta-sep {
+  color: var(--accent);
 }
 
 .exp-meta::before {
@@ -672,11 +712,77 @@ section h2 {
   letter-spacing: 0.3px;
 }
 
+/* Client project nested under a company (e.g. Edenor @ Practia Global) */
+.client-project {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.client-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.client-title-block h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.client-role {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--accent-text);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.client-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+}
+
+.client-meta::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ===================== PROYECTOS ===================== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  margin-top: 8px;
+}
+
+.projects-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 24px 0 4px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.projects-subtitle:first-of-type {
   margin-top: 8px;
 }
 
@@ -783,7 +889,7 @@ html.dark-mode .project-badge.confidential {
 
 .project-role {
   font-size: 0.78rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
   letter-spacing: 0.3px;
   text-transform: uppercase;
@@ -944,7 +1050,7 @@ html.dark-mode .experience-item::after {
 
 .diploma-img {
   width: 100%;
-  height: 130px;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
@@ -957,6 +1063,24 @@ html.dark-mode .diploma-item img {
   border: 1px solid var(--card-border);
 }
 
+/* Inactive diploma tabs: raise contrast + visible border on dark surfaces */
+html.dark-mode .tab-button {
+  background: var(--card-bg);
+  color: #cbd5e1;
+  border-color: var(--card-border);
+}
+
+html.dark-mode .tab-button:hover {
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+html.dark-mode .tab-button.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
 .diploma-item:hover .diploma-img {
   transform: scale(1.05);
 }
@@ -967,6 +1091,7 @@ html.dark-mode .diploma-item img {
   font-weight: 600;
   color: var(--text-main);
   flex-grow: 1;
+  min-height: 2.6em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1041,7 +1166,7 @@ html.dark-mode .diploma-item img {
 }
 
 .langavail-item {
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 .langavail-item h3 {
@@ -1073,6 +1198,9 @@ html.dark-mode .diploma-item img {
 
 /* ===================== EDUCACIÓN ===================== */
 .edu-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   padding: 16px 20px;
   background: var(--white);
   border-radius: var(--radius);
@@ -1080,6 +1208,11 @@ html.dark-mode .diploma-item img {
   margin-bottom: 14px;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
+}
+
+.edu-info {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .edu-item--spaced {
@@ -1107,12 +1240,13 @@ html.dark-mode .diploma-item img {
 }
 
 .degree-img-container {
-  margin-top: 14px;
+  flex: 0 0 230px;
+  margin-top: 0;
   text-align: center;
 }
 
 .degree-img {
-  max-width: 300px;
+  max-width: 230px;
   width: 100%;
   height: auto;
   border-radius: var(--radius);
@@ -1120,7 +1254,7 @@ html.dark-mode .diploma-item img {
   border: 1px solid var(--border);
 }
 
-.degree-img + p {
+.degree-img-container p {
   font-size: 0.82rem;
   color: var(--text-muted);
   margin-top: 8px;
@@ -1131,7 +1265,7 @@ html.dark-mode .diploma-item img {
 .footer {
   background: var(--navy);
   color: var(--white);
-  padding: 48px 40px 20px;
+  padding: 48px 48px 20px;
   margin-top: 24px;
   position: relative;
   overflow: hidden;
@@ -1405,11 +1539,13 @@ html.dark-mode .footer-form textarea:focus {
 
 html.dark-mode section h2,
 html.dark-mode .exp-title-block h3,
+html.dark-mode .client-title-block h4,
 html.dark-mode .edu-item strong,
 html.dark-mode .skills-category h3,
 html.dark-mode .subproject h4,
 html.dark-mode .project-card h3,
 html.dark-mode .project-header h3,
+html.dark-mode .projects-subtitle,
 html.dark-mode .ia-qa-section h3,
 html.dark-mode .langavail-item h3 {
   color: var(--text-main);
@@ -1649,15 +1785,15 @@ html.dark-mode .lang-toggle:hover {
 /* ===================== TABS ===================== */
 .diplomas-tabs-nav {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   gap: 12px;
   margin-bottom: 28px;
-  padding: 0 4px;
+  padding: 0;
 }
 
 .tab-button {
-  padding: 10px 18px;
+  padding: 10px 16px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--white);
@@ -1668,7 +1804,7 @@ html.dark-mode .lang-toggle:hover {
   transition: all 0.2s ease;
   box-shadow: var(--shadow-sm);
   text-align: center;
-  white-space: nowrap;
+  line-height: 1.25;
 }
 
 .tab-button:focus-visible {
@@ -1813,7 +1949,7 @@ section.fade-in.visible {
 /* ===================== BACK TO TOP ===================== */
 .back-to-top {
   position: fixed;
-  bottom: 90px;
+  bottom: 140px;
   right: 24px;
   z-index: 90;
   width: 48px;
@@ -1968,134 +2104,167 @@ html.dark-mode .back-to-top:hover {
 }
 
 /* ===================== RESPONSIVE ===================== */
-@media (max-width: 1400px) {
+/* Desktop (wide): all 8 nav items fit on a single centered row because the
+   container is capped at 860px. Below ~840px the row no longer fits, so the
+   nav becomes a smooth horizontal scroll with a right-edge fade that signals
+   "there is more". flex-start keeps every item reachable (never centered
+   overflow, which would hide the first items off-screen to the left). */
+@media (max-width: 840px) {
   .sticky-nav {
-    padding: 0 40px;
+    padding: 0 20px;
+    background-image: linear-gradient(to left, var(--nav-fade) 0, transparent 48px);
   }
 
   .nav-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    min-width: 0;
-  }
-}
-
-@media (max-width: 1200px) {
-  .sticky-nav {
-    padding: 0 32px;
+    justify-content: flex-start;
   }
 
-  .nav-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    min-width: 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  .sticky-nav {
-    padding: 0 24px;
-  }
-
-  .nav-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    min-width: 0;
+  /* Spanish labels are longer; tighten links so all 8 fit down to tablet
+     widths (768px) and "Contacto" is never cut off there. */
+  .nav-list a {
+    padding: 8px 10px;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 680px) {
   .container { margin: 0; border-radius: 0; }
   .cv-body { padding: 0 20px 32px; }
-  
-  /* Sticky Nav Mobile */
+
+  /* Sticky Nav Mobile (horizontal scroll, no wrap, no white stripe under it) */
   .sticky-nav {
-    padding: 0 20px;
-    margin: 0 0 16px;
+    padding: 0 16px;
+    margin: 0;
   }
-  
+
   .nav-list {
     gap: 4px;
     padding: 8px 0;
   }
-  
+
   .nav-list a {
     padding: 6px 12px;
     font-size: 0.75rem;
   }
-  
-  header { 
-    padding: 36px 20px 32px; 
+
+  header {
+    padding: 32px 20px 28px;
   }
-  
+
+  header h1 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  header .title {
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-wrap: balance;
+  }
+
   .hero-photo {
     width: 90px;
     height: 90px;
   }
-  
+
   .hero-value-prop {
     font-size: 0.9rem;
+    text-wrap: balance;
   }
-  
+
   .download-container {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn-download {
     width: 100%;
     max-width: 280px;
     justify-content: center;
   }
-  
+
   .hero-indicators {
     gap: 8px;
   }
-  
+
   .indicator {
     padding: 5px 12px;
     font-size: 0.7rem;
   }
-  
+
   .contact-bar { padding: 14px 16px; }
+  .footer { padding: 40px 20px 16px; }
   .footer-container { flex-direction: column; gap: 28px; }
   .diplomas-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .skills-grid .skill-tag { font-size: 0.75rem; }
-  .floating-controls { bottom: 16px; right: 16px; gap: 8px; }
+
+  /* Diploma tabs: horizontal scroll keeps labels readable instead of squeezed */
+  .diplomas-tabs-nav {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .diplomas-tabs-nav::-webkit-scrollbar { display: none; }
+
+  .tab-button {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Floating controls: smaller and clear of the back-to-top button */
+  .floating-controls { bottom: 14px; right: 14px; gap: 8px; }
   .dark-toggle,
-  .lang-toggle { width: 40px; height: 40px; font-size: 1.1rem; }
-  .lang-toggle { font-size: 0.75rem; }
+  .lang-toggle { width: 36px; height: 36px; font-size: 1rem; }
+  .lang-toggle { font-size: 0.7rem; }
   .footer-social .social-icons { justify-content: center; }
   .badge-img { width: 150px; }
-  
+
   /* Projects grid mobile */
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .project-card {
     padding: 20px;
   }
-  
+
   /* Experience timeline mobile */
   .experience-item {
     padding-left: 28px;
   }
-  
+
   .experience-item::before {
     left: 8px;
   }
-  
+
   .experience-item::after {
     left: 3px;
     width: 10px;
     height: 10px;
   }
-  
-  /* Back to top mobile */
+
+  /* Education: stack image below the title block */
+  .edu-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .degree-img-container { flex-basis: auto; }
+
+  /* Back to top mobile (sits above the floating controls) */
   .back-to-top {
-    bottom: 80px;
-    right: 16px;
+    bottom: 104px;
+    right: 14px;
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
@@ -2103,15 +2272,30 @@ html.dark-mode .back-to-top:hover {
 }
 
 @media (max-width: 480px) {
+  .container { margin: 0; }
+
+  /* Less side padding so text columns use more of the screen */
+  .cv-body { padding: 0 14px 24px; }
+  .footer { padding: 40px 14px 16px; }
+  section { padding: 18px 14px; }
+  .experience-item {
+    padding-left: 24px;
+    padding-right: 14px;
+  }
+  .experience-item::before { left: 6px; }
+  .experience-item::after { left: 1px; }
+  .project-card { padding: 16px; }
+  .diploma-title { font-size: 0.75rem; }
+
   .nav-list a {
     padding: 5px 10px;
     font-size: 0.7rem;
   }
-  
+
   .hero-indicators {
     gap: 6px;
   }
-  
+
   .indicator {
     padding: 4px 10px;
     font-size: 0.65rem;
