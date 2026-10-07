@@ -1182,6 +1182,7 @@ html.dark-mode .tab-button.active {
 .langavail-item ul {
   list-style: none;
   padding: 0;
+  padding-left: 18px;
 }
 
 .langavail-item li {
