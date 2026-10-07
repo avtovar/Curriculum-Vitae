@@ -5,6 +5,7 @@
 Buenos Aires, Argentina
 
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-brightgreen)](https://avtovar.github.io/Curriculum-Vitae/)
+[![Tests](https://img.shields.io/badge/Tests-Playwright-2EAD33)](https://github.com/avtovar/Curriculum-Vitae/actions)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-ali--v--tovar-0A66C2)](https://www.linkedin.com/in/ali-v-tovar)
 [![GitHub](https://img.shields.io/badge/GitHub-avtovar-24292f)](https://github.com/avtovar)
 
@@ -75,7 +76,7 @@ Desde 2025, he profundizado en la integración de la **Inteligencia Artificial a
 - Front-End JS 2025
 - HTML y CSS — Argentina Programa 4.0
 - Git: Desarrollo Colaborativo
-- Introducción a IA 2025 / IA: De 0 a Agentes
+- Introducción a IA 2025 / IA: De 0 a Agentes / Aprende Claude desde cero
 - Scrum Fundamentals
 - Linux · Bases de Datos y SQL · Introducción a UX
 
@@ -83,24 +84,33 @@ Desde 2025, he profundizado en la integración de la **Inteligencia Artificial a
 
 ## 📂 Estructura del Proyecto
 
+Sitio estático de una sola página (SPA) sin frameworks, desplegado en **GitHub Pages**.
+
 ```
 Curriculum-Vitae/
-├── index.html            # Página principal del CV
+├── index.html                # Página principal (single-page CV)
 ├── css/
-│   └── style.css         # Estilos, variables y diseño responsive
+│   └── style.css             # Variables, layout, dark mode, print, responsive
 ├── js/
-│   └── Formulario.js     # Validación, EmailJS, tabs, dark mode, cálculo experiencia
-├── media/
-│   ├── Diplomas/         # Certificaciones y diplomas (JPG/PDF)
-│   ├── Titulo/           # Títulos universitarios
-│   ├── Brubank_imagen.jpeg
-│   ├── Practia_Global_imagen.jpg
-│   ├── PCMiranda_Imagen.jpg
-│   ├── facebook.svg
-│   ├── github.png
-│   ├── tiktok.svg
-│   └── x-twitter.svg
-├── Ali_Tovar_CV.pdf      # CV descargable en PDF
+│   └── modules/              # JavaScript modular (ES Modules)
+│       ├── main.js           # Toggle idioma, scroll, copy-to-clipboard
+│       ├── i18n.js           # Traducciones ES/EN + setLanguage()
+│       ├── theme.js          # Dark/light mode + localStorage
+│       ├── tabs.js           # Tabs interactivos de diplomas
+│       └── form.js           # Validación + EmailJS
+├── tests/                    # Suites de Playwright
+│   ├── accessibility.spec.js # axe-core (WCAG 2 A/AA)
+│   ├── theme.spec.js         # Dark mode, persistencia, screenshots
+│   └── form.spec.js          # Validación del formulario
+├── .github/workflows/
+│   ├── static.yml            # Deploy a GitHub Pages (on push a main)
+│   └── tests.yml             # Playwright tests en CI
+├── media/                    # Diplomas/, Título/, logos, OG cover
+├── Ali_Tovar_CV.pdf          # CV descargable
+├── build.js                  # Inyecta EmailJS desde env vars/CI
+├── convert-webp.js           # Optimización de imágenes (WebP)
+├── playwright.config.js      # Config de tests
+├── robots.txt / sitemap.xml  # SEO
 └── README.md
 ```
 
@@ -110,18 +120,64 @@ Curriculum-Vitae/
 
 | Funcionalidad | Descripción |
 |---|---|
+| **Bilingüe (ES/EN)** | Toggle de idioma con persistencia en `localStorage` y traducción de todo el contenido |
+| **Modo oscuro** | Respeta `prefers-color-scheme`, toggle manual con persistencia |
 | **Experiencia dinámica** | Calcula automáticamente el tiempo en Brubank desde abril 2021 |
 | **Portfolio de diplomas** | Tabs interactivos con 6 categorías y miniaturas visuales |
 | **Contacto directo** | Formulario con EmailJS + honeypot anti-spam + copia al portapapeles |
-| **Modo oscuro** | Activado por defecto, con toggle flotante y persistencia en localStorage |
+| **Accesibilidad** | Contraste WCAG AA, landmarks semánticos, skip-link, alt decorativos, axe-core en CI |
 | **Descarga PDF** | Botón de descarga del CV en formato PDF |
-| **Responsive** | Diseño adaptado a desktop y dispositivos móviles |
+| **SEO** | OG image, canonical, robots.txt y sitemap.xml |
+| **Responsive** | Diseño adaptado a desktop, tablet y móvil |
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-`HTML5` · `CSS3` (Flexbox/Grid, variables CSS, animaciones) · `JavaScript Vanilla` · `EmailJS` · `GitHub Pages`
+`HTML5` · `CSS3` (Flexbox/Grid, variables CSS, animaciones) · `JavaScript Vanilla (ES Modules)` · `EmailJS` · `GitHub Pages` · `GitHub Actions` · `Playwright` · `axe-core`
+
+---
+
+## 🧪 Desarrollo y Testing
+
+```bash
+# Servidor local (cualquier static server)
+npm run serve                # o: npx serve .
+
+# Instalar navegador de tests (una vez)
+npm run test:install
+
+# Correr la suite completa de Playwright (16 tests)
+npm test
+
+# Optimizar imágenes (si se agregan nuevas)
+node convert-webp.js
+```
+
+Los tests cubren: **accesibilidad (axe-core WCAG 2 A/AA)**, **dark mode** (persistencia y `prefers-color-scheme`) y **formulario** (validación, honeypot, tipos de input). Corren automáticamente en CI con cada push a `main`.
+
+> ℹ️ En los tests de accesibilidad se desactivan las animaciones CSS porque las transiciones `fadeUp`/`fadeIn` parten de `opacity: 0` y generan falsos positivos de contraste si se escanea a mitad de animación.
+
+---
+
+## 📧 EmailJS (formulario de contacto)
+
+El formulario usa **EmailJS** del lado del cliente. Por seguridad, las claves **nunca se commitean**; el repo mantiene placeholders (`__EMAILJS_PUBLIC_KEY__`, `__EMAILJS_SERVICE_ID__`, `__EMAILJS_TEMPLATE_ID__`).
+
+Para activar el formulario en producción:
+
+1. Crear un servicio y un template en [EmailJS](https://www.emailjs.com/).
+2. Añadir 3 secrets en GitHub → **Settings → Secrets and variables → Actions**:
+   - `EMAILJS_PUBLIC_KEY`
+   - `EMAILJS_SERVICE_ID`
+   - `EMAILJS_TEMPLATE_ID`
+3. El workflow `static.yml` ejecuta `node build.js`, que inyecta las claves durante el deploy (si faltan, solo emite un warning y el deploy continúa).
+
+También se puede inyectar localmente:
+
+```bash
+EMAILJS_PUBLIC_KEY=xxx EMAILJS_SERVICE_ID=xxx EMAILJS_TEMPLATE_ID=xxx node build.js
+```
 
 ---
 
