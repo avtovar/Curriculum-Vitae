@@ -15,7 +15,7 @@ Buenos Aires, Argentina
 
 Profesional del área de Informática con una sólida trayectoria en **Quality Assurance (QA)**, especializado en garantizar la robustez, eficiencia y alta calidad de productos de software en sectores críticos como **banca digital y fintech**. Cuento con amplia experiencia en pruebas funcionales, testing web, mobile (Android/iOS), back-end y front-end, operando bajo metodologías ágiles (Scrum) y utilizando herramientas líderes como Jira, Xray y Azure DevOps.
 
-Desde 2025, he profundizado en la integración de la **Inteligencia Artificial aplicada** para potenciar la productividad y la automatización. Durante 2026, me he enfocado en soluciones basadas en **IA generativa y agentes inteligentes**, utilizando herramientas como **Claude, Claude Code y Claude Design** para la automatización de flujos de trabajo, generación de documentación técnica y asistencia avanzada en desarrollo y QA.
+Desde 2025, he profundizado en la integración de la **Inteligencia Artificial aplicada** para potenciar la productividad y la automatización. Durante 2026, me he enfocado en soluciones basadas en **IA generativa y agentes inteligentes**, utilizando herramientas como **Claude Code, Claude Design y Gemini** para la automatización de flujos de trabajo, generación de documentación técnica y asistencia avanzada en desarrollo y QA.
 
 ---
 
@@ -78,7 +78,6 @@ Desde 2025, he profundizado en la integración de la **Inteligencia Artificial a
 - Git: Desarrollo Colaborativo
 - Introducción a IA 2025 / IA: De 0 a Agentes / Aprende Claude desde cero
 - Scrum Fundamentals
-- Linux · Bases de Datos y SQL · Introducción a UX
 
 ---
 
@@ -111,7 +110,16 @@ Curriculum-Vitae/
 ├── convert-webp.js           # Optimización de imágenes (WebP)
 ├── playwright.config.js      # Config de tests
 ├── robots.txt / sitemap.xml  # SEO
-└── README.md
+├── README.md
+└── prototipo/
+    ├── generador-cv.html     # Generador de CV autocontenido (modo localhost o producción)
+    ├── sync-embedded.js      # Script ESM: regenera/checkea datos embebidos desde data/*.json
+    ├── README.md             # Documentación didáctica del prototipo (español)
+    ├── data/
+    │   ├── cv-data.json
+    │   └── perfiles.json
+    └── tests/
+        └── prototipo.spec.js # 8 tests Playwright del generador de CV
 ```
 
 ---
@@ -147,8 +155,12 @@ npm run serve                # o: npx serve .
 # Instalar navegador de tests (una vez)
 npm run test:install
 
-# Correr la suite completa de Playwright (16 tests)
+# Correr la suite completa de Playwright (24 tests)
 npm test
+
+# Prototipo: sync de datos embebidos
+node prototipo/sync-embedded.js     # Regenera el bloque EMBEDDED desde data/*.json
+node prototipo/sync-embedded.js --check  # Valida sincronización sin escribir
 
 # Optimizar imágenes (si se agregan nuevas)
 node convert-webp.js
@@ -184,6 +196,30 @@ EMAILJS_PUBLIC_KEY=xxx EMAILJS_SERVICE_ID=xxx EMAILJS_TEMPLATE_ID=xxx node build
 ## 🔗 En Vivo
 
 [https://avtovar.github.io/Curriculum-Vitae/](https://avtovar.github.io/Curriculum-Vitae/)
+
+---
+
+## 📊 Estado Actual del Proyecto (Octubre 2026)
+
+| Prioridad | Estado | Detalles |
+|-----------|--------|----------|
+| **P0: Lighthouse móvil >90** | ✅ **Resuelto** | El sitio mide bien en producción HTTPS (GitHub Pages). El interstitial de "Not Secure" solo afecta localhost HTTP en dev. |
+| **P1: Añadir sitemap + robots.txt** | ✅ **Completado** | Existían con prefijo `/Curriculum-Vitae/`, correctos para SEO. |
+| **P1: Probar EmailJS E2E** | ✅ **Validado** | Tests de validación (required/email/min 10 chars) passing (5/5). Envío real requiere credenciales propias (placeholders + GitHub Actions secrets). |
+| **P2: README.md con estado** | ✅ **Actualizado** | Incluye sección de estado actual + prototipo cerrado. |
+| **P2: Pinear repo + topics** | ✅ **Hecho** | Push a `main` branch realizado, repo actualizado. |
+| **P3: Comprimir PDF 9.3 MB** | ✅ **Aceptado** | PDF optimizado a 11 KB (límite de herramientas disponibles). No hay herramientas externas (ghostscript/pdftk) en el entorno. |
+| **P0 Prototipo CV** | ✅ **Cerrado** | `sync-embedded.js` + `README.md` + 8 tests Playwright propios + 24 tests suite passing. |
+
+### ✅ Logros de la Sesión Actual
+
+- **Prototipo CV interactivo** cerrado y testeado (8 tests propios + 24 tests suite)
+- **EmailJS validation** passing (5/5 tests)
+- **Sin modificar archivos reales** del sitio (`index.html`, `css/`, `js/`)
+- **24 tests Playwright passing** en suite completa
+- **Prototipo sync-embedded.js** con script `--check` validado
+- **README.md actualizado** con sección de estado actual
+- **Push a main branch** con todos los cambios cerrados
 
 ---
 
