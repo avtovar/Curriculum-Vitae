@@ -1,0 +1,128 @@
+{
+  "nota": "Definición de perfiles objetivo del CV. ofrece a quién descarga qué secciones ver, en qué orden, qué skills prioriza y qué keywords busca un ATS para ese puesto. Todo el texto se genera SIN IA: solo selecciona, reordena y resalta datos reales de cv-data.json.",
+  "perfiles": [
+    {
+      "id": "generalista",
+      "label": { "es": "Generalista QA", "en": "Generalist QA" },
+      "descripcion": { "es": "Equilibrio entre manual, automatización y API (perfil por defecto)", "en": "Balance of manual, automation and API (default)" },
+      "headline": {
+        "es": "QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps",
+        "en": "QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps"
+      },
+      "resumen": {
+        "es": "QA Engineer con 5+ años en banca digital y fintech. Diseño y ejecuto pruebas manuales y automatizadas (web y mobile Android/iOS) con Maestro Studio, Python y Postman, cubriendo APIs REST/GraphQL. Aplico IA generativa (Claude Code, Gemini) para acelerar diseño de casos y documentación. Busco roles QA Automation/Lead en entornos fintech.",
+        "en": "QA Engineer with 5+ years in digital banking and fintech. I design and execute manual and automated tests (web and mobile Android/iOS) with Maestro Studio, Python, and Postman, covering REST/GraphQL APIs. I use generative AI (Claude Code, Gemini) to speed up test case design and documentation. Seeking QA Automation/Lead roles in fintech."
+      },
+      "incluir_ia": true,
+      "orden_secciones": ["resumen", "skills", "experiencia", "proyectos", "certificaciones", "educacion", "idiomas"],
+      "prioridad_skills": ["testing_manual", "automatizacion", "api", "herramientas_devops", "metodologias", "frontend"],
+      "proyectos": ["brubank1", "brubank2", "brubank3", "demo8", "demo2", "demo4"],
+      "certificados": ["fstc", "scrumfund", "qaavanzado", "aics", "talento_tech", "ia_agentes", "git2026", "frontendjs"],
+      "keywords_ats": [
+        "qa engineer", "quality assurance", "manual testing", "automation testing", "functional testing",
+        "regression", "smoke testing", "api testing", "rest api", "graphql", "postman", "maestro",
+        "appium", "python", "javascript", "sql", "docker", "jira", "xray", "azure devops", "scrum",
+        "agile", "mobile testing", "web testing", "android", "ios", "fintech", "banking", "gherkin",
+        "bdd", "test cases", "test plan", "black box", "ux", "ci/cd", "git", "github"
+      ]
+    },
+    {
+      "id": "qa_manual",
+      "label": { "es": "QA Manual", "en": "Manual QA" },
+      "descripcion": { "es": "Manual, funcional, regresión y documentación QA", "en": "Manual, functional, regression and QA documentation" },
+      "headline": {
+        "es": "QA Analyst | Manual & Functional Testing | Mobile & Web",
+        "en": "QA Analyst | Manual & Functional Testing | Mobile & Web"
+      },
+      "resumen": {
+        "es": "QA Tester con 5+ años de experiencia en testing manual y funcional de aplicaciones web y móviles en banca digital y fintech. Sólida práctica de análisis de requerimientos, diseño de casos de prueba, regresión, smoke y gestión de defectos con Jira/Xray. Documentación QA rigurosa y orientación a la calidad y la experiencia de usuario.",
+        "en": "QA Tester with 5+ years of experience in manual and functional testing of web and mobile applications in digital banking and fintech. Strong practice in requirements analysis, test case design, regression, smoke, and defect management with Jira/Xray. Rigorous QA documentation with a focus on quality and user experience."
+      },
+      "incluir_ia": false,
+      "orden_secciones": ["resumen", "experiencia", "skills", "certificaciones", "proyectos", "educacion", "idiomas"],
+      "prioridad_skills": ["testing_manual", "metodologias", "api", "herramientas_devops", "automatizacion", "frontend"],
+      "proyectos": ["brubank2", "brubank1", "demo6", "demo7", "demo8", "demo3"],
+      "certificados": ["fstc", "qaavanzado", "qatester", "academiaqa", "aics", "talento_tech", "scrum_metodologia", "bddsql"],
+      "keywords_ats": [
+        "manual testing", "functional testing", "regression testing", "smoke testing", "test cases",
+        "test plan", "test strategy", "black box", "exploratory testing", "uat", "user acceptance",
+        "defect tracking", "bug report", "jira", "xray", "requirements", "ux", "usability",
+        "accessibility", "edge cases", "documentation", "gherkin", "bdd", "scrum", "agile", "mobile",
+        "web", "sql", "postman", "fintech", "banking", "android", "ios", "casos de prueba"
+      ]
+    },
+    {
+      "id": "qa_automation",
+      "label": { "es": "QA Automation", "en": "QA Automation" },
+      "descripcion": { "es": "Automatización web/mobile con Maestro, Appium y CI/CD", "en": "Web/mobile automation with Maestro, Appium and CI/CD" },
+      "headline": {
+        "es": "QA Automation Engineer | Maestro · Appium · API | Fintech",
+        "en": "QA Automation Engineer | Maestro · Appium · API | Fintech"
+      },
+      "resumen": {
+        "es": "QA Automation Engineer con 5+ años en banca digital y fintech. Automatizo flujos críticos web y mobile (Android/iOS) con Maestro Studio, Appium, Python y JavaScript, y valido APIs REST/GraphQL con Postman. Integro IA generativa para data-driven testing y documentación, reduciendo tiempos de regresión de horas a minutos, con CI/CD en Azure DevOps y GitHub Actions.",
+        "en": "QA Automation Engineer with 5+ years in digital banking and fintech. I automate critical web and mobile (Android/iOS) flows with Maestro Studio, Appium, Python, and JavaScript, and validate REST/GraphQL APIs with Postman. I integrate generative AI for data-driven testing and documentation, cutting regression times from hours to minutes, with CI/CD on Azure DevOps and GitHub Actions."
+      },
+      "incluir_ia": true,
+      "orden_secciones": ["resumen", "skills", "experiencia", "proyectos", "certificaciones", "educacion", "idiomas"],
+      "prioridad_skills": ["automatizacion", "api", "herramientas_devops", "testing_manual", "metodologias", "frontend"],
+      "proyectos": ["demo8", "brubank1", "brubank2", "brubank3", "demo1", "demo2"],
+      "certificados": ["fstc", "git2026", "frontendjs", "talento_tech", "ia_agentes", "qaavanzado", "programacion", "python_no_prog"],
+      "keywords_ats": [
+        "automation testing", "test automation", "qa automation", "playwright", "selenium", "cypress",
+        "maestro", "appium", "mobile automation", "e2e", "end-to-end", "ci/cd", "jenkins",
+        "github actions", "docker", "api automation", "postman", "rest", "graphql", "javascript",
+        "typescript", "python", "pytest", "junit", "page object", "data-driven", "bdd", "gherkin",
+        "cucumber", "regression", "smoke", "allure", "jira", "xray", "azure devops"
+      ]
+    },
+    {
+      "id": "qa_api",
+      "label": { "es": "QA API", "en": "API QA" },
+      "descripcion": { "es": "API REST/GraphQL, Postman, SQL y validación de contratos", "en": "REST/GraphQL API, Postman, SQL and contract validation" },
+      "headline": {
+        "es": "QA API / Backend Tester | REST · GraphQL · Postman",
+        "en": "QA API / Backend Tester | REST · GraphQL · Postman"
+      },
+      "resumen": {
+        "es": "QA especializado en testing de APIs REST y GraphQL con Postman, validando contratos, flujos de contingencia y pagos en banca digital y fintech. Prevengo defectos críticos pre-producción trabajando con SQL/MySQL, Docker y RabbitMQ. Combino pruebas de API con automatización de flujos end-to-end.",
+        "en": "QA specialist in REST and GraphQL API testing with Postman, validating contracts, contingency flows, and payments in digital banking and fintech. I prevent critical pre-production defects working with SQL/MySQL, Docker, and RabbitMQ. I combine API testing with end-to-end automation."
+      },
+      "incluir_ia": false,
+      "orden_secciones": ["resumen", "skills", "experiencia", "certificaciones", "proyectos", "educacion", "idiomas"],
+      "prioridad_skills": ["api", "automatizacion", "herramientas_devops", "testing_manual", "metodologias", "frontend"],
+      "proyectos": ["brubank1", "demo2", "demo5", "demo8", "brubank3", "demo4"],
+      "certificados": ["bddsql", "fstc", "qaavanzado", "talento_tech", "git2026", "linux", "iadesarrollo"],
+      "keywords_ats": [
+        "api testing", "rest", "rest api", "graphql", "postman", "newman", "swagger", "openapi",
+        "json", "xml", "soap", "contract testing", "integration testing", "microservices", "sql",
+        "mysql", "postgres", "rabbitmq", "kafka", "docker", "ssh", "authentication", "http",
+        "status codes", "backend", "ci/cd", "python", "javascript", "tests contract", "api automation"
+      ]
+    },
+    {
+      "id": "frontend",
+      "label": { "es": "Front-End", "en": "Front-End" },
+      "descripcion": { "es": "JavaScript, HTML/CSS, React Native y QA de experiencias web", "en": "JavaScript, HTML/CSS, React Native and QA of web experiences" },
+      "headline": {
+        "es": "Front-End Developer & QA | JavaScript · React Native · E2E",
+        "en": "Front-End Developer & QA | JavaScript · React Native · E2E"
+      },
+      "resumen": {
+        "es": "QA Engineer y desarrollador front-end con experiencia en JavaScript, HTML5, CSS y React Native, aplicada a validar y construir experiencias web y móviles. Diseñé y ejecuté pruebas funcionales, de regresión, UX y accesibilidad en apps educativas y fintech. Automatización E2E con Maestro y despliegue con CI/CD.",
+        "en": "QA Engineer and front-end developer experienced in JavaScript, HTML5, CSS, and React Native, applied to validating and building web and mobile experiences. I designed and executed functional, regression, UX, and accessibility tests on educational and fintech apps. E2E automation with Maestro and CI/CD deployment."
+      },
+      "incluir_ia": false,
+      "orden_secciones": ["resumen", "skills", "proyectos", "experiencia", "certificaciones", "educacion", "idiomas"],
+      "prioridad_skills": ["frontend", "automatizacion", "herramientas_devops", "api", "testing_manual", "metodologias"],
+      "proyectos": ["demo4", "demo8", "demo1", "demo6", "brubank2", "demo2"],
+      "certificados": ["frontendjs", "programacion", "html5", "htmlcss", "argprog", "git2026", "ux_intro", "python_no_prog"],
+      "keywords_ats": [
+        "javascript", "typescript", "html", "html5", "css", "css3", "react", "react native",
+        "responsive", "responsive design", "accessibility", "accesibility", "ux", "ui", "front-end",
+        "frontend", "web development", "git", "github", "npm", "node", "figma", "e2e", "playwright",
+        "cypress", "mobile web", "web apps", "cross-browser", "maquetacion", "react js", "spa"
+      ]
+    }
+  ]
+}

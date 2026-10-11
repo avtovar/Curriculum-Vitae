@@ -1,0 +1,522 @@
+{
+  "meta": {
+    "descripcion": "Fuente única de verdad del CV de Ali Valentin Tovar Morales. Datos REALES extraídos de index.html y js/modules/i18n.js del sitio F:/Curriculum-Vitae.",
+    "fecha_extraccion": "2026-10-11",
+    "nota": "Los datos son bilingües (es/en). Nada aquí es inventado: si un dato (emisor, año) no figura en el sitio, queda como null y se omite en el PDF."
+  },
+  "persona": {
+    "nombre": "Ali Valentin Tovar Morales",
+    "anios_experiencia": "5+",
+    "headline_base": {
+      "es": "QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps",
+      "en": "QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps"
+    },
+    "contacto": {
+      "email": "ali.v.tovar@gmail.com",
+      "telefono": "+54 11 3398-7682",
+      "telefono_href": "+541133987682",
+      "ubicacion": { "es": "Buenos Aires, Argentina", "en": "Buenos Aires, Argentina" },
+      "linkedin_url": "https://www.linkedin.com/in/ali-v-tovar",
+      "linkedin_label": "linkedin.com/in/ali-v-tovar",
+      "github_url": "https://github.com/avtovar",
+      "github_label": "github.com/avtovar"
+    },
+    "disponibilidad": {
+      "es": ["Remoto / Híbrido", "Zona horaria: GMT-3 (Buenos Aires)", "Disponible para nuevas oportunidades"],
+      "en": ["Remote / Hybrid", "Timezone: GMT-3 (Buenos Aires)", "Available for new opportunities"]
+    }
+  },
+  "resumen": {
+    "es": "QA Engineer con 5+ años en banca digital y fintech. Diseño y automatizo pruebas web y mobile (Android/iOS) con Maestro, Python y Postman. Uso IA generativa (Claude Code, Gemini) para acelerar diseño de casos de prueba y documentación técnica. Busco roles de QA Automation/Lead en entornos fintech.",
+    "en": "QA Engineer with 5+ years in digital banking and fintech. Design and automate web and mobile (Android/iOS) tests with Maestro, Python, and Postman. Use generative AI (Claude Code, Gemini) to accelerate test case design and technical documentation. Seeking QA Automation/Lead roles in fintech environments.",
+    "ia": {
+      "es": "Integración de IA generativa (Claude Code, Gemini, ChatGPT) en el ciclo de vida de QA: generación automatizada de casos de prueba (Gherkin/BDD), data-driven testing, documentación técnica, análisis de logs y creación de scripts de automatización. Aceleración de 40% en documentación QA y cobertura de casos edge.",
+      "en": "Integration of generative AI (Claude Code, Gemini, ChatGPT) into the QA lifecycle: automated test case generation (Gherkin/BDD), data-driven testing, technical documentation, log analysis, and automation script creation. 40% acceleration in QA documentation and edge-case coverage."
+    }
+  },
+  "skills": [
+    {
+      "id": "testing_manual",
+      "label": { "es": "Testing Manual", "en": "Manual Testing" },
+      "items": [
+        { "nombre": { "es": "Manual Testing", "en": "Manual Testing" }, "tags": ["manual testing", "manual"] },
+        { "nombre": { "es": "Functional Testing", "en": "Functional Testing" }, "tags": ["functional testing", "funcional"] },
+        { "nombre": { "es": "Regression & Smoke", "en": "Regression & Smoke" }, "tags": ["regresion", "regression", "smoke"] },
+        { "nombre": { "es": "Black/White Box", "en": "Black/White Box" }, "tags": ["black box", "caja negra", "white box"] },
+        { "nombre": { "es": "UX Validation", "en": "UX Validation" }, "tags": ["ux", "usability", "usabilidad"] },
+        { "nombre": { "es": "QA Documentation", "en": "QA Documentation" }, "tags": ["qa documentation", "documentacion qa", "documentacion"] },
+        { "nombre": { "es": "Gherkin/BDD", "en": "Gherkin/BDD" }, "tags": ["gherkin", "bdd"] },
+        { "nombre": { "es": "Accessibility", "en": "Accessibility" }, "tags": ["accessibility", "accesibilidad", "a11y"] },
+        { "nombre": { "es": "Análisis de Requerimientos", "en": "Requirements Analysis" }, "tags": ["requirements", "requerimientos"] }
+      ]
+    },
+    {
+      "id": "automatizacion",
+      "label": { "es": "Automatización", "en": "Automation" },
+      "items": [
+        { "nombre": { "es": "Automation Testing", "en": "Automation Testing" }, "tags": ["automation testing", "automatizacion", "test automation"] },
+        { "nombre": { "es": "Maestro Studio", "en": "Maestro Studio" }, "tags": ["maestro", "maestro studio"] },
+        { "nombre": { "es": "Appium", "en": "Appium" }, "tags": ["appium"] },
+        { "nombre": { "es": "JavaScript", "en": "JavaScript" }, "tags": ["javascript", "js"] },
+        { "nombre": { "es": "Python", "en": "Python" }, "tags": ["python"] },
+        { "nombre": { "es": "E2E Testing", "en": "E2E Testing" }, "tags": ["e2e", "end to end", "end-to-end"] },
+        { "nombre": { "es": "Gherkin/BDD", "en": "Gherkin/BDD" }, "tags": ["gherkin", "bdd"] },
+        { "nombre": { "es": "IA Generativa (Claude Code, Gemini, ChatGPT)", "en": "Generative AI (Claude Code, Gemini, ChatGPT)" }, "tags": ["ia", "ai", "claude", "gemini", "chatgpt", "generative ai"] },
+        { "nombre": { "es": "Allure Reports", "en": "Allure Reports" }, "tags": ["allure"] }
+      ]
+    },
+    {
+      "id": "api",
+      "label": { "es": "API & Datos", "en": "API & Data" },
+      "items": [
+        { "nombre": { "es": "REST API", "en": "REST API" }, "tags": ["rest", "rest api", "api", "apis"] },
+        { "nombre": { "es": "GraphQL", "en": "GraphQL" }, "tags": ["graphql"] },
+        { "nombre": { "es": "Postman", "en": "Postman" }, "tags": ["postman"] },
+        { "nombre": { "es": "SQL/MySQL", "en": "SQL/MySQL" }, "tags": ["sql", "mysql"] },
+        { "nombre": { "es": "RabbitMQ", "en": "RabbitMQ" }, "tags": ["rabbitmq"] },
+        { "nombre": { "es": "Docker", "en": "Docker" }, "tags": ["docker"] },
+        { "nombre": { "es": "SSH", "en": "SSH" }, "tags": ["ssh"] }
+      ]
+    },
+    {
+      "id": "frontend",
+      "label": { "es": "Front-End", "en": "Front-End" },
+      "items": [
+        { "nombre": { "es": "JavaScript", "en": "JavaScript" }, "tags": ["javascript", "js"] },
+        { "nombre": { "es": "HTML5", "en": "HTML5" }, "tags": ["html", "html5"] },
+        { "nombre": { "es": "CSS", "en": "CSS" }, "tags": ["css", "css3"] },
+        { "nombre": { "es": "React Native", "en": "React Native" }, "tags": ["react native", "react"] }
+      ],
+      "nota": "Categoría derivada: los ítems provienen de tech-tags de proyectos y diplomas reales (Front-End JS 2025, HTML y CSS - Arg Programa 4.0, app React Native)."
+    },
+    {
+      "id": "herramientas_devops",
+      "label": { "es": "Herramientas / DevOps", "en": "Tools / DevOps" },
+      "items": [
+        { "nombre": { "es": "Azure DevOps", "en": "Azure DevOps" }, "tags": ["azure devops", "devops"] },
+        { "nombre": { "es": "Git/GitHub", "en": "Git/GitHub" }, "tags": ["git", "github"] },
+        { "nombre": { "es": "Docker", "en": "Docker" }, "tags": ["docker"] },
+        { "nombre": { "es": "CI/CD", "en": "CI/CD" }, "tags": ["ci/cd", "continuous integration", "continuous delivery"] },
+        { "nombre": { "es": "GitHub Actions", "en": "GitHub Actions" }, "tags": ["github actions"] },
+        { "nombre": { "es": "PyCharm", "en": "PyCharm" }, "tags": ["pycharm"] },
+        { "nombre": { "es": "SSH", "en": "SSH" }, "tags": ["ssh"] },
+        { "nombre": { "es": "Allure Reports", "en": "Allure Reports" }, "tags": ["allure"] }
+      ]
+    },
+    {
+      "id": "metodologias",
+      "label": { "es": "Metodologías", "en": "Methodologies" },
+      "items": [
+        { "nombre": { "es": "Scrum/Agile", "en": "Scrum/Agile" }, "tags": ["scrum", "agile"] },
+        { "nombre": { "es": "Jira + Xray", "en": "Jira + Xray" }, "tags": ["jira", "xray"] },
+        { "nombre": { "es": "Bantotal", "en": "Bantotal" }, "tags": ["bantotal"] },
+        { "nombre": { "es": "Oracle JD Edwards", "en": "Oracle JD Edwards" }, "tags": ["oracle jd edwards", "jd edwards"] },
+        { "nombre": { "es": "Métricas QA", "en": "QA Metrics" }, "tags": ["metricas", "metrics", "kpi"] },
+        { "nombre": { "es": "Mejora Continua", "en": "Continuous Improvement" }, "tags": ["mejora continua", "continuous improvement"] }
+      ]
+    }
+  ],
+  "experiencia": [
+    {
+      "id": "brubank",
+      "empresa": "Brubank",
+      "rol": { "es": "QA Engineer", "en": "QA Engineer" },
+      "ubicacion": { "es": "Buenos Aires, Argentina", "en": "Buenos Aires, Argentina" },
+      "fechas": { "es": "abril 2021 — Presente", "en": "April 2021 — Present" },
+      "actual": true,
+      "cliente": null,
+      "subproyectos": [
+        {
+          "id": "brubank_failover",
+          "titulo": { "es": "Fail-Over & Resiliencia Bancaria", "en": "Fail-Over & Banking Resilience" },
+          "empresa_cliente": null,
+          "bullets": [
+            {
+              "texto": {
+                "es": "Automaticé 25+ flujos críticos de Fail-Over con Maestro Studio (JS), reduciendo tiempo de regresión de 8h a 45min y cubriendo 95% de casos de fallo.",
+                "en": "Automated 25+ critical Fail-Over flows with Maestro Studio (JS), reducing regression time from 8h to 45min and covering 95% of failure cases."
+              },
+              "tags": ["maestro", "javascript", "automatizacion", "test automation", "failover", "regresion", "regression"],
+              "impacto": true
+            },
+            {
+              "texto": {
+                "es": "Validé APIs REST/GraphQL de contingencia con Postman, detectando 12 defectos críticos pre-producción en módulos de transferencias y pagos.",
+                "en": "Validated contingency REST/GraphQL APIs with Postman, detecting 12 critical pre-production defects in transfers and payments modules."
+              },
+              "tags": ["rest", "rest api", "graphql", "postman", "api", "defectos"],
+              "impacto": true
+            }
+          ],
+          "tecnologias": ["Maestro", "JavaScript", "Postman", "GraphQL", "Jira/Xray"]
+        },
+        {
+          "id": "brubank_qr",
+          "titulo": { "es": "QR, Tarjetas & eSIM (Core Banking)", "en": "QR, Cards & eSIM (Core Banking)" },
+          "empresa_cliente": null,
+          "bullets": [
+            {
+              "texto": {
+                "es": "Lideré testing E2E de módulos QR V1/V2, Tarjetas Crédito/Débito y eSIM: 180+ casos funcionales, 0 escapes a producción en 6 releases.",
+                "en": "Led E2E testing of QR V1/V2, Credit/Debit Cards, and eSIM modules: 180+ functional cases, 0 production escapes across 6 releases."
+              },
+              "tags": ["e2e", "functional testing", "manual testing", "mobile", "fintech", "banking"],
+              "impacto": true
+            },
+            {
+              "texto": {
+                "es": "Implementé automatización mobile (Android/iOS) para onboarding digital, reduciendo QA manual de 3 días a 4 horas por sprint.",
+                "en": "Implemented mobile automation (Android/iOS) for digital onboarding, reducing manual QA from 3 days to 4 hours per sprint."
+              },
+              "tags": ["maestro", "python", "appium", "automatizacion", "mobile", "android", "ios"],
+              "impacto": true
+            }
+          ],
+          "tecnologias": ["Maestro", "Python", "Appium", "REST API", "Scrum", "Azure DevOps"]
+        },
+        {
+          "id": "brubank_pyme",
+          "titulo": { "es": "Promociones, Pyme & Banca Empresas", "en": "Promotions, SME & Corporate Banking" },
+          "empresa_cliente": null,
+          "bullets": [
+            {
+              "texto": {
+                "es": "Diseñé estrategia de pruebas para Promociones V2 y Pyme: 40+ casos de regresión automatizados, cobertura 87% en flujos de negocio.",
+                "en": "Designed test strategy for Promotions V2 and SME: 40+ automated regression cases, 87% coverage on business flows."
+              },
+              "tags": ["regresion", "regression", "automatizacion", "test strategy", "cobertura"],
+              "impacto": true
+            },
+            {
+              "texto": {
+                "es": "Integré Claude Code/Gemini para generación de casos de prueba y data-driven testing, acelerando documentación QA en 40%.",
+                "en": "Integrated Claude Code/Gemini for test case generation and data-driven testing, accelerating QA documentation by 40%."
+              },
+              "tags": ["ia", "ai", "claude", "gemini", "data-driven", "qa documentation"],
+              "impacto": true
+            }
+          ],
+          "tecnologias": ["Maestro", "JavaScript", "Python", "IA Generativa", "Bantotal", "RabbitMQ"]
+        }
+      ]
+    },
+    {
+      "id": "practia",
+      "empresa": "Practia Global",
+      "rol": { "es": "Semi Senior QA Tester", "en": "Semi Senior QA Tester" },
+      "ubicacion": null,
+      "fechas": { "es": "agosto 2020 — marzo 2021", "en": "August 2020 — March 2021" },
+      "actual": false,
+      "cliente": { "es": "Cliente: Brubank → incorporación directa", "en": "Client: Brubank → direct hire" },
+      "bullets": [
+        {
+          "texto": {
+            "es": "Dominio en pruebas para plataformas Android e iOS y Back-end.",
+            "en": "Proficiency in testing for Android, iOS, and Back-end platforms."
+          },
+          "tags": ["android", "ios", "backend", "mobile", "manual testing"],
+          "impacto": false
+        },
+        {
+          "texto": {
+            "es": "Diseño y ejecución de casos de prueba meticulosos para identificar y resolver defectos.",
+            "en": "Design and execution of meticulous test cases to identify and resolve defects."
+          },
+          "tags": ["test cases", "casos de prueba", "defectos", "manual testing"],
+          "impacto": false
+        },
+        {
+          "texto": {
+            "es": "Colaboración estrecha con equipos multidisciplinarios bajo metodologías ágiles.",
+            "en": "Close collaboration with multidisciplinary teams under agile methodologies."
+          },
+          "tags": ["scrum", "agile", "equipos"],
+          "impacto": false
+        }
+      ],
+      "tecnologias": ["Android", "iOS", "REST API", "Jira", "Scrum", "Postman"],
+      "subproyectos": [
+        {
+          "id": "practia_edenor",
+          "titulo": null,
+          "empresa_cliente": {
+            "empresa": "Edenor",
+            "rol": { "es": "QA Tester (Cliente)", "en": "QA Tester (Client)" },
+            "fechas": { "es": "enero 2020 — julio 2020", "en": "January 2020 — July 2020" },
+            "tipo": { "es": "Proyecto outsourcing", "en": "Outsourcing project" }
+          },
+          "bullets": [
+            {
+              "texto": {
+                "es": "Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.",
+                "en": "Web and Mobile testing specialist for Edenor, focusing on Manual and Regression Testing."
+              },
+              "tags": ["web testing", "mobile testing", "manual testing", "regresion", "regression"],
+              "impacto": false
+            },
+            {
+              "texto": {
+                "es": "Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.",
+                "en": "Efficient bug report management, tracking, and detailed documentation."
+              },
+              "tags": ["bug tracking", "jira", "documentacion", "reportes"],
+              "impacto": false
+            }
+          ],
+          "tecnologias": ["Web Testing", "Mobile Testing", "Regresión", "Jira", "Documentación QA", "Caja Negra"]
+        }
+      ]
+    },
+    {
+      "id": "datasystem",
+      "empresa": "Data System Tovar",
+      "rol": { "es": "Analista Tester QA", "en": "QA Tester Analyst" },
+      "ubicacion": { "es": "Argentina", "en": "Argentina" },
+      "fechas": { "es": "septiembre 2018 — agosto 2019", "en": "September 2018 — August 2019" },
+      "actual": false,
+      "cliente": null,
+      "bullets": [
+        {
+          "texto": {
+            "es": "Especialista en Análisis de Requerimientos y Testing Funcional de Caja Negra.",
+            "en": "Requirements Analysis and Black Box Functional Testing specialist."
+          },
+          "tags": ["requirements", "requerimientos", "functional testing", "black box", "caja negra"],
+          "impacto": false
+        },
+        {
+          "texto": {
+            "es": "Desarrollador de estrategias de prueba efectivas y proactividad en resolución de incidencias.",
+            "en": "Development of effective test strategies and proactive incident resolution."
+          },
+          "tags": ["test strategy", "estrategias", "incidencias"],
+          "impacto": false
+        }
+      ],
+      "tecnologias": ["Análisis Requerimientos", "Caja Negra", "Estrategias Prueba", "SQL", "Documentación"],
+      "subproyectos": []
+    },
+    {
+      "id": "pcivil",
+      "empresa": "Protección Civil Miranda",
+      "rol": { "es": "Coordinador de Procesos Informáticos", "en": "IT Processes Coordinator" },
+      "ubicacion": { "es": "Venezuela", "en": "Venezuela" },
+      "fechas": { "es": "octubre 2011 — mayo 2017", "en": "October 2011 — May 2017" },
+      "actual": false,
+      "cliente": null,
+      "bullets": [
+        {
+          "texto": {
+            "es": "Ejecución de pruebas sistemáticas y rigurosas para asegurar la calidad del software institucional.",
+            "en": "Execution of systematic and rigorous tests to ensure institutional software quality."
+          },
+          "tags": ["manual testing", "quality assurance", "calidad"],
+          "impacto": false
+        },
+        {
+          "texto": {
+            "es": "Creación y análisis de métricas para optimizar la eficiencia del proceso de testing.",
+            "en": "Creation and analysis of metrics to optimize testing process efficiency."
+          },
+          "tags": ["metricas", "metrics", "kpi", "qa metrics"],
+          "impacto": false
+        },
+        {
+          "texto": {
+            "es": "Coordinación de reportes de bugs y mantenimiento de infraestructura tecnológica.",
+            "en": "Bug report coordination and technological infrastructure maintenance."
+          },
+          "tags": ["bug tracking", "reportes", "infraestructura"],
+          "impacto": false
+        }
+      ],
+      "tecnologias": ["Testing Institucional", "Métricas QA", "Coordinación Bugs", "Infraestructura", "Reportes", "Mejora Continua"],
+      "subproyectos": []
+    }
+  ],
+  "proyectos": [
+    {
+      "id": "brubank1",
+      "titulo": { "es": "Fail-Over & Resiliencia Bancaria", "en": "Fail-Over & Banking Resilience" },
+      "contexto": { "es": "Sistema de failover core banking", "en": "Core banking failover system" },
+      "rol": { "es": "QA Lead Automation", "en": "QA Lead Automation" },
+      "confidencial": true,
+      "detalles": [
+        { "texto": { "es": "25+ flujos Maestro, validación GraphQL API", "en": "25+ Maestro flows, GraphQL API validation" }, "tags": ["maestro", "graphql", "api", "automatizacion"] },
+        { "texto": { "es": "Regresión 8h→45min, 95% cobertura fallos", "en": "Regression 8h→45min, 95% failure coverage" }, "tags": ["regresion", "regression", "cobertura", "metricas"] }
+      ],
+      "tecnologias": ["Maestro", "JavaScript", "GraphQL", "Jira/Xray"],
+      "link": null
+    },
+    {
+      "id": "brubank2",
+      "titulo": { "es": "QR, Tarjetas & eSIM (Core Banking)", "en": "QR, Cards & eSIM (Core Banking)" },
+      "contexto": { "es": "Onboarding digital y pagos", "en": "Digital onboarding & payments" },
+      "rol": { "es": "QA Automation Engineer", "en": "QA Automation Engineer" },
+      "confidencial": true,
+      "detalles": [
+        { "texto": { "es": "180+ casos E2E, automatización Android/iOS", "en": "180+ E2E cases, mobile automation Android/iOS" }, "tags": ["e2e", "automatizacion", "android", "ios", "mobile"] },
+        { "texto": { "es": "0 escapes en 6 releases, QA manual 3d→4h", "en": "0 escapes in 6 releases, manual QA 3d→4h" }, "tags": ["quality assurance", "metricas", "calidad"] }
+      ],
+      "tecnologias": ["Maestro", "Python", "Appium", "REST API"],
+      "link": null
+    },
+    {
+      "id": "brubank3",
+      "titulo": { "es": "Promociones, Pyme & Banca Empresas", "en": "Promotions, SME & Corporate Banking" },
+      "contexto": { "es": "Banca empresarial y motor promociones", "en": "Business banking & promotions engine" },
+      "rol": { "es": "QA Engineer", "en": "QA Engineer" },
+      "confidencial": true,
+      "detalles": [
+        { "texto": { "es": "40+ regresión automatizada, IA generación casos", "en": "40+ automated regression, AI-assisted test generation" }, "tags": ["regresion", "regression", "automatizacion", "ia", "ai"] },
+        { "texto": { "es": "87% cobertura, 40% docs más rápido", "en": "87% coverage, 40% faster docs" }, "tags": ["cobertura", "qa documentation"] }
+      ],
+      "tecnologias": ["Maestro", "JavaScript", "Python", "IA Generativa", "Bantotal"],
+      "link": null
+    },
+    {
+      "id": "demo1",
+      "titulo": { "es": "Maestro Mobile Automation Demo", "en": "Maestro Mobile Automation Demo" },
+      "contexto": { "es": "Flujos de ejemplo app demo", "en": "Demo app flow examples" },
+      "rol": { "es": "Repositorio público", "en": "Public repository" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Login, pago, transferencia con Maestro", "en": "Login, payment, transfer with Maestro" }, "tags": ["maestro", "mobile", "automatizacion"] },
+        { "texto": { "es": "Código abierto, listo para usar", "en": "Open source, ready to use" }, "tags": ["github", "open source"] }
+      ],
+      "tecnologias": ["Maestro", "JavaScript", "Mobile"],
+      "link": "https://github.com/avtovar/maestro-demo"
+    },
+    {
+      "id": "demo2",
+      "titulo": { "es": "Postman API Testing Collection", "en": "Postman API Testing Collection" },
+      "contexto": { "es": "Colección documentada con tests", "en": "Documented collection with automated tests" },
+      "rol": { "es": "Repositorio público", "en": "Public repository" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Tests automatizados REST/GraphQL", "en": "Automated REST/GraphQL tests" }, "tags": ["postman", "rest", "rest api", "graphql", "api", "api automation"] },
+        { "texto": { "es": "CI/CD ready, variables de entorno", "en": "CI/CD ready, environment variables" }, "tags": ["ci/cd", "github"] }
+      ],
+      "tecnologias": ["Postman", "REST API", "GraphQL"],
+      "link": "https://github.com/avtovar/postman-collection"
+    },
+    {
+      "id": "demo3",
+      "titulo": { "es": "QA Templates Repository", "en": "QA Templates Repository" },
+      "contexto": { "es": "Plantillas QA profesionales", "en": "Professional QA templates" },
+      "rol": { "es": "Repositorio público", "en": "Public repository" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Plan de pruebas, casos, reporte bugs", "en": "Test plan, test cases, bug report templates" }, "tags": ["test plan", "test cases", "bug tracking", "qa documentation"] },
+        { "texto": { "es": "Estándar industria, personalizable", "en": "Industry standard, customizable" }, "tags": ["qa documentation"] }
+      ],
+      "tecnologias": ["Documentación", "Gherkin/BDD", "QA Process"],
+      "link": "https://github.com/avtovar/qa-templates"
+    },
+    {
+      "id": "demo4",
+      "titulo": { "es": "Apps Matemáticas Interactivas", "en": "Interactive Math Apps" },
+      "contexto": { "es": "Aplicaciones educativas web/mobile", "en": "Educational web/mobile applications" },
+      "rol": { "es": "Full Stack Developer & QA", "en": "Full Stack Developer & QA" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Desarrollo de apps interactivas (álgebra, geometría, cálculo) con React Native y Python", "en": "Built interactive apps (algebra, geometry, calculus) with React Native and Python" }, "tags": ["react native", "react", "python", "javascript", "frontend", "front-end"] },
+        { "texto": { "es": "Tests automatizados E2E, 95% cobertura, deploy CI/CD", "en": "Automated E2E tests, 95% coverage, CI/CD deploy" }, "tags": ["e2e", "cobertura", "ci/cd"] }
+      ],
+      "tecnologias": ["React Native", "Python", "Maestro", "FastAPI", "PostgreSQL"],
+      "link": "https://github.com/avtovar/math-apps"
+    },
+    {
+      "id": "demo5",
+      "titulo": { "es": "Buscador Ofertas Empleo Interactivo", "en": "Interactive Job Search Engine" },
+      "contexto": { "es": "Plataforma scraping + matching IA", "en": "Multi-source scraping + AI matching platform" },
+      "rol": { "es": "Backend Developer & QA Automation", "en": "Backend Developer & QA Automation" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Scraping multi-fuente (LinkedIn, InfoJobs, Glassdoor), matching IA con embeddings, alertas tiempo real", "en": "Multi-source scraping (LinkedIn, InfoJobs, Glassdoor), AI embeddings matching, real-time alerts" }, "tags": ["python", "ia", "ai", "backend", "fastapi"] },
+        { "texto": { "es": "API REST documentada, tests contract, 99% uptime, Docker + K8s", "en": "Documented REST API, contract tests, 99% uptime, Docker + K8s" }, "tags": ["api", "rest api", "contract testing", "docker"] }
+      ],
+      "tecnologias": ["Python", "FastAPI", "Celery", "Redis", "PostgreSQL", "Docker", "OpenAI API"],
+      "link": "https://github.com/avtovar/job-search-engine"
+    },
+    {
+      "id": "demo6",
+      "titulo": { "es": "Mate Mático - Colaboración QA", "en": "Mate Mático - QA Collaboration" },
+      "contexto": { "es": "App educativa matemáticas interactiva", "en": "Interactive math educational app" },
+      "rol": { "es": "QA Engineer & Apoyo a Desarrollo", "en": "QA Engineer & Dev Support" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Diseño y ejecución de casos de prueba funcionales, regresión y UX en app móvil/web", "en": "Designed and executed functional, regression, and UX test cases for mobile/web app" }, "tags": ["manual testing", "functional testing", "regresion", "regression", "ux", "test cases"] },
+        { "texto": { "es": "Validación de flujos críticos, reporte de bugs, mejora de calidad pre-lanzamiento", "en": "Critical flow validation, bug reporting, pre-launch quality improvement" }, "tags": ["bug tracking", "quality assurance", "ux"] }
+      ],
+      "tecnologias": ["Manual Testing", "Regresión", "UX Validation", "Mobile/Web", "Jira"],
+      "link": "https://github.com/Innova-Lab-Mate-Matico/mate-matico"
+    },
+    {
+      "id": "demo7",
+      "titulo": { "es": "Buscador Medicina Interactiva - Colaboración QA", "en": "Interactive Medicine Search - QA Collaboration" },
+      "contexto": { "es": "Plataforma búsqueda médica interactiva", "en": "Interactive medical search platform" },
+      "rol": { "es": "QA Engineer & Apoyo a Desarrollo", "en": "QA Engineer & Dev Support" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Testing funcional, validación de algoritmos de búsqueda, casos edge y accesibilidad", "en": "Functional testing, search algorithm validation, edge cases and accessibility" }, "tags": ["functional testing", "edge cases", "accessibility", "accesibilidad"] },
+        { "texto": { "es": "Detección temprana de defectos, mejora de UX, soporte a desarrolladores en CI/CD", "en": "Early defect detection, UX improvement, CI/CD support for developers" }, "tags": ["defectos", "ux", "ci/cd"] }
+      ],
+      "tecnologias": ["Functional Testing", "Accessibility", "Edge Cases", "CI/CD Support", "GitHub Actions"],
+      "link": "https://github.com/avtovar/Busqueda_medicina_interactiva"
+    },
+    {
+      "id": "demo8",
+      "titulo": { "es": "Automatización Web Brubank - Demo", "en": "Brubank Web Automation - Demo" },
+      "contexto": { "es": "App bancaria fintech - Flujos críticos web", "en": "Fintech banking app - Critical web flows" },
+      "rol": { "es": "QA Automation Engineer", "en": "QA Automation Engineer" },
+      "confidencial": false,
+      "detalles": [
+        { "texto": { "es": "Automatización E2E flujos críticos (login, transferencias, pagos, tarjetas) con Maestro Studio", "en": "E2E automation of critical flows (login, transfers, payments, cards) with Maestro Studio" }, "tags": ["e2e", "automatizacion", "maestro", "web", "fintech"] },
+        { "texto": { "es": "Cobertura 90%+ flujos core, ejecución CI/CD, reporte Allure, paralelo multi-navegador", "en": "90%+ core flow coverage, CI/CD execution, Allure reports, multi-browser parallel" }, "tags": ["cobertura", "ci/cd", "allure", "regresion"] }
+      ],
+      "tecnologias": ["Maestro Studio", "JavaScript", "E2E Testing", "CI/CD", "Allure Reports", "Chrome/Firefox"],
+      "link": "https://github.com/avtovar/brubank-web-automation"
+    }
+  ],
+  "certificaciones": [
+    { "id": "fstc", "nombre": { "es": "FSTC — Fundamental Software Testing Certified", "en": "FSTC — Fundamental Software Testing Certified" }, "emisor": null, "anio": null },
+    { "id": "scrumfund", "nombre": { "es": "Scrum Fundamentals Certified", "en": "Scrum Fundamentals Certified" }, "emisor": null, "anio": null },
+    { "id": "qaavanzado", "nombre": { "es": "QA Avanzado", "en": "Advanced QA" }, "emisor": null, "anio": null },
+    { "id": "qatester", "nombre": { "es": "QA Tester", "en": "QA Tester" }, "emisor": null, "anio": null },
+    { "id": "academiaqa", "nombre": { "es": "AcademiaQA Testing", "en": "AcademiaQA Testing" }, "emisor": "AcademiaQA", "anio": null },
+    { "id": "aics", "nombre": { "es": "Software Testing AICS", "en": "Software Testing AICS" }, "emisor": "AICS", "anio": null },
+    { "id": "talento_tech", "nombre": { "es": "Testing QA Talento Tech 2026", "en": "Testing QA Talento Tech 2026" }, "emisor": "Talento Tech", "anio": 2026 },
+    { "id": "git2026", "nombre": { "es": "Git & GitHub 2026", "en": "Git & GitHub 2026" }, "emisor": null, "anio": 2026 },
+    { "id": "frontendjs", "nombre": { "es": "Front-End JS 2025", "en": "Front-End JS 2025" }, "emisor": null, "anio": 2025 },
+    { "id": "ia_agentes", "nombre": { "es": "IA: De 0 a Agentes", "en": "AI: From 0 to Agents" }, "emisor": null, "anio": null },
+    { "id": "ia2026", "nombre": { "es": "Certificado IA 2026", "en": "AI Certificate 2026" }, "emisor": null, "anio": 2026 },
+    { "id": "iadesarrollo", "nombre": { "es": "Desarrollo con IA", "en": "Development with AI" }, "emisor": null, "anio": null },
+    { "id": "programacion", "nombre": { "es": "Programación Desde Cero", "en": "Programming From Scratch" }, "emisor": null, "anio": null },
+    { "id": "html5", "nombre": { "es": "HTML5 Fundamentos", "en": "HTML5 Fundamentals" }, "emisor": null, "anio": null },
+    { "id": "htmlcss", "nombre": { "es": "HTML y CSS - Arg Programa 4.0", "en": "HTML & CSS - Arg Programa 4.0" }, "emisor": "Argentina Programa 4.0", "anio": null },
+    { "id": "argprog", "nombre": { "es": "Argentina Programa", "en": "Argentina Programa" }, "emisor": "Argentina Programa", "anio": null },
+    { "id": "ap4t2", "nombre": { "es": "Certificado AP4.0 T2", "en": "AP4.0 T2 Certificate" }, "emisor": "Argentina Programa 4.0", "anio": null },
+    { "id": "scrum_metodologia", "nombre": { "es": "Metodología Scrum", "en": "Scrum Methodology" }, "emisor": null, "anio": null },
+    { "id": "linux", "nombre": { "es": "Linux (Línea de Comandos)", "en": "Linux Command Line" }, "emisor": null, "anio": null },
+    { "id": "ia_intro", "nombre": { "es": "Introducción a IA 2025", "en": "Introduction to AI 2025" }, "emisor": null, "anio": 2025 },
+    { "id": "bddsql", "nombre": { "es": "Bases de Datos y SQL", "en": "Databases and SQL" }, "emisor": null, "anio": null },
+    { "id": "ux_intro", "nombre": { "es": "Introducción a UX", "en": "Introduction to UX" }, "emisor": null, "anio": null },
+    { "id": "python_no_prog", "nombre": { "es": "Python para no programadores", "en": "Python for Non-Programmers" }, "emisor": null, "anio": null },
+    { "id": "entrevistas_it", "nombre": { "es": "Entrevistas Laborales IT", "en": "IT Job Interviews" }, "emisor": null, "anio": null }
+  ],
+  "educacion": [
+    {
+      "institucion": "Universidad Nacional Experimental Simón Rodríguez",
+      "titulo": { "es": "Licenciatura en Administración, mención Informática", "en": "Bachelor's Degree in Administration, IT Major" }
+    },
+    {
+      "institucion": "IUTIRLA",
+      "titulo": { "es": "Técnico Superior Universitario en Informática", "en": "Higher University Technician in IT" }
+    }
+  ],
+  "idiomas": [
+    { "idioma": { "es": "Español", "en": "Spanish" }, "nivel": { "es": "Nativo", "en": "Native" } },
+    { "idioma": { "es": "Inglés", "en": "English" }, "nivel": { "es": "Básico", "en": "Basic" } }
+  ]
+}

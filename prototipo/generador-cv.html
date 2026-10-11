@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Generador de CV dinámico — Prototipo</title>
+<meta name="description" content="Prototipo autocontenido: genera en el navegador un PDF de CV ATS-friendly distinto según perfil objetivo, idioma y descripción de puesto pegada." />
+<style>
+  /* ============ Base / tokens (paleta del sitio: navy + verde acento) ============ */
+  :root {
+    --navy: #0f172a;
+    --navy-2: #1e293b;
+    --accent: #15803d;
+    --accent-dark: #14532d;
+    --accent-light: #dcfce7;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #e2e8f0;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --chip-found-bg: #dcfce7;
+    --chip-found-text: #14532d;
+    --chip-missing-bg: #fef2f2;
+    --chip-missing-text: #7f1d1d;
+    --focus: #15803d;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(15, 23, 42, .12), 0 8px 24px rgba(15, 23, 42, .08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "DM Sans", "Segoe UI", Roboto, Arial, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  a { color: var(--accent-dark); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; background: var(--navy); color: #fff;
+    padding: .6rem 1rem; border-radius: 0 0 8px 0; z-index: 100;
+  }
+  .skip-link:focus { left: 0; }
+
+  /* ============ Topbar ============ */
+  .topbar {
+    background: var(--navy); color: #fff; padding: 1rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .topbar .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: .2px; }
+  .topbar .brand small { display: block; font-weight: 400; color: #cbd5e1; font-size: .78rem; }
+  .databadge {
+    font-size: .75rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+    padding: .35rem .7rem; border-radius: 999px; color: #e2e8f0; white-space: nowrap;
+  }
+  .databadge b { color: #fff; }
+
+  /* ============ Hero ============ */
+  .hero { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 1rem; }
+  .hero h1 { margin: 0 0 .4rem; color: var(--navy); font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+  .hero p.lead { margin: 0 0 1.4rem; color: var(--muted); max-width: 60ch; }
+  .hero .cta-row { display: flex; gap: .8rem; align-items: center; flex-wrap: wrap; }
+  .hero .note { font-size: .82rem; color: var(--muted); max-width: 58ch; }
+
+  /* ============ Botones ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+    border-radius: 8px; border: 1px solid transparent; font-weight: 600; font-size: .95rem;
+    padding: .68rem 1.15rem; text-decoration: none; transition: filter .15s ease, background .15s ease;
+    font-family: inherit;
+  }
+  .btn:disabled { opacity: .55; cursor: not-allowed; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover:not(:disabled) { filter: brightness(1.08); }
+  .btn-secondary { background: var(--card); color: var(--navy); border-color: var(--line); }
+  .btn-secondary:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-dark); }
+  .btn-ghost { background: transparent; color: var(--navy); border-color: var(--line); }
+
+  /* ============ Estado ============ */
+  .statusbar {
+    max-width: 1100px; margin: 1rem auto 0; padding: 0 1.5rem;
+  }
+  .status {
+    display: none; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    border-radius: 8px; padding: .75rem 1rem; font-size: .88rem;
+  }
+  .status.err { border-left-color: #dc2626; }
+  .status.on { display: block; }
+  .status b { color: var(--navy); }
+
+  /* ============ Workspace ============ */
+  .workspace { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+  .controlbar {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: .8rem 1rem; margin: 1.4rem 0 1rem; box-shadow: var(--shadow);
+  }
+  .controlbar .left { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+  .controlbar label { font-size: .85rem; color: var(--muted); display: inline-flex; align-items: center; gap: .4rem; }
+  select, textarea, input[type="text"] {
+    font-family: inherit; font-size: .9rem; border: 1px solid var(--line); border-radius: 8px; padding: .5rem .7rem; color: var(--ink); background: #fff;
+  }
+  select:focus, textarea:focus, input:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+
+  /* ============ Match panel ============ */
+  .match-panel {
+    display: none; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 1rem 1.2rem; margin: 0 0 1rem; box-shadow: var(--shadow); font-size: .9rem;
+  }
+  .match-panel.on { display: block; }
+  .match-head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .6rem; }
+  .match-head .pct { font-size: 2rem; font-weight: 800; color: var(--navy); }
+  .match-head .pct small { font-size: .8rem; font-weight: 500; color: var(--muted); }
+  .match-head .sub { color: var(--muted); font-size: .82rem; }
+  .chips-row { margin: .45rem 0; display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+  .chips-row .lbl { font-size: .8rem; font-weight: 700; color: var(--navy); min-width: 84px; }
+  .chip {
+    font-size: .75rem; font-weight: 600; border-radius: 999px; padding: .18rem .6rem; border: 1px solid transparent;
+  }
+  .chip.found { background: var(--chip-found-bg); color: var(--chip-found-text); border-color: #86efac; }
+  .chip.missing { background: var(--chip-missing-bg); color: var(--chip-missing-text); border-color: #fecaca; }
+  .match-note { font-size: .8rem; color: var(--muted); margin: .6rem 0 0; border-top: 1px dashed var(--line); padding-top: .6rem; }
+
+  /* ============ Vista previa (hoja A4) ============ */
+  .preview-wrap {
+    background: #cbd5e1; border-radius: var(--radius); padding: 1.2rem; overflow: auto;
+    box-shadow: inset 0 1px 8px rgba(15,23,42,.15); max-height: 85vh;
+  }
+  .sheet {
+    --zoom: 0.9;
+    width: 794px; min-height: 1123px; background: #fff; color: #111827;
+    margin: 0 auto; padding: 52px 56px;
+    font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+    font-size: 13px; line-height: 1.4; box-shadow: 0 2px 12px rgba(15,23,42,.25);
+    transform-origin: top center;
+  }
+  .sheet.warmup { transform: scale(var(--zoom)); }
+  .sheet h1 { margin: 0 0 2px; font-size: 22px; letter-spacing: .3px; color: #0f172a; }
+  .sheet .headline { margin: 0 0 6px; font-size: 11.5px; font-weight: 500; color: #15803d; }
+  .sheet .contact { margin: 1px 0; font-size: 10px; color: #374151; }
+  .sheet hr.toprule { border: 0; border-top: 1.5px solid #0f172a; margin: 8px 0 2px; }
+  .sheet .sec { margin-top: 11px; }
+  .sheet .sec > h2 {
+    margin: 0 0 4px; font-size: 11.5px; letter-spacing: .6px; text-transform: uppercase;
+    color: #0f172a; border-bottom: 1px solid #d1d5db; padding-bottom: 2px;
+  }
+  .sheet p { margin: 3px 0; font-size: 12px; color: #1f2937; }
+  .sheet .skills-line { margin: 2.5px 0; font-size: 11.5px; }
+  .sheet .skills-line strong { color: #0f172a; }
+  .sheet .skill.m { font-weight: 600; color: #14532d; }
+  .sheet .job { margin: 7px 0 0; }
+  .sheet .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .sheet .job-head .empresa { font-size: 12.5px; color: #0f172a; }
+  .sheet .job-head .fechas { font-size: 11px; color: #4b5563; white-space: nowrap; }
+  .sheet .job-meta { font-size: 10.5px; color: #6b7280; margin: 1px 0 3px; }
+  .sheet ul { margin: 3px 0 4px; padding-left: 16px; }
+  .sheet li { font-size: 11.5px; margin: 1.5px 0; color: #1f2937; }
+  .sheet li.m { font-weight: 600; color: #14532d; }
+  .sheet .sub { margin: 6px 0 0; }
+  .sheet .sub-head { font-size: 12px; font-weight: 600; color: #111827; }
+  .sheet .techline { font-size: 10px; color: #6b7280; margin: 1px 0 4px; }
+  .sheet .proj { margin: 6px 0 0; }
+  .sheet .proj .title { font-size: 12px; font-weight: 600; color: #111827; }
+  .sheet .proj .conf { font-size: 9.5px; color: #9ca3af; font-weight: 500; }
+  .sheet .proj .meta { font-size: 10px; color: #6b7280; }
+  .sheet .proj ul { margin: 2px 0; }
+  .sheet .cert li, .sheet .edu p, .sheet .lang p { font-size: 11.5px; }
+  .sheet .pagebreak {
+    border: 0; border-top: 2px dashed #cbd5e1; margin: 18px 0; page-break-after: always;
+  }
+  .sheet .print-pages { font-size: 9px; color: #9ca3af; font-style: italic; margin-top: 14px; }
+
+  /* ============ Dialog ============ */
+  dialog {
+    border: 0; border-radius: 14px; padding: 0; width: min(680px, 94vw);
+    box-shadow: 0 24px 60px rgba(15,23,42,.35); background: var(--card); color: var(--ink);
+  }
+  dialog::backdrop { background: rgba(15,23,42,.55); }
+  .dlg-inner { padding: 1.4rem 1.6rem 1.6rem; }
+  .dlg-inner h2 { margin: 0 0 .2rem; color: var(--navy); font-size: 1.25rem; }
+  .dlg-inner > p.sub { margin: 0 0 1.2rem; color: var(--muted); font-size: .88rem; }
+  fieldset { border: 1px solid var(--line); border-radius: 10px; margin: 0 0 1rem; padding: .9rem 1rem .95rem; }
+  fieldset legend { font-weight: 700; color: var(--navy); font-size: .86rem; padding: 0 .4rem; }
+  .radio-row { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .radio-inline {
+    display: inline-flex; align-items: center; gap: .5rem; font-size: .92rem; cursor: pointer;
+    padding: .4rem .85rem; border: 1px solid var(--line); border-radius: 999px; background: #fff;
+  }
+  .radio-inline:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 600; }
+  .perfil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; }
+  .perfil-card {
+    position: relative; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer;
+    padding: .7rem .8rem; background: #fff; display: block; transition: border-color .12s ease, box-shadow .12s ease;
+  }
+  .perfil-card:hover { border-color: #86efac; }
+  .perfil-card:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); background: #fafff8; }
+  .perfil-card input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .perfil-card .pc-name { display: block; font-weight: 700; color: var(--navy); font-size: .9rem; }
+  .perfil-card .pc-desc { display: block; color: var(--muted); font-size: .76rem; line-height: 1.35; margin-top: .15rem; }
+  .check-row { display: flex; align-items: flex-start; gap: .55rem; margin-bottom: .5rem; }
+  .check-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+  .check-row label { font-weight: 600; color: var(--navy); }
+  .check-row small { display: block; color: var(--muted); font-weight: 400; }
+  textarea#jobDesc {
+    width: 100%; min-height: 120px; resize: vertical; margin-top: .15rem;
+  }
+  .dlg-actions { display: flex; justify-content: flex-end; gap: .7rem; flex-wrap: wrap; margin-top: .4rem; }
+  .hint { font-size: .78rem; color: var(--muted); margin: .25rem 0 0; }
+
+  footer.pagefoot { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 2.5rem; color: var(--muted); font-size: .8rem; }
+  footer.pagefoot hr { border: 0; border-top: 1px solid var(--line); margin: 0 0 .8rem; }
+
+  @media (max-width: 860px) {
+    .sheet { transform: scale(.55); transform-origin: top left; }
+    .preview-wrap { padding: .8rem; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="brand">Generador de CV dinámico
+      <small>Prototipo autocontenido · vanilla HTML/CSS/JS · generación de PDF 100% en el navegador</small>
+    </div>
+    <div class="databadge" id="dataBadge" role="status">Cargando datos…</div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="h-hero">
+      <h1 id="h-hero">Tu CV, en PDF, adaptado al puesto que elegís</h1>
+      <p class="lead">
+        Elegí idioma y perfil objetivo (o pegá una descripción de puesto en “Modo reclutador”):
+        el CV se reordena solo —sin IA— para destacar lo que ya tenés, y se descarga como PDF
+        ATS-friendly de máximo 2 páginas con texto real seleccionable.
+      </p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="openDialog">⚙️ Configurar y generar CV</button>
+        <button type="button" class="btn btn-secondary" id="refreshPreview" aria-describedby="hint-refresh">↻ Actualizar vista previa</button>
+      </div>
+      <p class="note" id="hint-refresh">
+        La vista previa se actualiza sola al cambiar idioma, perfil o descripción. Este prototipo no modifica nada del sitio real.
+      </p>
+    </section>
+
+    <div class="statusbar">
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <section class="workspace" id="workspace" aria-label="Vista previa y descarga del CV">
+      <div class="controlbar">
+        <div class="left">
+          <label for="zoom">Zoom
+            <select id="zoom" aria-label="Zoom de la vista previa">
+              <option value="0.65">65%</option>
+              <option value="0.8">80%</option>
+              <option value="0.9" selected>90%</option>
+              <option value="1">100%</option>
+              <option value="1.25">125%</option>
+            </select>
+          </label>
+          <span class="databadge" id="configBadge" style="background:#eef2ff;border-color:#c7d2fe;color:#3730a3;">Español · Generalista QA</span>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" id="downloadBtn">⬇ Descargar PDF</button>
+        </div>
+      </div>
+
+      <div class="match-panel" id="matchPanel" aria-live="polite"></div>
+
+      <div class="preview-wrap" id="previewWrap">
+        <div class="sheet warmup" id="preview" aria-label="Vista previa del CV">
+          <p style="color:#6b7280">Cargando vista previa…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Dialog de configuración ============ -->
+  <dialog id="genDialog" aria-labelledby="dlgTitle" aria-describedby="dlgSub">
+    <form method="dialog" id="genForm" novalidate>
+      <div class="dlg-inner">
+        <h2 id="dlgTitle">Generador de CV</h2>
+        <p class="sub" id="dlgSub">Todo el contenido sale de <code>data/cv-data.json</code> + <code>data/perfiles.json</code>. Nada se inventa: solo se selecciona, reordena y resalta.</p>
+
+        <fieldset>
+          <legend>1 · Idioma del CV</legend>
+          <div class="radio-row" role="radiogroup" aria-label="Idioma del CV">
+            <label class="radio-inline">
+              <input type="radio" name="idioma" value="es" checked /> Español
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="idioma" value="en" /> English
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2 · Perfil objetivo</legend>
+          <div class="perfil-grid" id="perfilGrid" role="radiogroup" aria-label="Perfil objetivo"></div>
+          <p class="hint">Cada perfil cambia el orden de las secciones, qué competencias prioriza y qué keywords busca un ATS.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>3 · Modo reclutador</legend>
+          <div class="check-row">
+            <input type="checkbox" id="reclutadorToggle" />
+            <label for="reclutadorToggle">
+              Activar Modo reclutador
+              <small>Pegá una descripción de puesto y el CV se porcentajea y reordena contra sus keywords (determinista, sin IA).</small>
+            </label>
+          </div>
+          <label for="jobDesc" class="visually-hidden" style="position:absolute;left:-9999px;">Descripción del puesto</label>
+          <textarea id="jobDesc" name="jobDesc" placeholder="Pegá aquí la descripción del puesto (Requisitos, responsabilidades, stack…)…" disabled></textarea>
+        </fieldset>
+
+        <div class="dlg-actions">
+          <button type="button" class="btn btn-ghost" id="closeDialog">Cerrar</button>
+          <button type="button" class="btn btn-secondary" id="previewBtn">👁 Generar vista previa</button>
+          <button type="button" class="btn btn-primary" id="dlgDownloadBtn">⬇ Descargar PDF</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="pagefoot">
+    <hr />
+    <p>
+      <strong>Prototipo</strong> — no toca <code>index.html</code>, <code>css/</code> ni <code>js/</code> del sitio real.
+      Requiere internet para las fuentes (Roboto) y librerías (pdf-lib + fontkit) desde CDN. Ver <code>prototipo/README.md</code>.
+    </p>
+  </footer>
+
+<script>
+"use strict";
+/* =====================================================================
+   PROTOTIPO: GENERADOR DE CV DINÁMICO
+   - Sin frameworks. Sin build. Todo Vanilla JS en este único archivo.
+   - Datos: intenta fetch de ./data/*.json; si falla (file://) usa la copia
+     embebida (EMBEDDED) que se generó desde los mismos archivos.
+   - PDF: pdf-lib + @pdf-lib/fontkit desde CDN, fuente TTF Roboto embebida.
+   ===================================================================== */
+const EMBEDDED = {
+  cv: {"meta":{"descripcion":"Fuente única de verdad del CV de Ali Valentin Tovar Morales. Datos REALES extraídos de index.html y js/modules/i18n.js del sitio F:/Curriculum-Vitae.","fecha_extraccion":"2026-10-11","nota":"Los datos son bilingües (es/en). Nada aquí es inventado: si un dato (emisor, año) no figura en el sitio, queda como null y se omite en el PDF."},"persona":{"nombre":"Ali Valentin Tovar Morales","anios_experiencia":"5+","headline_base":{"es":"QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps","en":"QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps"},"contacto":{"email":"ali.v.tovar@gmail.com","telefono":"+54 11 3398-7682","telefono_href":"+541133987682","ubicacion":{"es":"Buenos Aires, Argentina","en":"Buenos Aires, Argentina"},"linkedin_url":"https://www.linkedin.com/in/ali-v-tovar","linkedin_label":"linkedin.com/in/ali-v-tovar","github_url":"https://github.com/avtovar","github_label":"github.com/avtovar"},"disponibilidad":{"es":["Remoto / Híbrido","Zona horaria: GMT-3 (Buenos Aires)","Disponible para nuevas oportunidades"],"en":["Remote / Hybrid","Timezone: GMT-3 (Buenos Aires)","Available for new opportunities"]}},"resumen":{"es":"QA Engineer con 5+ años en banca digital y fintech. Diseño y automatizo pruebas web y mobile (Android/iOS) con Maestro, Python y Postman. Uso IA generativa (Claude Code, Gemini) para acelerar diseño de casos de prueba y documentación técnica. Busco roles de QA Automation/Lead en entornos fintech.","en":"QA Engineer with 5+ years in digital banking and fintech. Design and automate web and mobile (Android/iOS) tests with Maestro, Python, and Postman. Use generative AI (Claude Code, Gemini) to accelerate test case design and technical documentation. Seeking QA Automation/Lead roles in fintech environments.","ia":{"es":"Integración de IA generativa (Claude Code, Gemini, ChatGPT) en el ciclo de vida de QA: generación automatizada de casos de prueba (Gherkin/BDD), data-driven testing, documentación técnica, análisis de logs y creación de scripts de automatización. Aceleración de 40% en documentación QA y cobertura de casos edge.","en":"Integration of generative AI (Claude Code, Gemini, ChatGPT) into the QA lifecycle: automated test case generation (Gherkin/BDD), data-driven testing, technical documentation, log analysis, and automation script creation. 40% acceleration in QA documentation and edge-case coverage."}},"skills":[{"id":"testing_manual","label":{"es":"Testing Manual","en":"Manual Testing"},"items":[{"nombre":{"es":"Manual Testing","en":"Manual Testing"},"tags":["manual testing","manual"]},{"nombre":{"es":"Functional Testing","en":"Functional Testing"},"tags":["functional testing","funcional"]},{"nombre":{"es":"Regression & Smoke","en":"Regression & Smoke"},"tags":["regresion","regression","smoke"]},{"nombre":{"es":"Black/White Box","en":"Black/White Box"},"tags":["black box","caja negra","white box"]},{"nombre":{"es":"UX Validation","en":"UX Validation"},"tags":["ux","usability","usabilidad"]},{"nombre":{"es":"QA Documentation","en":"QA Documentation"},"tags":["qa documentation","documentacion qa","documentacion"]},{"nombre":{"es":"Gherkin/BDD","en":"Gherkin/BDD"},"tags":["gherkin","bdd"]},{"nombre":{"es":"Accessibility","en":"Accessibility"},"tags":["accessibility","accesibilidad","a11y"]},{"nombre":{"es":"Análisis de Requerimientos","en":"Requirements Analysis"},"tags":["requirements","requerimientos"]}]},{"id":"automatizacion","label":{"es":"Automatización","en":"Automation"},"items":[{"nombre":{"es":"Automation Testing","en":"Automation Testing"},"tags":["automation testing","automatizacion","test automation"]},{"nombre":{"es":"Maestro Studio","en":"Maestro Studio"},"tags":["maestro","maestro studio"]},{"nombre":{"es":"Appium","en":"Appium"},"tags":["appium"]},{"nombre":{"es":"JavaScript","en":"JavaScript"},"tags":["javascript","js"]},{"nombre":{"es":"Python","en":"Python"},"tags":["python"]},{"nombre":{"es":"E2E Testing","en":"E2E Testing"},"tags":["e2e","end to end","end-to-end"]},{"nombre":{"es":"Gherkin/BDD","en":"Gherkin/BDD"},"tags":["gherkin","bdd"]},{"nombre":{"es":"IA Generativa (Claude Code, Gemini, ChatGPT)","en":"Generative AI (Claude Code, Gemini, ChatGPT)"},"tags":["ia","ai","claude","gemini","chatgpt","generative ai"]},{"nombre":{"es":"Allure Reports","en":"Allure Reports"},"tags":["allure"]}]},{"id":"api","label":{"es":"API & Datos","en":"API & Data"},"items":[{"nombre":{"es":"REST API","en":"REST API"},"tags":["rest","rest api","api","apis"]},{"nombre":{"es":"GraphQL","en":"GraphQL"},"tags":["graphql"]},{"nombre":{"es":"Postman","en":"Postman"},"tags":["postman"]},{"nombre":{"es":"SQL/MySQL","en":"SQL/MySQL"},"tags":["sql","mysql"]},{"nombre":{"es":"RabbitMQ","en":"RabbitMQ"},"tags":["rabbitmq"]},{"nombre":{"es":"Docker","en":"Docker"},"tags":["docker"]},{"nombre":{"es":"SSH","en":"SSH"},"tags":["ssh"]}]},{"id":"frontend","label":{"es":"Front-End","en":"Front-End"},"items":[{"nombre":{"es":"JavaScript","en":"JavaScript"},"tags":["javascript","js"]},{"nombre":{"es":"HTML5","en":"HTML5"},"tags":["html","html5"]},{"nombre":{"es":"CSS","en":"CSS"},"tags":["css","css3"]},{"nombre":{"es":"React Native","en":"React Native"},"tags":["react native","react"]}],"nota":"Categoría derivada: los ítems provienen de tech-tags de proyectos y diplomas reales (Front-End JS 2025, HTML y CSS - Arg Programa 4.0, app React Native)."},{"id":"herramientas_devops","label":{"es":"Herramientas / DevOps","en":"Tools / DevOps"},"items":[{"nombre":{"es":"Azure DevOps","en":"Azure DevOps"},"tags":["azure devops","devops"]},{"nombre":{"es":"Git/GitHub","en":"Git/GitHub"},"tags":["git","github"]},{"nombre":{"es":"Docker","en":"Docker"},"tags":["docker"]},{"nombre":{"es":"CI/CD","en":"CI/CD"},"tags":["ci/cd","continuous integration","continuous delivery"]},{"nombre":{"es":"GitHub Actions","en":"GitHub Actions"},"tags":["github actions"]},{"nombre":{"es":"PyCharm","en":"PyCharm"},"tags":["pycharm"]},{"nombre":{"es":"SSH","en":"SSH"},"tags":["ssh"]},{"nombre":{"es":"Allure Reports","en":"Allure Reports"},"tags":["allure"]}]},{"id":"metodologias","label":{"es":"Metodologías","en":"Methodologies"},"items":[{"nombre":{"es":"Scrum/Agile","en":"Scrum/Agile"},"tags":["scrum","agile"]},{"nombre":{"es":"Jira + Xray","en":"Jira + Xray"},"tags":["jira","xray"]},{"nombre":{"es":"Bantotal","en":"Bantotal"},"tags":["bantotal"]},{"nombre":{"es":"Oracle JD Edwards","en":"Oracle JD Edwards"},"tags":["oracle jd edwards","jd edwards"]},{"nombre":{"es":"Métricas QA","en":"QA Metrics"},"tags":["metricas","metrics","kpi"]},{"nombre":{"es":"Mejora Continua","en":"Continuous Improvement"},"tags":["mejora continua","continuous improvement"]}]}],"experiencia":[{"id":"brubank","empresa":"Brubank","rol":{"es":"QA Engineer","en":"QA Engineer"},"ubicacion":{"es":"Buenos Aires, Argentina","en":"Buenos Aires, Argentina"},"fechas":{"es":"abril 2021 — Presente","en":"April 2021 — Present"},"actual":true,"cliente":null,"subproyectos":[{"id":"brubank_failover","titulo":{"es":"Fail-Over & Resiliencia Bancaria","en":"Fail-Over & Banking Resilience"},"empresa_cliente":null,"bullets":[{"texto":{"es":"Automaticé 25+ flujos críticos de Fail-Over con Maestro Studio (JS), reduciendo tiempo de regresión de 8h a 45min y cubriendo 95% de casos de fallo.","en":"Automated 25+ critical Fail-Over flows with Maestro Studio (JS), reducing regression time from 8h to 45min and covering 95% of failure cases."},"tags":["maestro","javascript","automatizacion","test automation","failover","regresion","regression"],"impacto":true},{"texto":{"es":"Validé APIs REST/GraphQL de contingencia con Postman, detectando 12 defectos críticos pre-producción en módulos de transferencias y pagos.","en":"Validated contingency REST/GraphQL APIs with Postman, detecting 12 critical pre-production defects in transfers and payments modules."},"tags":["rest","rest api","graphql","postman","api","defectos"],"impacto":true}],"tecnologias":["Maestro","JavaScript","Postman","GraphQL","Jira/Xray"]},{"id":"brubank_qr","titulo":{"es":"QR, Tarjetas & eSIM (Core Banking)","en":"QR, Cards & eSIM (Core Banking)"},"empresa_cliente":null,"bullets":[{"texto":{"es":"Lideré testing E2E de módulos QR V1/V2, Tarjetas Crédito/Débito y eSIM: 180+ casos funcionales, 0 escapes a producción en 6 releases.","en":"Led E2E testing of QR V1/V2, Credit/Debit Cards, and eSIM modules: 180+ functional cases, 0 production escapes across 6 releases."},"tags":["e2e","functional testing","manual testing","mobile","fintech","banking"],"impacto":true},{"texto":{"es":"Implementé automatización mobile (Android/iOS) para onboarding digital, reduciendo QA manual de 3 días a 4 horas por sprint.","en":"Implemented mobile automation (Android/iOS) for digital onboarding, reducing manual QA from 3 days to 4 hours per sprint."},"tags":["maestro","python","appium","automatizacion","mobile","android","ios"],"impacto":true}],"tecnologias":["Maestro","Python","Appium","REST API","Scrum","Azure DevOps"]},{"id":"brubank_pyme","titulo":{"es":"Promociones, Pyme & Banca Empresas","en":"Promotions, SME & Corporate Banking"},"empresa_cliente":null,"bullets":[{"texto":{"es":"Diseñé estrategia de pruebas para Promociones V2 y Pyme: 40+ casos de regresión automatizados, cobertura 87% en flujos de negocio.","en":"Designed test strategy for Promotions V2 and SME: 40+ automated regression cases, 87% coverage on business flows."},"tags":["regresion","regression","automatizacion","test strategy","cobertura"],"impacto":true},{"texto":{"es":"Integré Claude Code/Gemini para generación de casos de prueba y data-driven testing, acelerando documentación QA en 40%.","en":"Integrated Claude Code/Gemini for test case generation and data-driven testing, accelerating QA documentation by 40%."},"tags":["ia","ai","claude","gemini","data-driven","qa documentation"],"impacto":true}],"tecnologias":["Maestro","JavaScript","Python","IA Generativa","Bantotal","RabbitMQ"]}]},{"id":"practia","empresa":"Practia Global","rol":{"es":"Semi Senior QA Tester","en":"Semi Senior QA Tester"},"ubicacion":null,"fechas":{"es":"agosto 2020 — marzo 2021","en":"August 2020 — March 2021"},"actual":false,"cliente":{"es":"Cliente: Brubank → incorporación directa","en":"Client: Brubank → direct hire"},"bullets":[{"texto":{"es":"Dominio en pruebas para plataformas Android e iOS y Back-end.","en":"Proficiency in testing for Android, iOS, and Back-end platforms."},"tags":["android","ios","backend","mobile","manual testing"],"impacto":false},{"texto":{"es":"Diseño y ejecución de casos de prueba meticulosos para identificar y resolver defectos.","en":"Design and execution of meticulous test cases to identify and resolve defects."},"tags":["test cases","casos de prueba","defectos","manual testing"],"impacto":false},{"texto":{"es":"Colaboración estrecha con equipos multidisciplinarios bajo metodologías ágiles.","en":"Close collaboration with multidisciplinary teams under agile methodologies."},"tags":["scrum","agile","equipos"],"impacto":false}],"tecnologias":["Android","iOS","REST API","Jira","Scrum","Postman"],"subproyectos":[{"id":"practia_edenor","titulo":null,"empresa_cliente":{"empresa":"Edenor","rol":{"es":"QA Tester (Cliente)","en":"QA Tester (Client)"},"fechas":{"es":"enero 2020 — julio 2020","en":"January 2020 — July 2020"},"tipo":{"es":"Proyecto outsourcing","en":"Outsourcing project"}},"bullets":[{"texto":{"es":"Especialista en pruebas Web y Mobile para Edenor con foco en Testing Manual y Regresión.","en":"Web and Mobile testing specialist for Edenor, focusing on Manual and Regression Testing."},"tags":["web testing","mobile testing","manual testing","regresion","regression"],"impacto":false},{"texto":{"es":"Gestión eficiente y seguimiento de reportes de bugs y elaboración de documentación detallada.","en":"Efficient bug report management, tracking, and detailed documentation."},"tags":["bug tracking","jira","documentacion","reportes"],"impacto":false}],"tecnologias":["Web Testing","Mobile Testing","Regresión","Jira","Documentación QA","Caja Negra"]}]},{"id":"datasystem","empresa":"Data System Tovar","rol":{"es":"Analista Tester QA","en":"QA Tester Analyst"},"ubicacion":{"es":"Argentina","en":"Argentina"},"fechas":{"es":"septiembre 2018 — agosto 2019","en":"September 2018 — August 2019"},"actual":false,"cliente":null,"bullets":[{"texto":{"es":"Especialista en Análisis de Requerimientos y Testing Funcional de Caja Negra.","en":"Requirements Analysis and Black Box Functional Testing specialist."},"tags":["requirements","requerimientos","functional testing","black box","caja negra"],"impacto":false},{"texto":{"es":"Desarrollador de estrategias de prueba efectivas y proactividad en resolución de incidencias.","en":"Development of effective test strategies and proactive incident resolution."},"tags":["test strategy","estrategias","incidencias"],"impacto":false}],"tecnologias":["Análisis Requerimientos","Caja Negra","Estrategias Prueba","SQL","Documentación"],"subproyectos":[]},{"id":"pcivil","empresa":"Protección Civil Miranda","rol":{"es":"Coordinador de Procesos Informáticos","en":"IT Processes Coordinator"},"ubicacion":{"es":"Venezuela","en":"Venezuela"},"fechas":{"es":"octubre 2011 — mayo 2017","en":"October 2011 — May 2017"},"actual":false,"cliente":null,"bullets":[{"texto":{"es":"Ejecución de pruebas sistemáticas y rigurosas para asegurar la calidad del software institucional.","en":"Execution of systematic and rigorous tests to ensure institutional software quality."},"tags":["manual testing","quality assurance","calidad"],"impacto":false},{"texto":{"es":"Creación y análisis de métricas para optimizar la eficiencia del proceso de testing.","en":"Creation and analysis of metrics to optimize testing process efficiency."},"tags":["metricas","metrics","kpi","qa metrics"],"impacto":false},{"texto":{"es":"Coordinación de reportes de bugs y mantenimiento de infraestructura tecnológica.","en":"Bug report coordination and technological infrastructure maintenance."},"tags":["bug tracking","reportes","infraestructura"],"impacto":false}],"tecnologias":["Testing Institucional","Métricas QA","Coordinación Bugs","Infraestructura","Reportes","Mejora Continua"],"subproyectos":[]}],"proyectos":[{"id":"brubank1","titulo":{"es":"Fail-Over & Resiliencia Bancaria","en":"Fail-Over & Banking Resilience"},"contexto":{"es":"Sistema de failover core banking","en":"Core banking failover system"},"rol":{"es":"QA Lead Automation","en":"QA Lead Automation"},"confidencial":true,"detalles":[{"texto":{"es":"25+ flujos Maestro, validación GraphQL API","en":"25+ Maestro flows, GraphQL API validation"},"tags":["maestro","graphql","api","automatizacion"]},{"texto":{"es":"Regresión 8h→45min, 95% cobertura fallos","en":"Regression 8h→45min, 95% failure coverage"},"tags":["regresion","regression","cobertura","metricas"]}],"tecnologias":["Maestro","JavaScript","GraphQL","Jira/Xray"],"link":null},{"id":"brubank2","titulo":{"es":"QR, Tarjetas & eSIM (Core Banking)","en":"QR, Cards & eSIM (Core Banking)"},"contexto":{"es":"Onboarding digital y pagos","en":"Digital onboarding & payments"},"rol":{"es":"QA Automation Engineer","en":"QA Automation Engineer"},"confidencial":true,"detalles":[{"texto":{"es":"180+ casos E2E, automatización Android/iOS","en":"180+ E2E cases, mobile automation Android/iOS"},"tags":["e2e","automatizacion","android","ios","mobile"]},{"texto":{"es":"0 escapes en 6 releases, QA manual 3d→4h","en":"0 escapes in 6 releases, manual QA 3d→4h"},"tags":["quality assurance","metricas","calidad"]}],"tecnologias":["Maestro","Python","Appium","REST API"],"link":null},{"id":"brubank3","titulo":{"es":"Promociones, Pyme & Banca Empresas","en":"Promotions, SME & Corporate Banking"},"contexto":{"es":"Banca empresarial y motor promociones","en":"Business banking & promotions engine"},"rol":{"es":"QA Engineer","en":"QA Engineer"},"confidencial":true,"detalles":[{"texto":{"es":"40+ regresión automatizada, IA generación casos","en":"40+ automated regression, AI-assisted test generation"},"tags":["regresion","regression","automatizacion","ia","ai"]},{"texto":{"es":"87% cobertura, 40% docs más rápido","en":"87% coverage, 40% faster docs"},"tags":["cobertura","qa documentation"]}],"tecnologias":["Maestro","JavaScript","Python","IA Generativa","Bantotal"],"link":null},{"id":"demo1","titulo":{"es":"Maestro Mobile Automation Demo","en":"Maestro Mobile Automation Demo"},"contexto":{"es":"Flujos de ejemplo app demo","en":"Demo app flow examples"},"rol":{"es":"Repositorio público","en":"Public repository"},"confidencial":false,"detalles":[{"texto":{"es":"Login, pago, transferencia con Maestro","en":"Login, payment, transfer with Maestro"},"tags":["maestro","mobile","automatizacion"]},{"texto":{"es":"Código abierto, listo para usar","en":"Open source, ready to use"},"tags":["github","open source"]}],"tecnologias":["Maestro","JavaScript","Mobile"],"link":"https://github.com/avtovar/maestro-demo"},{"id":"demo2","titulo":{"es":"Postman API Testing Collection","en":"Postman API Testing Collection"},"contexto":{"es":"Colección documentada con tests","en":"Documented collection with automated tests"},"rol":{"es":"Repositorio público","en":"Public repository"},"confidencial":false,"detalles":[{"texto":{"es":"Tests automatizados REST/GraphQL","en":"Automated REST/GraphQL tests"},"tags":["postman","rest","rest api","graphql","api","api automation"]},{"texto":{"es":"CI/CD ready, variables de entorno","en":"CI/CD ready, environment variables"},"tags":["ci/cd","github"]}],"tecnologias":["Postman","REST API","GraphQL"],"link":"https://github.com/avtovar/postman-collection"},{"id":"demo3","titulo":{"es":"QA Templates Repository","en":"QA Templates Repository"},"contexto":{"es":"Plantillas QA profesionales","en":"Professional QA templates"},"rol":{"es":"Repositorio público","en":"Public repository"},"confidencial":false,"detalles":[{"texto":{"es":"Plan de pruebas, casos, reporte bugs","en":"Test plan, test cases, bug report templates"},"tags":["test plan","test cases","bug tracking","qa documentation"]},{"texto":{"es":"Estándar industria, personalizable","en":"Industry standard, customizable"},"tags":["qa documentation"]}],"tecnologias":["Documentación","Gherkin/BDD","QA Process"],"link":"https://github.com/avtovar/qa-templates"},{"id":"demo4","titulo":{"es":"Apps Matemáticas Interactivas","en":"Interactive Math Apps"},"contexto":{"es":"Aplicaciones educativas web/mobile","en":"Educational web/mobile applications"},"rol":{"es":"Full Stack Developer & QA","en":"Full Stack Developer & QA"},"confidencial":false,"detalles":[{"texto":{"es":"Desarrollo de apps interactivas (álgebra, geometría, cálculo) con React Native y Python","en":"Built interactive apps (algebra, geometry, calculus) with React Native and Python"},"tags":["react native","react","python","javascript","frontend","front-end"]},{"texto":{"es":"Tests automatizados E2E, 95% cobertura, deploy CI/CD","en":"Automated E2E tests, 95% coverage, CI/CD deploy"},"tags":["e2e","cobertura","ci/cd"]}],"tecnologias":["React Native","Python","Maestro","FastAPI","PostgreSQL"],"link":"https://github.com/avtovar/math-apps"},{"id":"demo5","titulo":{"es":"Buscador Ofertas Empleo Interactivo","en":"Interactive Job Search Engine"},"contexto":{"es":"Plataforma scraping + matching IA","en":"Multi-source scraping + AI matching platform"},"rol":{"es":"Backend Developer & QA Automation","en":"Backend Developer & QA Automation"},"confidencial":false,"detalles":[{"texto":{"es":"Scraping multi-fuente (LinkedIn, InfoJobs, Glassdoor), matching IA con embeddings, alertas tiempo real","en":"Multi-source scraping (LinkedIn, InfoJobs, Glassdoor), AI embeddings matching, real-time alerts"},"tags":["python","ia","ai","backend","fastapi"]},{"texto":{"es":"API REST documentada, tests contract, 99% uptime, Docker + K8s","en":"Documented REST API, contract tests, 99% uptime, Docker + K8s"},"tags":["api","rest api","contract testing","docker"]}],"tecnologias":["Python","FastAPI","Celery","Redis","PostgreSQL","Docker","OpenAI API"],"link":"https://github.com/avtovar/job-search-engine"},{"id":"demo6","titulo":{"es":"Mate Mático - Colaboración QA","en":"Mate Mático - QA Collaboration"},"contexto":{"es":"App educativa matemáticas interactiva","en":"Interactive math educational app"},"rol":{"es":"QA Engineer & Apoyo a Desarrollo","en":"QA Engineer & Dev Support"},"confidencial":false,"detalles":[{"texto":{"es":"Diseño y ejecución de casos de prueba funcionales, regresión y UX en app móvil/web","en":"Designed and executed functional, regression, and UX test cases for mobile/web app"},"tags":["manual testing","functional testing","regresion","regression","ux","test cases"]},{"texto":{"es":"Validación de flujos críticos, reporte de bugs, mejora de calidad pre-lanzamiento","en":"Critical flow validation, bug reporting, pre-launch quality improvement"},"tags":["bug tracking","quality assurance","ux"]}],"tecnologias":["Manual Testing","Regresión","UX Validation","Mobile/Web","Jira"],"link":"https://github.com/Innova-Lab-Mate-Matico/mate-matico"},{"id":"demo7","titulo":{"es":"Buscador Medicina Interactiva - Colaboración QA","en":"Interactive Medicine Search - QA Collaboration"},"contexto":{"es":"Plataforma búsqueda médica interactiva","en":"Interactive medical search platform"},"rol":{"es":"QA Engineer & Apoyo a Desarrollo","en":"QA Engineer & Dev Support"},"confidencial":false,"detalles":[{"texto":{"es":"Testing funcional, validación de algoritmos de búsqueda, casos edge y accesibilidad","en":"Functional testing, search algorithm validation, edge cases and accessibility"},"tags":["functional testing","edge cases","accessibility","accesibilidad"]},{"texto":{"es":"Detección temprana de defectos, mejora de UX, soporte a desarrolladores en CI/CD","en":"Early defect detection, UX improvement, CI/CD support for developers"},"tags":["defectos","ux","ci/cd"]}],"tecnologias":["Functional Testing","Accessibility","Edge Cases","CI/CD Support","GitHub Actions"],"link":"https://github.com/avtovar/Busqueda_medicina_interactiva"},{"id":"demo8","titulo":{"es":"Automatización Web Brubank - Demo","en":"Brubank Web Automation - Demo"},"contexto":{"es":"App bancaria fintech - Flujos críticos web","en":"Fintech banking app - Critical web flows"},"rol":{"es":"QA Automation Engineer","en":"QA Automation Engineer"},"confidencial":false,"detalles":[{"texto":{"es":"Automatización E2E flujos críticos (login, transferencias, pagos, tarjetas) con Maestro Studio","en":"E2E automation of critical flows (login, transfers, payments, cards) with Maestro Studio"},"tags":["e2e","automatizacion","maestro","web","fintech"]},{"texto":{"es":"Cobertura 90%+ flujos core, ejecución CI/CD, reporte Allure, paralelo multi-navegador","en":"90%+ core flow coverage, CI/CD execution, Allure reports, multi-browser parallel"},"tags":["cobertura","ci/cd","allure","regresion"]}],"tecnologias":["Maestro Studio","JavaScript","E2E Testing","CI/CD","Allure Reports","Chrome/Firefox"],"link":"https://github.com/avtovar/brubank-web-automation"}],"certificaciones":[{"id":"fstc","nombre":{"es":"FSTC — Fundamental Software Testing Certified","en":"FSTC — Fundamental Software Testing Certified"},"emisor":null,"anio":null},{"id":"scrumfund","nombre":{"es":"Scrum Fundamentals Certified","en":"Scrum Fundamentals Certified"},"emisor":null,"anio":null},{"id":"qaavanzado","nombre":{"es":"QA Avanzado","en":"Advanced QA"},"emisor":null,"anio":null},{"id":"qatester","nombre":{"es":"QA Tester","en":"QA Tester"},"emisor":null,"anio":null},{"id":"academiaqa","nombre":{"es":"AcademiaQA Testing","en":"AcademiaQA Testing"},"emisor":"AcademiaQA","anio":null},{"id":"aics","nombre":{"es":"Software Testing AICS","en":"Software Testing AICS"},"emisor":"AICS","anio":null},{"id":"talento_tech","nombre":{"es":"Testing QA Talento Tech 2026","en":"Testing QA Talento Tech 2026"},"emisor":"Talento Tech","anio":2026},{"id":"git2026","nombre":{"es":"Git & GitHub 2026","en":"Git & GitHub 2026"},"emisor":null,"anio":2026},{"id":"frontendjs","nombre":{"es":"Front-End JS 2025","en":"Front-End JS 2025"},"emisor":null,"anio":2025},{"id":"ia_agentes","nombre":{"es":"IA: De 0 a Agentes","en":"AI: From 0 to Agents"},"emisor":null,"anio":null},{"id":"ia2026","nombre":{"es":"Certificado IA 2026","en":"AI Certificate 2026"},"emisor":null,"anio":2026},{"id":"iadesarrollo","nombre":{"es":"Desarrollo con IA","en":"Development with AI"},"emisor":null,"anio":null},{"id":"programacion","nombre":{"es":"Programación Desde Cero","en":"Programming From Scratch"},"emisor":null,"anio":null},{"id":"html5","nombre":{"es":"HTML5 Fundamentos","en":"HTML5 Fundamentals"},"emisor":null,"anio":null},{"id":"htmlcss","nombre":{"es":"HTML y CSS - Arg Programa 4.0","en":"HTML & CSS - Arg Programa 4.0"},"emisor":"Argentina Programa 4.0","anio":null},{"id":"argprog","nombre":{"es":"Argentina Programa","en":"Argentina Programa"},"emisor":"Argentina Programa","anio":null},{"id":"ap4t2","nombre":{"es":"Certificado AP4.0 T2","en":"AP4.0 T2 Certificate"},"emisor":"Argentina Programa 4.0","anio":null},{"id":"scrum_metodologia","nombre":{"es":"Metodología Scrum","en":"Scrum Methodology"},"emisor":null,"anio":null},{"id":"linux","nombre":{"es":"Linux (Línea de Comandos)","en":"Linux Command Line"},"emisor":null,"anio":null},{"id":"ia_intro","nombre":{"es":"Introducción a IA 2025","en":"Introduction to AI 2025"},"emisor":null,"anio":2025},{"id":"bddsql","nombre":{"es":"Bases de Datos y SQL","en":"Databases and SQL"},"emisor":null,"anio":null},{"id":"ux_intro","nombre":{"es":"Introducción a UX","en":"Introduction to UX"},"emisor":null,"anio":null},{"id":"python_no_prog","nombre":{"es":"Python para no programadores","en":"Python for Non-Programmers"},"emisor":null,"anio":null},{"id":"entrevistas_it","nombre":{"es":"Entrevistas Laborales IT","en":"IT Job Interviews"},"emisor":null,"anio":null}],"educacion":[{"institucion":"Universidad Nacional Experimental Simón Rodríguez","titulo":{"es":"Licenciatura en Administración, mención Informática","en":"Bachelor's Degree in Administration, IT Major"}},{"institucion":"IUTIRLA","titulo":{"es":"Técnico Superior Universitario en Informática","en":"Higher University Technician in IT"}}],"idiomas":[{"idioma":{"es":"Español","en":"Spanish"},"nivel":{"es":"Nativo","en":"Native"}},{"idioma":{"es":"Inglés","en":"English"},"nivel":{"es":"Básico","en":"Basic"}}]},
+  perfiles: {"nota":"Definición de perfiles objetivo del CV. ofrece a quién descarga qué secciones ver, en qué orden, qué skills prioriza y qué keywords busca un ATS para ese puesto. Todo el texto se genera SIN IA: solo selecciona, reordena y resalta datos reales de cv-data.json.","perfiles":[{"id":"generalista","label":{"es":"Generalista QA","en":"Generalist QA"},"descripcion":{"es":"Equilibrio entre manual, automatización y API (perfil por defecto)","en":"Balance of manual, automation and API (default)"},"headline":{"es":"QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps","en":"QA Engineer | Manual & Automation Web/Mobile | API Testing | Azure DevOps"},"resumen":{"es":"QA Engineer con 5+ años en banca digital y fintech. Diseño y ejecuto pruebas manuales y automatizadas (web y mobile Android/iOS) con Maestro Studio, Python y Postman, cubriendo APIs REST/GraphQL. Aplico IA generativa (Claude Code, Gemini) para acelerar diseño de casos y documentación. Busco roles QA Automation/Lead en entornos fintech.","en":"QA Engineer with 5+ years in digital banking and fintech. I design and execute manual and automated tests (web and mobile Android/iOS) with Maestro Studio, Python, and Postman, covering REST/GraphQL APIs. I use generative AI (Claude Code, Gemini) to speed up test case design and documentation. Seeking QA Automation/Lead roles in fintech."},"incluir_ia":true,"orden_secciones":["resumen","skills","experiencia","proyectos","certificaciones","educacion","idiomas"],"prioridad_skills":["testing_manual","automatizacion","api","herramientas_devops","metodologias","frontend"],"proyectos":["brubank1","brubank2","brubank3","demo8","demo2","demo4"],"certificados":["fstc","scrumfund","qaavanzado","aics","talento_tech","ia_agentes","git2026","frontendjs"],"keywords_ats":["qa engineer","quality assurance","manual testing","automation testing","functional testing","regression","smoke testing","api testing","rest api","graphql","postman","maestro","appium","python","javascript","sql","docker","jira","xray","azure devops","scrum","agile","mobile testing","web testing","android","ios","fintech","banking","gherkin","bdd","test cases","test plan","black box","ux","ci/cd","git","github"]},{"id":"qa_manual","label":{"es":"QA Manual","en":"Manual QA"},"descripcion":{"es":"Manual, funcional, regresión y documentación QA","en":"Manual, functional, regression and QA documentation"},"headline":{"es":"QA Analyst | Manual & Functional Testing | Mobile & Web","en":"QA Analyst | Manual & Functional Testing | Mobile & Web"},"resumen":{"es":"QA Tester con 5+ años de experiencia en testing manual y funcional de aplicaciones web y móviles en banca digital y fintech. Sólida práctica de análisis de requerimientos, diseño de casos de prueba, regresión, smoke y gestión de defectos con Jira/Xray. Documentación QA rigurosa y orientación a la calidad y la experiencia de usuario.","en":"QA Tester with 5+ years of experience in manual and functional testing of web and mobile applications in digital banking and fintech. Strong practice in requirements analysis, test case design, regression, smoke, and defect management with Jira/Xray. Rigorous QA documentation with a focus on quality and user experience."},"incluir_ia":false,"orden_secciones":["resumen","experiencia","skills","certificaciones","proyectos","educacion","idiomas"],"prioridad_skills":["testing_manual","metodologias","api","herramientas_devops","automatizacion","frontend"],"proyectos":["brubank2","brubank1","demo6","demo7","demo8","demo3"],"certificados":["fstc","qaavanzado","qatester","academiaqa","aics","talento_tech","scrum_metodologia","bddsql"],"keywords_ats":["manual testing","functional testing","regression testing","smoke testing","test cases","test plan","test strategy","black box","exploratory testing","uat","user acceptance","defect tracking","bug report","jira","xray","requirements","ux","usability","accessibility","edge cases","documentation","gherkin","bdd","scrum","agile","mobile","web","sql","postman","fintech","banking","android","ios","casos de prueba"]},{"id":"qa_automation","label":{"es":"QA Automation","en":"QA Automation"},"descripcion":{"es":"Automatización web/mobile con Maestro, Appium y CI/CD","en":"Web/mobile automation with Maestro, Appium and CI/CD"},"headline":{"es":"QA Automation Engineer | Maestro · Appium · API | Fintech","en":"QA Automation Engineer | Maestro · Appium · API | Fintech"},"resumen":{"es":"QA Automation Engineer con 5+ años en banca digital y fintech. Automatizo flujos críticos web y mobile (Android/iOS) con Maestro Studio, Appium, Python y JavaScript, y valido APIs REST/GraphQL con Postman. Integro IA generativa para data-driven testing y documentación, reduciendo tiempos de regresión de horas a minutos, con CI/CD en Azure DevOps y GitHub Actions.","en":"QA Automation Engineer with 5+ years in digital banking and fintech. I automate critical web and mobile (Android/iOS) flows with Maestro Studio, Appium, Python, and JavaScript, and validate REST/GraphQL APIs with Postman. I integrate generative AI for data-driven testing and documentation, cutting regression times from hours to minutes, with CI/CD on Azure DevOps and GitHub Actions."},"incluir_ia":true,"orden_secciones":["resumen","skills","experiencia","proyectos","certificaciones","educacion","idiomas"],"prioridad_skills":["automatizacion","api","herramientas_devops","testing_manual","metodologias","frontend"],"proyectos":["demo8","brubank1","brubank2","brubank3","demo1","demo2"],"certificados":["fstc","git2026","frontendjs","talento_tech","ia_agentes","qaavanzado","programacion","python_no_prog"],"keywords_ats":["automation testing","test automation","qa automation","playwright","selenium","cypress","maestro","appium","mobile automation","e2e","end-to-end","ci/cd","jenkins","github actions","docker","api automation","postman","rest","graphql","javascript","typescript","python","pytest","junit","page object","data-driven","bdd","gherkin","cucumber","regression","smoke","allure","jira","xray","azure devops"]},{"id":"qa_api","label":{"es":"QA API","en":"API QA"},"descripcion":{"es":"API REST/GraphQL, Postman, SQL y validación de contratos","en":"REST/GraphQL API, Postman, SQL and contract validation"},"headline":{"es":"QA API / Backend Tester | REST · GraphQL · Postman","en":"QA API / Backend Tester | REST · GraphQL · Postman"},"resumen":{"es":"QA especializado en testing de APIs REST y GraphQL con Postman, validando contratos, flujos de contingencia y pagos en banca digital y fintech. Prevengo defectos críticos pre-producción trabajando con SQL/MySQL, Docker y RabbitMQ. Combino pruebas de API con automatización de flujos end-to-end.","en":"QA specialist in REST and GraphQL API testing with Postman, validating contracts, contingency flows, and payments in digital banking and fintech. I prevent critical pre-production defects working with SQL/MySQL, Docker, and RabbitMQ. I combine API testing with end-to-end automation."},"incluir_ia":false,"orden_secciones":["resumen","skills","experiencia","certificaciones","proyectos","educacion","idiomas"],"prioridad_skills":["api","automatizacion","herramientas_devops","testing_manual","metodologias","frontend"],"proyectos":["brubank1","demo2","demo5","demo8","brubank3","demo4"],"certificados":["bddsql","fstc","qaavanzado","talento_tech","git2026","linux","iadesarrollo"],"keywords_ats":["api testing","rest","rest api","graphql","postman","newman","swagger","openapi","json","xml","soap","contract testing","integration testing","microservices","sql","mysql","postgres","rabbitmq","kafka","docker","ssh","authentication","http","status codes","backend","ci/cd","python","javascript","tests contract","api automation"]},{"id":"frontend","label":{"es":"Front-End","en":"Front-End"},"descripcion":{"es":"JavaScript, HTML/CSS, React Native y QA de experiencias web","en":"JavaScript, HTML/CSS, React Native and QA of web experiences"},"headline":{"es":"Front-End Developer & QA | JavaScript · React Native · E2E","en":"Front-End Developer & QA | JavaScript · React Native · E2E"},"resumen":{"es":"QA Engineer y desarrollador front-end con experiencia en JavaScript, HTML5, CSS y React Native, aplicada a validar y construir experiencias web y móviles. Diseñé y ejecuté pruebas funcionales, de regresión, UX y accesibilidad en apps educativas y fintech. Automatización E2E con Maestro y despliegue con CI/CD.","en":"QA Engineer and front-end developer experienced in JavaScript, HTML5, CSS, and React Native, applied to validating and building web and mobile experiences. I designed and executed functional, regression, UX, and accessibility tests on educational and fintech apps. E2E automation with Maestro and CI/CD deployment."},"incluir_ia":false,"orden_secciones":["resumen","skills","proyectos","experiencia","certificaciones","educacion","idiomas"],"prioridad_skills":["frontend","automatizacion","herramientas_devops","api","testing_manual","metodologias"],"proyectos":["demo4","demo8","demo1","demo6","brubank2","demo2"],"certificados":["frontendjs","programacion","html5","htmlcss","argprog","git2026","ux_intro","python_no_prog"],"keywords_ats":["javascript","typescript","html","html5","css","css3","react","react native","responsive","responsive design","accessibility","accesibility","ux","ui","front-end","frontend","web development","git","github","npm","node","figma","e2e","playwright","cypress","mobile web","web apps","cross-browser","maquetacion","react js","spa"]}]}
+};
+
+/* ---- Estado global ---- */
+const state = {
+  lang: localStorage.getItem('prototipo.lang') || 'es',
+  perfilId: localStorage.getItem('prototipo.perfil') || 'generalista',
+  reclutador: localStorage.getItem('prototipo.reclutador') === '1',
+  descripcion: localStorage.getItem('prototipo.descripcion') || ''
+};
+
+let CV_DATA = null, PERFILES = null, dataSource = 'embebido';
+
+/* ---- Etiquetas de sección ES/EN (espejo de lo que pediría un reclutador IT) ---- */
+const SECC = {
+  resumen:       { es: 'Resumen Profesional', en: 'Professional Summary' },
+  skills:        { es: 'Competencias Técnicas', en: 'Technical Skills' },
+  experiencia:   { es: 'Experiencia Profesional', en: 'Professional Experience' },
+  proyectos:     { es: 'Proyectos', en: 'Projects' },
+  certificaciones:{ es: 'Certificaciones', en: 'Certifications' },
+  educacion:     { es: 'Formación Académica', en: 'Education' },
+  idiomas:       { es: 'Idiomas', en: 'Languages' }
+};
+
+/* ---- Utilidades ---- */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const L = (o, lang) => (o && (o[lang] ?? o.es)) || '';
+const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+function norm(s) {
+  return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+}
+const STOPWORDS = new Set(`
+  a al algo algunas algunos ante antes como con contra cuando cual de del desde durante e el ella ellas ellos en entre
+  era erais eran eras eres es esa esas ese esos esta estas este estos fue fueron ha han hasta hay la las le les lo los
+  me mi mis mucho muchos muy nada ni no nos nuestra nuestras nuestro nuestros o os otra otras otro otros para pero poco
+  puede por porque que quien quienes se sea sean ser si sido siendo sin sobre sois somos soy su sus tal tanto te tenia
+  tener ti tiene tu tus un una uno unas unos vosotros y ya yo the of and to in is are was were for on at with from by
+  as an or be been being it its this that these those not but if then than so such also more most some any all there
+  here when where which who whom how what why i he she we they you your have has had can could will would should may
+  might must do does did done should have will be able strong soft proven
+` .split(/\s+/).filter(Boolean));
+
+function tokenizeDescripcion(desc) {
+  return norm(desc).split(/\s+/).filter(w => w.length > 1 && !STOPWORDS.has(w));
+}
+
+/* =====================================================================
+   MOTOR DE KEYWORDS (determinista, SIN IA)
+   - Universidad de keywords = keywords_ats del perfil + tags de skills,
+     bullets de experiencia y proyectos del JSON.
+   - match% = encontradas / total.
+   ===================================================================== */
+function analyze(perfil, descripcion) {
+  const dNorm = ' ' + norm(descripcion) + ' ';
+  const universe = [];
+  const seen = new Set();
+  const add = kw => { const n = norm(kw); if (!n || seen.has(n)) return; seen.add(n); universe.push({ kw, n }); };
+  (perfil.keywords_ats || []).forEach(add);
+  CV_DATA.skills.forEach(cat => (cat.items || []).forEach(it => (it.tags || []).forEach(add)));
+  CV_DATA.experiencia.forEach(job => {
+    (job.bullets || []).forEach(b => (b.tags || []).forEach(add));
+    (job.subproyectos || []).forEach(sp => (sp.bullets || []).forEach(b => (b.tags || []).forEach(add)));
+  });
+  CV_DATA.proyectos.forEach(p => (p.detalles || []).forEach(d => (d.tags || []).forEach(add)));
+
+  const found = [], missing = [];
+  for (const { kw, n } of universe) {
+    if (dNorm.indexOf(' ' + n + ' ') >= 0) found.push({ kw, n });
+    else missing.push({ kw, n });
+  }
+  const foundSets = new Set(found.map(f => f.n));
+  const priorityMissing = [
+    ...missing.filter(m => (perfil.keywords_ats || []).some(k => norm(k) === m.n)),
+    ...missing.filter(m => !(perfil.keywords_ats || []).some(k => norm(k) === m.n))
+  ];
+  return {
+    total: universe.length,
+    found, missing,
+    priorityMissing,
+    pct: universe.length ? Math.round(found.length / universe.length * 100) : 0,
+    set: foundSets,
+    tokens: tokenizeDescripcion(descripcion)
+  };
+}
+
+/* =====================================================================
+   MODELO DE DOCUMENTO: mismo contenido/orden para vista previa y PDF
+   ===================================================================== */
+function buildDoc() {
+  const perfil = (PERFILES.perfiles || []).find(p => p.id === state.perfilId) || PERFILES.perfiles[0];
+  const lang = state.lang;
+  const match = (state.reclutador && state.descripcion.trim().length > 15)
+    ? analyze(perfil, state.descripcion) : null;
+  const seen = match ? match.set : null;
+  const score = tags => seen ? (tags || []).filter(tg => seen.has(norm(tg))).length : 0;
+  const matched = tags => seen ? (tags || []).some(tg => seen.has(norm(tg))) : false;
+  const byMatch = (a, b) => (seen ? (b.sc - a.sc) : 0);
+
+  const header = {
+    nombre: CV_DATA.persona.nombre,
+    headline: L(perfil.headline, lang),
+    contacto: [
+      `${CV_DATA.persona.contacto.email} · ${CV_DATA.persona.contacto.telefono} · ${L(CV_DATA.persona.contacto.ubicacion, lang)} · ${CV_DATA.persona.contacto.linkedin_label} · ${CV_DATA.persona.contacto.github_label}`,
+      L(CV_DATA.persona.disponibilidad, lang).join(' · ')
+    ]
+  };
+
+  const sections = [];
+  const prioIdx = id => perfil.prioridad_skills.indexOf(id);
+  const stable = (arr, key) => arr.map((x, i) => ({ x, i })).sort((p, q) => {
+    if (seen) { const d = (q.x.sc || 0) - (p.x.sc || 0); if (d) return d; }
+    return p.i - q.i;
+  }).map(o => o.x);
+
+  for (const sid of perfil.orden_secciones) {
+    if (sid === 'resumen') {
+      const parrafos = [L(CV_DATA.resumen, lang)];
+      if (perfil.incluir_ia) parrafos.push(L(CV_DATA.resumen.ia, lang));
+      sections.push({ id: 'resumen', titulo: SECC.resumen[lang], tipo: 'texto', parrafos });
+    }
+    else if (sid === 'skills') {
+      const grupos = [];
+      for (const cat of CV_DATA.skills) {
+        if (!perfil.prioridad_skills.includes(cat.id)) continue;
+        const items = cat.items.map(it => ({ nombre: L(it.nombre, lang), sc: score(it.tags) + ((seen && seen.has(norm(L(it.nombre, lang)))) ? 1 : 0) }));
+        const ordered = stable(items, 'sc');
+        grupos.push({
+          id: cat.id, label: L(cat.label, lang), prio: prioIdx(cat.id),
+          score: ordered.reduce((s, it) => s + it.sc, 0),
+          items: ordered.map(it => ({ nombre: it.nombre, matched: it.sc > 0 }))
+        });
+      }
+      grupos.sort((a, b) => (seen ? (b.score - a.score) : 0) || (a.prio - b.prio));
+      sections.push({ id: 'skills', titulo: SECC.skills[lang], tipo: 'skills', grupos });
+    }
+    else if (sid === 'experiencia') {
+      const jobs = CV_DATA.experiencia.map(job => {
+        const ordena = list => stable(list.map((b, i) => ({
+          texto: L(b.texto, lang), tags: b.tags, impacto: !!b.impacto, i, sc: score(b.tags)
+        })), 'sc');
+        const top = ordena(job.bullets || []);
+        const subs = (job.subproyectos || []).map(sp => ({
+          id: sp.id,
+          titulo: sp.titulo ? L(sp.titulo, lang) : null,
+          cliente: sp.empresa_cliente ? {
+            empresa: sp.empresa_cliente.empresa,
+            rol: L(sp.empresa_cliente.rol, lang),
+            fechas: L(sp.empresa_cliente.fechas, lang),
+            tipo: L(sp.empresa_cliente.tipo, lang)
+          } : null,
+          tecnologias: sp.tecnologias || [],
+          sc: (sp.bullets || []).reduce((s, b) => s + score(b.tags), 0),
+          bullets: ordena(sp.bullets || [])
+        }));
+        subs.sort((a, b) => (seen ? (b.sc - a.sc) : 0));
+        return {
+          id: job.id, empresa: job.empresa, rol: L(job.rol, lang),
+          ubicacion: job.ubicacion ? L(job.ubicacion, lang) : null,
+          fechas: L(job.fechas, lang), actual: job.actual,
+          cliente: job.cliente ? L(job.cliente, lang) : null,
+          tecnologias: job.tecnologias || [], bullets: top, subproyectos: subs
+        };
+      });
+      sections.push({ id: 'experiencia', titulo: SECC.experiencia[lang], tipo: 'experiencia', jobs });
+    }
+    else if (sid === 'proyectos') {
+      const items = perfil.proyectos.map(id => CV_DATA.proyectos.find(p => p.id === id)).filter(Boolean)
+        .map(p => ({
+          id: p.id, titulo: L(p.titulo, lang), contexto: L(p.contexto, lang), rol: L(p.rol, lang),
+          confidencial: !!p.confidencial, link: p.link || null, tecnologias: p.tecnologias || [],
+          sc: (p.detalles || []).reduce((s, d) => s + score(d.tags), 0),
+          detalles: (p.detalles || []).map(d => ({ texto: L(d.texto, lang), sc: score(d.tags), matched: matched(d.tags) }))
+        }));
+      items.sort(byMatch);
+      sections.push({ id: 'proyectos', titulo: SECC.proyectos[lang], tipo: 'proyectos', items });
+    }
+    else if (sid === 'certificaciones') {
+      const items = perfil.certificados.map(id => CV_DATA.certificaciones.find(c => c.id === id)).filter(Boolean)
+        .map(c => ({ nombre: L(c.nombre, lang), emisor: c.emisor, anio: c.anio }));
+      sections.push({ id: 'certificaciones', titulo: SECC.certificaciones[lang], tipo: 'certificaciones', items });
+    }
+    else if (sid === 'educacion') {
+      sections.push({ id: 'educacion', titulo: SECC.educacion[lang], tipo: 'educacion',
+        items: CV_DATA.educacion.map(e => ({ institucion: e.institucion, titulo: L(e.titulo, lang) })) });
+    }
+    else if (sid === 'idiomas') {
+      sections.push({ id: 'idiomas', titulo: SECC.idiomas[lang], tipo: 'idiomas',
+        items: CV_DATA.idiomas.map(i => ({ idioma: L(i.idioma, lang), nivel: L(i.nivel, lang) })) });
+    }
+  }
+  return { perfil, lang, match, header, sections };
+}
+
+/* =====================================================================
+   VISTA PREVIA (HTML, mismo modelo que el PDF)
+   ===================================================================== */
+function renderPreview(doc) {
+  const h = [];
+  h.push('<header>');
+  h.push('<h1>' + esc(doc.header.nombre) + '</h1>');
+  h.push('<p class="headline">' + esc(doc.header.headline) + '</p>');
+  h.push('<p class="contact">' + esc(doc.header.contacto[0]) + '</p>');
+  h.push('<p class="contact">' + esc(doc.header.contacto[1]) + '</p>');
+  h.push('<hr class="toprule" /></header>');
+
+  for (const sec of doc.sections) {
+    h.push('<section class="sec" data-section="' + esc(sec.id) + '" data-titulo="' + esc(sec.titulo) + '">');
+    h.push('<h2>' + esc(sec.titulo) + '</h2>');
+    if (sec.tipo === 'texto') {
+      sec.parrafos.forEach(p => h.push('<p>' + esc(p) + '</p>'));
+    } else if (sec.tipo === 'skills') {
+      sec.grupos.forEach(g => {
+        h.push('<p class="skills-line"><strong>' + esc(g.label) + ':</strong> ');
+        h.push(g.items.map(it => '<span class="skill' + (it.matched ? ' m' : '') + '">' + esc(it.nombre) + '</span>').join(', '));
+        h.push('</p>');
+      });
+    } else if (sec.tipo === 'experiencia') {
+      sec.jobs.forEach(job => {
+        h.push('<div class="job">');
+        h.push('<div class="job-head"><span class="empresa">' + esc(job.empresa) + ' — ' + esc(job.rol) + '</span><span class="fechas">' + esc(job.fechas) + '</span></div>');
+        h.push('<div class="job-meta">' + [job.ubicacion, job.cliente].filter(Boolean).map(esc).join(' · ') + '</div>');
+        if (job.bullets.length) {
+          h.push('<ul>');
+          job.bullets.forEach(b => h.push('<li class="' + (b.sc > 0 ? 'm' : '') + '">' + esc(b.texto) + '</li>'));
+          h.push('</ul>');
+        }
+        job.subproyectos.forEach(sp => {
+          h.push('<div class="sub">');
+          const head = sp.cliente
+            ? sp.cliente.empresa + ' — ' + sp.cliente.rol + ' <span class="job-meta">(' + sp.cliente.fechas + ' · ' + sp.cliente.tipo + ')</span>'
+            : (sp.titulo || '');
+          h.push('<div class="sub-head">' + esc(head) + '</div>');
+          h.push('<ul>');
+          sp.bullets.forEach(b => h.push('<li class="' + (b.sc > 0 ? 'm' : '') + '">' + esc(b.texto) + '</li>'));
+          h.push('</ul>');
+          if (sp.tecnologias.length) h.push('<p class="techline">Tecnologías: ' + esc(sp.tecnologias.join(', ')) + '</p>');
+          h.push('</div>');
+        });
+        if (job.tecnologias.length && !job.subproyectos.length) h.push('<p class="techline">Tecnologías: ' + esc(job.tecnologias.join(', ')) + '</p>');
+        h.push('</div>');
+      });
+    } else if (sec.tipo === 'proyectos') {
+      sec.items.forEach(p => {
+        h.push('<div class="proj">');
+        h.push('<span class="title">' + esc(p.titulo) + '</span>' + (p.confidencial ? ' <span class="conf">(Confidencial)</span>' : ''));
+        h.push('<div class="meta">' + esc(p.rol) + ' · ' + esc(p.contexto) + '</div>');
+        h.push('<ul>');
+        p.detalles.forEach(d => h.push('<li>' + esc(d.texto) + '</li>'));
+        h.push('</ul>');
+        if (p.tecnologias.length) h.push('<p class="techline">' + esc(p.tecnologias.join(', ')) + (p.link ? ' · ' + esc(p.link) : '') + '</p>');
+        h.push('</div>');
+      });
+    } else if (sec.tipo === 'certificaciones') {
+      h.push('<ul class="cert">');
+      sec.items.forEach(c => h.push('<li>' + esc(c.nombre) + (c.emisor ? ' — ' + esc(c.emisor) : '') + (c.anio ? ' (' + c.anio + ')' : '') + '</li>'));
+      h.push('</ul>');
+    } else if (sec.tipo === 'educacion') {
+      sec.items.forEach(e => h.push('<p class="edu"><strong>' + esc(e.institucion) + '</strong> — ' + esc(e.titulo) + '</p>'));
+    } else if (sec.tipo === 'idiomas') {
+      h.push('<p class="lang">' + sec.items.map(i => esc(i.idioma) + ': ' + esc(i.nivel)).join(' · ') + '</p>');
+    }
+    h.push('</section>');
+  }
+  $('#preview').innerHTML = h.join('');
+  renderMatch(doc.match, doc.perfil);
+  $('#configBadge').textContent = (state.lang === 'es' ? 'Español' : 'English') + ' · ' + L(doc.perfil.label, state.lang);
+}
+
+function renderMatch(match, perfil) {
+  const panel = $('#matchPanel');
+  if (!match) { panel.classList.remove('on'); panel.innerHTML = ''; return; }
+  const cap = (arr, n) => arr.slice(0, n);
+  const more = (arr, n) => arr.length > n ? ' y ' + (arr.length - n) + ' más' : '';
+  let html = '<div class="match-head">';
+  html += '<span class="pct">' + match.pct + '%<small> de match</small></span>';
+  html += '<span class="sub">' + match.found.length + ' de ' + match.total + ' keywords del rol evaluadas (keywords del perfil + tags reales del CV). Sin IA, determinista.</span>';
+  html += '</div>';
+  html += '<div class="chips-row"><span class="lbl">Encontradas:</span>';
+  cap(match.found, 36).forEach(f => { html += '<span class="chip found">' + esc(f.kw) + '</span>'; });
+  html += '<span class="sub">' + more(match.found, 36) + '</span></div>';
+  html += '<div class="chips-row"><span class="lbl">Faltantes:</span>';
+  cap(match.priorityMissing, 36).forEach(m => { html += '<span class="chip missing">' + esc(m.kw) + '</span>'; });
+  html += '<span class="sub">' + more(match.priorityMissing, 36) + '</span></div>';
+  html += '<p class="match-note">' +
+    'Se reordenaron grupos de competencias, bullets de experiencia y proyectos poniendo primero los coincidentes. ' +
+    'Nunca se agrega experiencia ni tecnologías: solo se selecciona, reordena y resalta contenido real de <code>cv-data.json</code>.</p>';
+  panel.innerHTML = html;
+  panel.classList.add('on');
+}
+
+/* =====================================================================
+   PDF — layout y dibujo (pdf-lib + fontkit, fuente TTF embebida)
+   ===================================================================== */
+const A4 = { w: 595.276, h: 841.89 };
+const MM = 72 / 25.4;
+const M = { L: 14 * MM, R: 14 * MM, T: 13 * MM, B: 16 * MM };
+const COL = {
+  navy:   [0x0f / 255, 0x17 / 255, 0x2a / 255],
+  ink:    [0x1f / 255, 0x29 / 255, 0x37 / 255],
+  gray:   [0x4b / 255, 0x55 / 255, 0x63 / 255],
+  light:  [0x9c / 255, 0xa3 / 255, 0xaf / 255],
+  accent: [0x15 / 255, 0x80 / 255, 0x3d / 255],
+  line:   [0xcb / 255, 0xd5 / 255, 0xe1 / 255]
+};
+const FONT_URLS = {
+  regular: [
+    'https://cdn.jsdelivr.net/gh/googlefonts/roboto@main/src/hinted/Roboto-Regular.ttf',
+    'https://cdn.jsdelivr.net/gh/googlefonts/roboto-2@main/src/hinted/Roboto-Regular.ttf',
+    'https://cdn.jsdelivr.net/npm/open-sans-fontface@1.4.0/fonts/Regular/OpenSans-Regular.ttf',
+    'https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans.ttf',
+    'https://cdn.jsdelivr.net/gh/JulietaUla/Montserrat@master/fonts/ttf/Montserrat-Regular.ttf'
+  ],
+  bold: [
+    'https://cdn.jsdelivr.net/gh/googlefonts/roboto@main/src/hinted/Roboto-Bold.ttf',
+    'https://cdn.jsdelivr.net/gh/googlefonts/roboto-2@main/src/hinted/Roboto-Bold.ttf',
+    'https://cdn.jsdelivr.net/npm/open-sans-fontface@1.4.0/fonts/Bold/OpenSans-Bold.ttf',
+    'https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans-Bold.ttf',
+    'https://cdn.jsdelivr.net/gh/JulietaUla/Montserrat@master/fonts/ttf/Montserrat-Bold.ttf'
+  ]
+};
+
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = res; s.onerror = () => rej(new Error('No se pudo cargar ' + src));
+    document.head.appendChild(s);
+  });
+}
+async function fetchFirst(urls) {
+  for (const u of urls) {
+    try {
+      const r = await fetch(u);
+      if (r.ok) { const b = await r.arrayBuffer(); if (b.byteLength > 5000) return { bytes: b, url: u }; }
+    } catch (e) { /* probar siguiente */ }
+  }
+  return null;
+}
+/* texto amigable para ATS: evita caracteres fuera de latín-1 que la fuente puede no tener */
+const pdfText = s => String(s || '').replace(/→/g, '->').replace(/←/g, '<-').replace(/·/g, '·');
+
+class FlowPDF {
+  constructor(scale, fonts) {
+    this.scale = scale; this.fonts = fonts;
+    this.maxW = A4.w - M.L - M.R;
+    this.x = M.L; this.y = M.T;
+    this.pages = [[]]; this.pi = 0;
+    this.base = 9.7 * scale;
+    this.secSize = 10.2 * scale;
+    this.small = 8.2 * scale;
+    this.lead = 1.25;
+  }
+  measure(text, f, size) { return this.fonts[f] ? this.fonts[f].widthOfTextAtSize(pdfText(text), size) : 0; }
+  br() { this.pages.push([]); this.pi++; this.y = M.T; }
+  padTop(pts) { if (this.y + pts > A4.h - M.B) this.br(); else if (pts) this.y += pts; }
+  line(runs, o = {}) {
+    const size = o.size ?? this.base;
+    const lh = size * (o.leading ?? this.lead);
+    this.padTop(o.before || 0);
+    if (this.y + lh > A4.h - M.B) this.br();
+    let right = null;
+    if (o.rightText) {
+      const rs = o.rightSize ?? this.small;
+      const rw = this.measure(o.rightText, o.rightFont || 'body', rs);
+      right = { text: o.rightText, f: o.rightFont || 'body', size: rs, color: o.rightColor || COL.gray, w: rw, x: A4.w - M.R - rw };
+    }
+    const hang = o.hanging || 0;
+    const maxW = this.maxW - hang;
+    const spaceW = this.measure(' ', 'body', size);
+    const tokens = [];
+    for (const run of runs) {
+      const words = String(run.text).split(/(\s+)/).filter(Boolean);
+      for (const w of words) tokens.push({ w, f: run.f, size: run.size ?? size, color: run.color || COL.ink });
+    }
+    let lineRuns = [], lineW = 0, lineNo = 0;
+    const flush = () => {
+      if (!lineRuns.length) return;
+      this.pages[this.pi].push({
+        y: this.y, x: this.x + (lineNo > 0 ? hang : 0), runs: lineRuns,
+        right: lineNo === 0 && right ? right : null
+      });
+      lineNo++; lineRuns = []; lineW = 0;
+      this.y += lh;
+      if (this.y > A4.h - M.B) this.br();
+    };
+    for (const tok of tokens) {
+      const tw = this.measure(tok.w, tok.f, tok.size);
+      const sep = lineRuns.length ? spaceW : 0;
+      if (lineRuns.length && lineW + sep + tw > maxW) flush();
+      if (lineRuns.length) lineW += sep;
+      lineRuns.push(tok); lineW += tw;
+    }
+    flush();
+    if (o.after) this.y += o.after;
+  }
+  rule(color, h, w, gap) {
+    if (this.y + 4 > A4.h - M.B) this.br();
+    this.pages[this.pi].push({ rule: true, y: this.y + 3, x: this.x, w: w || this.maxW, h: h || 1, color });
+    if (gap) this.y += gap;
+  }
+  sectionHeading(titulo) {
+    this.padTop(9);
+    this.line([{ text: String(titulo).toUpperCase(), f: 'bold', size: this.secSize, color: COL.navy }], { after: 1.5 });
+    this.rule(COL.line, 1.1);
+    this.y += 3;
+  }
+  bullet(runs, o = {}) { this.line([{ text: '\u2022  ', f: 'body', size: o.size || this.base, color: COL.accent, }, ...runs].map(x => x), Object.assign({ hanging: 9, after: 1 }, o)); }
+  jobHeader(empresa, rol, fechas) {
+    const size = this.base + 0.3;
+    const cw = this.measure(empresa, 'bold', size) + this.measure(' — ' + rol, 'body', size);
+    const fw = this.measure(fechas, 'body', this.small);
+    if (this.x + cw + 24 + fw <= A4.w - M.R) {
+      this.line([
+        { text: empresa, f: 'bold', size, color: COL.navy },
+        { text: ' — ' + rol, f: 'body', size, color: COL.ink }
+      ], { rightText: fechas, rightFont: 'body', rightSize: this.small, rightColor: COL.gray, after: 0.5 });
+    } else {
+      this.line([{ text: empresa, f: 'bold', size, color: COL.navy }, { text: ' — ' + rol, f: 'body', size }], { after: 0.2 });
+      this.line([{ text: fechas, f: 'body', size: this.small, color: COL.gray }], { after: 0.5 });
+    }
+  }
+}
+
+/* resalta palabras que coinciden con keywords encontradas (runs bold) */
+function highlight(text, match, lang) {
+  if (!match) return [{ text, f: 'body', color: COL.ink }];
+  const runs = [];
+  const re = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9+\-.\/#]*/g;
+  let last = 0, m;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) runs.push({ text: text.slice(last, m.index), f: 'body', color: COL.ink });
+    const hit = match.set.has(norm(m[0]));
+    runs.push({ text: m[0], f: hit ? 'bold' : 'body', color: hit ? COL.accent : COL.ink });
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) runs.push({ text: text.slice(last), f: 'body', color: COL.ink });
+  return runs;
+}
+
+function layoutPDF(doc, scale, fonts) {
+  const F = new FlowPDF(scale, fonts);
+  // Header
+  F.line([{ text: doc.header.nombre, f: 'bold', size: 17.5 * scale, color: COL.navy }], { after: 1 });
+  F.line([{ text: doc.header.headline, f: 'body', size: F.base + 0.7, color: COL.accent }], { after: 2 });
+  doc.header.contacto.forEach(c => F.line([{ text: c, f: 'body', size: F.small + 0.2, color: COL.gray }], { after: 0.5 }));
+  F.rule(COL.navy, 1.6);
+  F.y += 3;
+
+  for (const sec of doc.sections) {
+    F.sectionHeading(sec.titulo);
+    if (sec.tipo === 'texto') {
+      sec.parrafos.forEach(p => F.line(highlight(p, doc.match, doc.lang), { after: 2 }));
+    } else if (sec.tipo === 'skills') {
+      sec.grupos.forEach(g => {
+        const runs = [{ text: g.label + ':', f: 'bold', color: COL.navy }];
+        g.items.forEach((it, i) => {
+          runs.push({ text: (i ? ', ' : ' ') + it.nombre, f: it.matched ? 'bold' : 'body', color: it.matched ? COL.accent : COL.ink });
+        });
+        F.line(runs, { after: 1.5 });
+      });
+    } else if (sec.tipo === 'experiencia') {
+      sec.jobs.forEach(job => {
+        F.jobHeader(job.empresa, job.rol, job.fechas);
+        const meta = [job.ubicacion, job.cliente].filter(Boolean).join(' · ');
+        if (meta) F.line([{ text: meta, f: 'body', size: F.small, color: COL.gray }], { after: 1 });
+        if (job.bullets.length) job.bullets.forEach(b => F.bullet(highlight(b.texto, doc.match, doc.lang)));
+        job.subproyectos.forEach(sp => {
+          if (sp.cliente) {
+            F.jobHeader(sp.cliente.empresa, sp.cliente.rol, sp.cliente.fechas);
+            if (sp.cliente.tipo) F.line([{ text: sp.cliente.tipo, f: 'body', size: F.small, color: COL.gray }], { after: 0.5 });
+          } else if (sp.titulo) {
+            F.line([{ text: sp.titulo, f: 'bold', size: F.base, color: COL.ink }], { after: 1 });
+          }
+          sp.bullets.forEach(b => F.bullet(highlight(b.texto, doc.match, doc.lang)));
+          if (sp.tecnologias.length) F.line([{ text: 'Tecnologías: ' + sp.tecnologias.join(', '), f: 'body', size: F.small, color: COL.gray }], { after: 2 });
+        });
+        if (job.tecnologias.length && !job.subproyectos.length)
+          F.line([{ text: 'Tecnologías: ' + job.tecnologias.join(', '), f: 'body', size: F.small, color: COL.gray }], { after: 2 });
+      });
+    } else if (sec.tipo === 'proyectos') {
+      sec.items.forEach(p => {
+        const runs = [{ text: p.titulo, f: 'bold', size: F.base + 0.2, color: COL.navy }];
+        if (p.confidencial) runs.push({ text: '  (Confidencial)', f: 'body', size: F.small, color: COL.light });
+        F.line(runs, { after: 0.5 });
+        if (p.rol || p.contexto) F.line([{ text: [p.rol, p.contexto].filter(Boolean).join(' · '), f: 'body', size: F.small, color: COL.gray }], { after: 0.5 });
+        p.detalles.forEach(d => F.bullet(highlight(d.texto, doc.match, doc.lang), { size: F.base - 0.1 }));
+        let techExtra = p.tecnologias.join(', ');
+        if (p.link) techExtra += ' · ' + p.link;
+        if (techExtra) F.line([{ text: techExtra, f: 'body', size: F.small, color: COL.light }], { after: 2.5 });
+      });
+    } else if (sec.tipo === 'certificaciones') {
+      sec.items.forEach(c => {
+        let suffix = '';
+        if (c.emisor) suffix += ' — ' + c.emisor;
+        if (c.anio) suffix += ' (' + c.anio + ')';
+        F.bullet([{ text: c.nombre, f: 'body', color: COL.ink }, { text: suffix, f: 'body', size: F.small, color: COL.gray }], { size: F.base - 0.1 });
+      });
+    } else if (sec.tipo === 'educacion') {
+      sec.items.forEach(e => F.line([{ text: e.institucion, f: 'bold', color: COL.navy }, { text: ' — ' + e.titulo, f: 'body', color: COL.ink }], { after: 1.5 }));
+    } else if (sec.tipo === 'idiomas') {
+      F.line([{ text: sec.items.map(i => i.idioma + ': ' + i.nivel).join('   |   '), f: 'body' }], { after: 1 });
+    }
+  }
+  return F.pages;
+}
+
+function fitToPages(doc, fonts, maxPages = 2) {
+  let scale = 1, pages = null;
+  for (let i = 0; i < 16; i++) {
+    scale = 1 - i * 0.015;
+    pages = layoutPDF(doc, scale, fonts);
+    if (pages.length <= maxPages) break;
+  }
+  return { scale, pages };
+}
+
+function drawPDF(pdf, doc, fonts, pages, scale) {
+  const { rgb, StandardFonts } = window.PDFLib;
+  const total = pages.length;
+  pages.forEach((lines, idx) => {
+    const pg = pdf.addPage([A4.w, A4.h]);
+    for (const ln of lines) {
+      if (ln.rule) {
+        pg.drawRectangle({ x: ln.x, y: ln.y - 3, width: ln.w, height: ln.h, color: rgb(...ln.color) });
+        continue;
+      }
+      let x = ln.x;
+      for (const run of ln.runs) {
+        pg.drawText(pdfText(run.w), { x, y: ln.y, size: run.size, font: fonts[run.f], color: rgb(...run.color) });
+        x += fonts[run.f].widthOfTextAtSize(pdfText(run.w), run.size);
+      }
+      if (ln.right) {
+        pg.drawText(pdfText(ln.right.text), { x: ln.right.x, y: ln.y, size: ln.right.size, font: fonts[ln.right.f], color: rgb(...ln.right.color) });
+      }
+    }
+    // Footer
+    pg.drawText('Ali Tovar — CV', { x: M.L, y: A4.h - 26, size: 7.5 * scale, font: fonts.body, color: rgb(...COL.light) });
+    pg.drawText('Página ' + (idx + 1) + ' de ' + total, { x: A4.w - M.R - 60, y: A4.h - 26, size: 7.5 * scale, font: fonts.body, color: rgb(...COL.light) });
+  });
+  return pdf;
+}
+
+/* =====================================================================
+   GENERACIÓN + DESCARGA
+   ===================================================================== */
+async function generateBytes() {
+  const doc = buildDoc();
+  if (!window.PDFLib) await loadScript('https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js');
+  if (!window.fontkit) await loadScript('https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@1.1.1/dist/fontkit.umd.min.js');
+  const reg = await fetchFirst(FONT_URLS.regular);
+  const bold = await fetchFirst(FONT_URLS.bold);
+  if (!reg) throw new Error('No se pudieron descargar las fuentes TTF desde el CDN (¿sin internet?).');
+  const { PDFDocument } = window.PDFLib;
+  const pdf = await PDFDocument.create();
+  pdf.registerFontkit(window.fontkit);
+  const fBody = await pdf.embedFont(reg.bytes);
+  const fBold = bold ? await pdf.embedFont(bold.bytes) : fBody;
+  const fonts = { body: fBody, bold: fBold };
+  const { scale, pages } = fitToPages(doc, fonts, 2);
+  drawPDF(pdf, doc, fonts, pages, scale);
+  const bytes = await pdf.save();
+  return { bytes, pages: pages.length, scale, doc };
+}
+
+const fileName = () => 'Ali_Tovar_CV_' + state.perfilId + '_' + state.lang.toUpperCase() + '.pdf';
+
+async function generateAndDownload() {
+  setStatus('Preparando el PDF (descargando fuentes y librerías del CDN)…');
+  try {
+    const { bytes, pages, scale } = await generateBytes();
+    if (bytes.length < 20480) throw new Error('El PDF generado parece demasiado pequeño (' + bytes.length + ' bytes).');
+    const blob = new Blob([bytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = fileName();
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    setStatus('PDF generado: <b>' + fileName() + '</b> · ' + (bytes.length / 1024).toFixed(0) + ' KB · ' + pages + ' página(s) · escala ' + scale.toFixed(2) + ' — texto real seleccionable.', false);
+  } catch (e) {
+    setStatus('Error al generar el PDF: ' + e.message + ' ¿Revisá la conexión a internet?', true);
+    console.error(e);
+  }
+}
+
+function setStatus(html, isErr) {
+  const el = $('#status');
+  el.innerHTML = html;
+  el.classList.toggle('err', !!isErr);
+  el.classList.add('on');
+}
+
+/* =====================================================================
+   CARGA DE DATOS: fetch de data/*.json o copia embebida (file://)
+   ===================================================================== */
+async function loadData() {
+  try {
+    const [r1, r2] = await Promise.all([
+      fetch('./data/cv-data.json', { cache: 'no-cache' }),
+      fetch('./data/perfiles.json', { cache: 'no-cache' })
+    ]);
+    if (r1.ok && r2.ok) {
+      CV_DATA = await r1.json();
+      PERFILES = await r2.json();
+      dataSource = 'archivos';
+    } else throw 0;
+  } catch (e) {
+    if (EMBEDDED.cv && EMBEDDED.perfiles) { CV_DATA = EMBEDDED.cv; PERFILES = EMBEDDED.perfiles; dataSource = 'embebido'; }
+    else throw new Error('No se pudieron cargar los datos (ni archivos ni copia embebida).');
+  }
+  const badge = $('#dataBadge');
+  badge.innerHTML = dataSource === 'archivos'
+    ? 'Datos: <b>data/*.json</b> (en vivo)'
+    : 'Datos: <b>copia embebida</b> (funcionando sin servidor, file://).<br>Si editás <b>data/*.json</b>, re-sincronizá la copia (ver README).';
+}
+
+/* =====================================================================
+   UI / eventos
+   ===================================================================== */
+function buildPerfilCards() {
+  const grid = $('#perfilGrid');
+  grid.innerHTML = '';
+  PERFILES.perfiles.forEach(p => {
+    const l = document.createElement('label');
+    l.className = 'perfil-card';
+    const input = document.createElement('input');
+    input.type = 'radio'; input.name = 'perfil'; input.value = p.id;
+    if (p.id === state.perfilId) input.checked = true;
+    const strong = document.createElement('strong'); strong.className = 'pc-name'; strong.textContent = L(p.label, state.lang);
+    const small = document.createElement('small'); small.className = 'pc-desc'; small.textContent = L(p.descripcion, state.lang);
+    l.appendChild(input); l.appendChild(strong); l.appendChild(small);
+    grid.appendChild(l);
+  });
+}
+
+function syncUI() {
+  $$('input[name="idioma"]').forEach(r => r.checked = r.value === state.lang);
+  $$('.perfil-card input[name="perfil"]').forEach(r => r.checked = r.value === state.perfilId);
+  $('#reclutadorToggle').checked = state.reclutador;
+  $('#jobDesc').disabled = !state.reclutador;
+  $('#jobDesc').value = state.descripcion;
+}
+
+function renderAll() {
+  if (!CV_DATA || !PERFILES) return;
+  const doc = buildDoc();
+  renderPreview(doc);
+}
+
+const dirtyRender = debounce(renderAll, 120);
+function onInput() {
+  const lang = ($('input[name="idioma"]:checked') || {}).value || state.lang;
+  const perfil = ($('input[name="perfil"]:checked') || {}).value || state.perfilId;
+  state.lang = lang; state.perfilId = perfil;
+  state.reclutador = $('#reclutadorToggle').checked;
+  state.descripcion = $('#jobDesc').value || '';
+  try {
+    localStorage.setItem('prototipo.lang', state.lang);
+    localStorage.setItem('prototipo.perfil', state.perfilId);
+    localStorage.setItem('prototipo.reclutador', state.reclutador ? '1' : '0');
+    localStorage.setItem('prototipo.descripcion', state.descripcion);
+  } catch (e) { /* sin almacenamiento */ }
+  syncUI();
+  dirtyRender();
+}
+
+function openDialog() {
+  const dlg = $('#genDialog');
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open', '');
+  dlg.querySelector('button:not([type])')?.focus();
+}
+
+/* ====================== init ====================== */
+(async function init() {
+  try {
+    await loadData();
+  } catch (e) {
+    setStatus(e.message, true);
+  }
+  buildPerfilCards();
+  syncUI();
+  renderAll();
+
+  $('#openDialog').addEventListener('click', openDialog);
+  $('#closeDialog').addEventListener('click', () => $('#genDialog').close());
+  $('#dlgDownloadBtn').addEventListener('click', generateAndDownload);
+  $('#downloadBtn').addEventListener('click', generateAndDownload);
+  $('#previewBtn').addEventListener('click', () => { $('#genDialog').close(); renderAll(); $('#workspace').scrollIntoView({ behavior: 'smooth' }); });
+  $('#refreshPreview').addEventListener('click', () => renderAll());
+  $('#reclutadorToggle').addEventListener('change', () => { $('#jobDesc').disabled = !$('#reclutadorToggle').checked; onInput(); });
+  $('#jobDesc').addEventListener('input', onInput);
+  $$('input[name="idioma"]').forEach(r => r.addEventListener('change', onInput));
+  $('#perfilGrid').addEventListener('change', onInput);
+  $('#zoom').addEventListener('change', e => {
+    $('#preview').style.setProperty('--zoom', e.target.value);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && $('#genDialog').open) $('#genDialog').close();
+  });
+
+  // API mínima para verificación automatizada (sin efecto en la UI)
+  window.__prototipo = {
+    getState: () => ({ ...state }),
+    buildDoc,
+    renderAll,
+    generateBytes,
+    settings: () => ({ dataSource, keys: CV_DATA && PERFILES ? { cv: Object.keys(CV_DATA), perfiles: PERFILES.perfiles.map(p => p.id) } : null })
+  };
+})();
+</script>
+</body>
+</html>

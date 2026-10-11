@@ -8,11 +8,42 @@
     "serve": "npx serve .",
     "build": "node build.js",
     "test": "playwright test",
-    "test:install": "playwright install --with-deps chromium"
+    "test:install": "playwright install --with-deps chromium",
+    "proto:sync": "node prototipo/sync-embedded.js",
+    "proto:check": "node prototipo/sync-embedded.js --check"
   },
   "devDependencies": {
     "@playwright/test": "^1.48.0",
     "axe-core": "^4.10.0",
-    "axe-playwright": "^2.0.0"
-  }
+    "axe-playwright": "^2.0.0",
+    "lighthouse": "^13.5.0"
+  },
+  "main": "build.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "axe-html-reporter": "^2.2.11",
+    "junit-report-builder": "^5.1.2",
+    "lodash": "^4.18.1",
+    "make-dir": "^3.1.0",
+    "mustache": "^4.2.0",
+    "pdf-lib": "^1.17.1",
+    "picocolors": "^1.1.1",
+    "playwright": "^1.63.0",
+    "playwright-core": "^1.63.0",
+    "semver": "^6.3.1",
+    "xmlbuilder": "^15.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avtovar/Curriculum-Vitae.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avtovar/Curriculum-Vitae/issues"
+  },
+  "homepage": "https://github.com/avtovar/Curriculum-Vitae#readme"
 }
