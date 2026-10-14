@@ -1,5 +1,5 @@
 // ===================== MAIN MODULE =====================
-import { setLanguage, updateExperienceDisplay, updateCopyright, getCurrentLang } from './i18n.js';
+import { setLanguage, updateExperienceDisplay, updateCopyright, getCurrentLang, getTranslation } from './i18n.js';
 import { initTheme } from './theme.js';
 import { initTabs } from './tabs.js';
 import { initForm } from './form.js';
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const textSpan = this.querySelector('span');
       if (textSpan) {
-        textSpan.textContent = isExpanded ? 'Ver todos los certificados' : 'Ocultar todos los certificados';
+        textSpan.textContent = getTranslation(isExpanded ? 'certs.ver-todos' : 'certs.ocultar');
       }
 
       const icon = this.querySelector('.toggle-icon');
